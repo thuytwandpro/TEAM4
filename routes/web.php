@@ -14,7 +14,6 @@
 Route::get('/', function () {
     return view('welcome');
 });
-
 Route::get('test', function (){
-	return view('users.master');
+    return view('users.master');
 });
