@@ -6,6 +6,15 @@ use Illuminate\Database\Eloquent\Model;
 
 class Customer extends Model
 {
+    protected $table = 'customers';
+    protected $fillable = [
+        'name',
+        'username',
+        'pass',
+        'email',
+        'phone',
+        'address',
+    ];
     public function bills() {
         return $this->hasMany('shoes\Bill', 'id_customer', 'id');
     }

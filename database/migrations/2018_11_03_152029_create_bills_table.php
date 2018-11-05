@@ -17,14 +17,14 @@ class CreateBillsTable extends Migration
             $table->increments('id');
             $table->integer('id_customer')->unsigned()->nullable();
             $table->foreign('id_customer')->references('id')->on('customers');
-            $table->integer('id_employee')->unsigned()->nullable();
+            $table->integer('id_employee')->unsigned();
             $table->foreign('id_employee')->references('id')->on('employees');
             $table->string('customer_name', 255);
-            $table->string('adress', 255);
-            $table->string('email',255);
+            $table->string('address', 255);
+            $table->string('email',255)->unique();
             $table->string('phone', 11);
             $table->tinyInteger('status');
-            $table->integer('total');
+            $table->integer('total')->unsigned();
             $table->string('note', 255);
             $table->timestamps();
         });
