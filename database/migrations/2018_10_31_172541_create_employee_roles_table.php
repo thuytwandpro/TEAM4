@@ -15,11 +15,10 @@ class CreateEmployeeRolesTable extends Migration
     {
         Schema::create('employee_roles', function (Blueprint $table) {
             $table->increments('id');
-            $table->integer('id_role')->unsigned()->nullable();
+            $table->integer('id_role')->unsigned();
             $table->foreign('id_role')->references('id')->on('roles');
-            $table->integer('id_employee')->unsigned()->nullable();
+            $table->integer('id_employee')->unsigned();
             $table->foreign('id_employee')->references('id')->on('employees');
-
             $table->timestamps();
         });
     }

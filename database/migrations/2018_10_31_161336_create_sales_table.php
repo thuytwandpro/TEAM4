@@ -15,7 +15,7 @@ class CreateSalesTable extends Migration
     {
         Schema::create('sales', function (Blueprint $table) {
             $table->increments('id');
-            $table->integer('percent');
+            $table->integer('percent')->unsigned();
             $table->date('start_date')->nullable();
             $table->date('end_date')->nullable();
         });

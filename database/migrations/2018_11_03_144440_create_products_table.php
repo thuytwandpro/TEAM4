@@ -15,18 +15,18 @@ class CreateProductsTable extends Migration
     {
         Schema::create('products', function (Blueprint $table) {
             $table->increments('id');
-            $table->integer('id_category')->unsigned()->nullable();
+            $table->integer('id_category')->unsigned();
             $table->foreign('id_category')->references('id')->on('categories');
             $table->integer('id_sale')->unsigned()->nullable();
             $table->foreign('id_sale')->references('id')->on('sales');
-            $table->string('name',255);
-            $table->integer('quantity');
-            $table->integer('price');
+            $table->string('name',255)->unique();
+            $table->integer('quantity')->unsigned();
+            $table->integer('price')->unsigned();
             $table->text('img')->nullable();
             $table->longText('content')->nullable();
             $table->string('origin', 255)->nullable();
             $table->text('size')->nullable();
-            $table->integer('gender')->nullable();
+            $table->integer('gender')->unsigned()->nullable();
             $table->string('slug', 255);
             $table->timestamps();
         });

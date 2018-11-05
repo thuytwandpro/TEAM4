@@ -6,6 +6,18 @@ use Illuminate\Database\Eloquent\Model;
 
 class Bill extends Model
 {
+    protected $table = 'bills';
+    protected $fillable = [
+        'id_customer',
+        'id_employee',
+        'customer_name',
+        'address',
+        'email',
+        'phone',
+        'status',
+        'total',
+        'note',
+    ];
     public function detailbills() {
         return $this->hasMany('shoes\DetailBill', 'id_bill', 'id');
     }
