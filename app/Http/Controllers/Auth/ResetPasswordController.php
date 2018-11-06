@@ -1,8 +1,10 @@
 <?php
 
+
 namespace shoes\Http\Controllers\Auth;
 
 use shoes\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Foundation\Auth\ResetsPasswords;
 
 class ResetPasswordController extends Controller
@@ -35,5 +37,9 @@ class ResetPasswordController extends Controller
     public function __construct()
     {
         $this->middleware('guest');
+    }
+    protected function guard()
+    {
+        return Auth::guard('guard-name');
     }
 }

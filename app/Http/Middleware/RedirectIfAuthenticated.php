@@ -1,6 +1,8 @@
 <?php
 
+
 namespace shoes\Http\Middleware;
+
 
 use Closure;
 use Illuminate\Support\Facades\Auth;
@@ -23,4 +25,5 @@ class RedirectIfAuthenticated
 
         return $next($request);
     }
+
 }

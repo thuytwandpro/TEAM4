@@ -161,6 +161,7 @@ return [
         shoes\Providers\EventServiceProvider::class,
         shoes\Providers\RouteServiceProvider::class,
 
+
     ],
 
     /*

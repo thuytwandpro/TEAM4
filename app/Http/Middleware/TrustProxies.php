@@ -1,5 +1,6 @@
 <?php
 
+
 namespace shoes\Http\Middleware;
 
 use Illuminate\Http\Request;

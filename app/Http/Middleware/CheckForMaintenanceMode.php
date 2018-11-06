@@ -1,6 +1,8 @@
 <?php
 
+
 namespace shoes\Http\Middleware;
+
 
 use Illuminate\Foundation\Http\Middleware\CheckForMaintenanceMode as Middleware;
 
