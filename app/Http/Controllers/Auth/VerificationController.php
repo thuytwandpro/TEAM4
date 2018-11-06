@@ -1,6 +1,8 @@
 <?php
 
+
 namespace shoes\Http\Controllers\Auth;
+
 
 use Illuminate\Http\Request;
 use Illuminate\Routing\Controller;

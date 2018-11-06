@@ -1,9 +1,11 @@
 <?php
 
+
 namespace shoes\Http\Controllers\Auth;
 
 use shoes\User;
 use shoes\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Foundation\Auth\RegistersUsers;
@@ -69,4 +71,9 @@ class RegisterController extends Controller
             'password' => Hash::make($data['password']),
         ]);
     }
+    protected function guard()
+    {
+        return Auth::guard('guard-name');
+    }
+    
 }

@@ -67,7 +67,9 @@ return [
     'providers' => [
         'users' => [
             'driver' => 'eloquent',
+
             'model' => shoes\User::class,
+
         ],
 
         // 'users' => [

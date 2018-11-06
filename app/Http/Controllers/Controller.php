@@ -1,5 +1,6 @@
 <?php
 
+
 namespace shoes\Http\Controllers;
 
 use Illuminate\Foundation\Bus\DispatchesJobs;

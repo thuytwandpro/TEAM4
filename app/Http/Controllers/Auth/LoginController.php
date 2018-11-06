@@ -1,8 +1,11 @@
 <?php
 
+
 namespace shoes\Http\Controllers\Auth;
 
 use shoes\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Auth;
+
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
 
 class LoginController extends Controller
@@ -35,5 +38,13 @@ class LoginController extends Controller
     public function __construct()
     {
         $this->middleware('guest')->except('logout');
+    }
+    public function username()
+    {
+        return 'username';
+    }
+    protected function guard()
+    {
+        return Auth::guard('guard-name');
     }
 }

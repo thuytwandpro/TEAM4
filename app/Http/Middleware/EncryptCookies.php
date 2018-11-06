@@ -1,6 +1,8 @@
 <?php
 
+
 namespace shoes\Http\Middleware;
+
 
 use Illuminate\Cookie\Middleware\EncryptCookies as Middleware;
 

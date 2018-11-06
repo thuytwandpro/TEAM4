@@ -1,5 +1,6 @@
 <?php
 
+
 namespace shoes\Providers;
 
 use Illuminate\Support\ServiceProvider;

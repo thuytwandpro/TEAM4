@@ -1,8 +1,10 @@
 <?php
 
+
 namespace shoes\Http\Controllers\Auth;
 
 use shoes\Http\Controllers\Controller;
+
 use Illuminate\Foundation\Auth\SendsPasswordResetEmails;
 
 class ForgotPasswordController extends Controller
