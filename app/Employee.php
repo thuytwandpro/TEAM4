@@ -13,7 +13,7 @@ class Employee extends Model
         'address',
         'email',
         'username',
-        'pass',
+        'password',
         'avatar',
     ];
     public function comments() {
