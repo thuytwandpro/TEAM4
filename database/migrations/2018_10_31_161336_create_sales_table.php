@@ -18,6 +18,7 @@ class CreateSalesTable extends Migration
             $table->integer('percent')->unsigned();
             $table->date('start_date')->nullable();
             $table->date('end_date')->nullable();
+            $table->timestamps();
         });
     }
 
