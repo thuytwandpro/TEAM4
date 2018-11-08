@@ -3,6 +3,7 @@
 namespace shoes\Http\Controllers;
 
 use Illuminate\Http\Request;
+use shoes\Category;
 
 class CategoryController extends Controller
 {
@@ -13,7 +14,8 @@ class CategoryController extends Controller
      */
     public function index()
     {
-         return view('admin.categories.list_category');
+        $category = Category::all();
+         return view('admin.categories.list_category',['category'=>$category]);
     }
 
     /**

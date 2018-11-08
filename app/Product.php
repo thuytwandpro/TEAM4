@@ -3,6 +3,7 @@
 namespace shoes;
 
 use Illuminate\Database\Eloquent\Model;
+use shoes\Category;
 
 class Product extends Model
 {

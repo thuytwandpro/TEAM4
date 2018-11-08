@@ -57,7 +57,7 @@
                 </span>
                 </a>
                 <ul class="treeview-menu">
-                    <li><a href=""><i class="fa fa-circle-o text-red"></i> Danh sách</a></li>
+                    <li><a href="{{route('products.index')}}"><i class="fa fa-circle-o text-red"></i> Danh sách</a></li>
                     <li><a href="#"><i class="fa fa-circle-o text-yellow"></i> Thêm sản phẩm</a></li>
                 </ul>
             </li>
