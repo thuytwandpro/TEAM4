@@ -3,6 +3,9 @@
 namespace shoes\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Validator;
+use Auth;
+
 
 class ProductController extends Controller
 {
@@ -11,6 +14,10 @@ class ProductController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+    public function __construct()
+    {
+        $this->middleware('admin')->only('destroy');
+    }
     public function index()
     {
         return view('admin.products.list_product');

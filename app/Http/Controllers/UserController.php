@@ -3,6 +3,7 @@
 namespace shoes\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class UserController extends Controller
 {
@@ -81,5 +82,22 @@ class UserController extends Controller
     {
         //
     }
-
+//    public function getDangnhapAdmin(){
+//        return view('admin.login');
+//    }
+//    public function postDangnhapAdmin(Request $request){
+//        $this->validate($request, [
+//            'email'=>'required',
+//            'password'=>'required|min:3|max:255'
+//        ],[
+//            'email.required'=>'bạn chưa nhập email',
+//            'password.required'=>'Bạn chưa nhập password',
+//            'password.min'=>'password không được nhỏ hơn 3 ký tự',
+//            'password.max'=>'password không được lớn hơn 255 ký tự',
+//        ]);
+//        if(Auth::attempt(['email'=>$request->email,'password'=>$request->password]))
+//        {
+//            return redirect(('admin/theloai/danhsach'));
+//        }
+//    }
 }

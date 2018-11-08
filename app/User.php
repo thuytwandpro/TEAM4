@@ -1,8 +1,6 @@
 <?php
 
-
 namespace shoes;
-
 
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
@@ -10,23 +8,26 @@ use Illuminate\Foundation\Auth\User as Authenticatable;
 
 class User extends Authenticatable
 {
-    use Notifiable;
-
-    /**
-     * The attributes that are mass assignable.
-     *
-     * @var array
-     */
+    protected $table = 'users';
     protected $fillable = [
-        'name', 'email', 'password',
+        'name',
+        'phone',
+        'address',
+        'email',
+        'username',
+        'password',
+        'avatar',
     ];
-
-    /**
-     * The attributes that should be hidden for arrays.
-     *
-     * @var array
-     */
     protected $hidden = [
         'password', 'remember_token',
     ];
+    public function comments() {
+        return $this->hasMany('shoes\Comment', 'id_employee', 'id');
+    }
+    public function employee_roles() {
+        return $this->hasMany('shoes\User', 'id_employee', 'id');
+    }
+    public function bills() {
+        return $this->hasMany('shoes\Bill', 'id_employee', 'id');
+    }
 }

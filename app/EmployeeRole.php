@@ -15,6 +15,6 @@ class EmployeeRole extends Model
         return $this->belongsTo('shoes/Role', 'id_role', 'id');
     }
     public function employee() {
-        return $this->belongsTo('shoes/Employee', 'id_employee', 'id');
+        return $this->belongsTo('shoes/User', 'id_employee', 'id');
     }
 }

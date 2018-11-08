@@ -14,6 +14,7 @@
 // Route::get('/', function () {
 //     return redirect('shoes');
 // });
+Route::get('/', ['uses' => 'HomeController@index']);
 Route::get('/shoes', ['uses' => 'HomeController@index']);
 
 Route::get('/shoes/contacts', ['uses' => 'HomeController@contact']);
@@ -28,22 +29,16 @@ Route::get('/shoes/about', ['uses' => 'HomeController@about']);
 
 Route::get('/shoes/checkout', ['uses' => 'HomeController@checkout']);
 
-
 //Trang quan tri Admin
 Route::group(['prefix' => '/shoes/admin'], function () {
 	Route::group(['prefix' => 'home'], function() {
-		Route::get('home', function() {
-			return redirect('home');
+		Route::get('index', function() {
+            return view('admin.home.index');
 		});
 		Route::resource('home', 'AdminController');
-		Route::get('/login',['uses' => 'AdminController@login']);
-	});
-
-	Route::group(['prefix' => 'products'], function() {
-		Route::get('products', function() {
-			return redirect('products');
-		});
-		Route::resource('products', 'ProductController'); 
+		Route::get('/login',['uses' => 'AdminController@getlogin']);
+        Route::post('/login',['uses' => 'AdminController@postlogin']);
+        Route::get('logout',['uses' => 'AdminController@logoutAdmin']);
 	});
 
 	Route::group(['prefix' => 'categories'], function() {
