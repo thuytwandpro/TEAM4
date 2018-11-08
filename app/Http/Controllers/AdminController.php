@@ -1,8 +1,10 @@
 <?php
 
 namespace shoes\Http\Controllers;
-
 use Illuminate\Http\Request;
+use shoes\Employee;
+use Illuminate\Support\Facades\Auth;
+
 
 class AdminController extends Controller
 {
@@ -11,14 +13,35 @@ class AdminController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
-    {
-        return view('admin.home.index');
-    }
 
-    public function login()
+    public function getlogin()
     {
         return view('membership.login');
     }
-   
+
+    public function postlogin(Request $request)
+    {
+        $this->validate($request,[
+           'email'=>'required',
+            'password'=>'required|min:3|max:32'
+        ],[
+            'email.required'=>"Bạn chưa nhập email",
+            'password.required'=>'Bạn chưa nhập password',
+            'password.min'=>'password không được nhỏ hơn 3 ký tự',
+            'password.max'=>'password không được lớn hơn 32 kỳ tự'
+
+        ]);
+        $credentials = [
+            'email' => $request['email'],
+            'password' => $request['password'],
+        ];
+        if(Auth::attempt($credentials)){
+            return redirect('/shoes/admin/home/index');
+        }
+        return redirect()->back()->with('thongbao','Đăng nhập không thành công');
+    }
+    public function logoutAdmin(){
+        Auth::logout();
+        return redirect('/shoes/admin/home/login');
+    }
 }

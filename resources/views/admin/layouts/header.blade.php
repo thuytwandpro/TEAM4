@@ -15,7 +15,7 @@
                     <i class="fa fa-envelope-o"></i>
                     <span class="label label-success">4</span>
                     </a>
-                    <ul class="dropdown-menu">
+                        <ul class="dropdown-menu">
                         <li class="header">You have 4 messages</li>
                         <li>>
                             <ul class="menu">
@@ -199,14 +199,20 @@
                 <li class="dropdown user user-menu">
                     <a href="#" class="dropdown-toggle" data-toggle="dropdown">
                     <img src="admin_asset/dist/img/user2-160x160.jpg" class="user-image" alt="User Image">
-                    <span class="hidden-xs">User</span>
+                    <span class="hidden-xs">
+                        @if(Auth::user())
+                            {{Auth::user()->username}}
+                            @endif
+                    </span>
                     </a>
                     <ul class="dropdown-menu">
                         <li class="user-header">
                             <img src="admin_asset/dist/img/user2-160x160.jpg" class="img-circle" alt="User Image">
                             <p>
-                                Alexander Pierce - Web Developer
-                                <small>Member since Nov. 2012</small>
+                                @if(Auth::user())
+                                    {{Auth::user()->username}}
+                                @endif
+
                             </p>
                         </li>
                         <li class="user-body">
@@ -227,7 +233,7 @@
                                 <a href="#" class="btn btn-default btn-flat">Profile</a>
                             </div>
                             <div class="pull-right">
-                                <a href="#" class="btn btn-default btn-flat">Sign out</a>
+                                <a href="{{asset('shoes/admin/home/logout')}}" class="btn btn-default btn-flat">Sign out</a>
                             </div>
                         </li>
                     </ul>

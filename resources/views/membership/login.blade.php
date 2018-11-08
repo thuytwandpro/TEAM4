@@ -6,14 +6,25 @@
     </div>
     <!-- /.login-logo -->
     <div class="login-box-body">
+        @foreach($errors->all() as $err)
+           <div class="alert alert-success">
+               {{$err}}
+           </div>
+        @endforeach
+        @if(session('thongbao'))
+                <div class="alert alert-success">
+                    {{session('thongbao')}}
+                </div>
+            @endif
         <p class="login-box-msg" style="color: red; font-size: 35px;">Sign in</p>
-        <form action="../../index2.html" method="post">
+        <form action="{{action('AdminController@postlogin')}}" method="post">
+            <input type="hidden" name="_token" value="{{csrf_token()}}">
             <div class="form-group has-feedback">
-                <input type="email" class="form-control" placeholder="Email">
+                <input type="email" class="form-control" name="email" placeholder="Email">
                 <span class="glyphicon glyphicon-envelope form-control-feedback"></span>
             </div>
             <div class="form-group has-feedback">
-                <input type="password" class="form-control" placeholder="Password">
+                <input type="password" class="form-control" name="password" placeholder="Password">
                 <span class="glyphicon glyphicon-lock form-control-feedback"></span>
             </div>
             <div class="row">
@@ -30,6 +41,7 @@
                 </div>
                 <!-- /.col -->
             </div>
+            <input type="hidden" name="_token" value="{{Session::token()}}"/>
         </form>
         <div class="social-auth-links text-center">
             <p>- OR -</p>
