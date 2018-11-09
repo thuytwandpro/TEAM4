@@ -1,10 +1,10 @@
 <?php
 
 namespace shoes\Http\Controllers;
-
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
-
+use shoes\User;
+use Validator;
 class UserController extends Controller
 {
     /**
@@ -14,7 +14,9 @@ class UserController extends Controller
      */
     public function index()
     {
-        return view('admin.users.list_user');
+//        $users = User::select('id','name','username', 'email', 'phone','address', 'created_at', 'updated_at')->orderBy('id', 'DESC')->get()->toArray();
+        $users = User::orderBy('created_at', 'DESC')->paginate();
+        return view('admin.users.list_user', compact('users'));
     }
 
     /**

@@ -29,16 +29,20 @@ Route::get('/shoes/about', ['uses' => 'HomeController@about']);
 
 Route::get('/shoes/checkout', ['uses' => 'HomeController@checkout']);
 
+
+Route::get('login/admin','AdminController@getlogin');
+Route::post('login/admin','AdminController@postlogin');
+Route::get('admin/logout',['uses' => 'AdminController@logoutAdmin']);
+
 //Trang quan tri Admin
-Route::group(['prefix' => '/shoes/admin'], function () {
+Route::group(['prefix' => '/shoes/admin','middleware'=>['adminlogin']], function () {
 	Route::group(['prefix' => 'home'], function() {
 		Route::get('index', function() {
             return view('admin.home.index');
 		});
 		Route::resource('home', 'AdminController');
-		Route::get('/login',['uses' => 'AdminController@getlogin']);
-        Route::post('/login',['uses' => 'AdminController@postlogin']);
-        Route::get('logout',['uses' => 'AdminController@logoutAdmin']);
+
+
 	});
 
 	Route::group(['prefix' => 'categories'], function() {
@@ -47,6 +51,13 @@ Route::group(['prefix' => '/shoes/admin'], function () {
 		});
 		Route::resource('categories', 'CategoryController');
 	});
+
+    Route::group(['prefix' => 'products'], function() {
+        Route::get('products', function() {
+            return redirect('index');
+        });
+        Route::resource('products', 'ProductController');
+    });
 
 	Route::group(['prefix' => 'sales'], function() {
 		Route::get('sales', function() {
@@ -84,3 +95,10 @@ Route::group(['prefix' => '/shoes/admin'], function () {
 	});
 
 });
+//Auth::routes();
+//
+//Route::get('/home', 'HomeController@index')->name('home');
+
+//Auth::routes();
+
+//Route::get('/home', 'HomeController@index')->name('home');
