@@ -2,7 +2,8 @@
 
 namespace shoes\Http\Controllers;
 use Illuminate\Http\Request;
-use shoes\Employee;
+use Illuminate\Support\Facades\Input;
+use shoes\User;
 use Illuminate\Support\Facades\Auth;
 
 
@@ -38,10 +39,11 @@ class AdminController extends Controller
         if(Auth::attempt($credentials)){
             return redirect('/shoes/admin/home/index');
         }
-        return redirect()->back()->with('thongbao','Đăng nhập không thành công');
+//        return redirect('/shoes/admin/home/login')->with(['thongbao'=>'Đăng nhập không thành công','email'=>$request->email]);
+        return redirect()->back()->withInput(Input::all())->with('thongbao','Đăng nhập không thành công');
     }
     public function logoutAdmin(){
         Auth::logout();
-        return redirect('/shoes/admin/home/login');
+        return redirect('login/admin');
     }
 }

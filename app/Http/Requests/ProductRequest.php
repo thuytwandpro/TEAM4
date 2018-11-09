@@ -23,20 +23,10 @@ class ProductRequest extends FormRequest
      */
     public function rules()
     {
-        return [
-            'name' => 'required|max:255',
-            'date_of_birth' => 'required|date_format:"Y-m-d"',
-            "breed_id" => 'required|numeric'
-            //
-        ];
+
     }
     public function messages()
     {
-        return [
-            'required'    => 'Trường :attribute là bắt buộc',
-            'max'         => 'Trường :attribute tối đa là :max kí tự',
-            'numeric'     => 'Trường bắt buộc :attribute là kiểu số nguyên',
-            'date_format' => 'Trường :attribute format không đúng định dạng :format',
-        ];
+
     }
 }
