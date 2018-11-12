@@ -9,7 +9,7 @@ class Bill extends Model
     protected $table = 'bills';
     protected $fillable = [
         'id_customer',
-        'id_employee',
+        'id_user',
         'customer_name',
         'address',
         'email',

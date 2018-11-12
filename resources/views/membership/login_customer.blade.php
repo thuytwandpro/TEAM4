@@ -6,21 +6,16 @@
         </div>
         <!-- /.login-logo -->
         <div class="login-box-body">
-            {{--@foreach($errors->all() as $err)--}}
-            {{--<div class="alert alert-success">--}}
-            {{--{{$err}}--}}
-            {{--</div>--}}
-            {{--@endforeach--}}
             @if(session('thongbao'))
                 <div class="alert alert-success">
                     {{session('thongbao')}}
                 </div>
             @endif
-            <p class="login-box-msg" style="color: red; font-size: 35px;">Sign in</p>
-            <form action="{{action('AdminController@postlogin')}}" method="post">
+            <p class="login-box-msg" style="color: red; font-size: 35px;">Đăng nhập</p>
+            <form action="{{action('HomeController@postLogin')}}" method="post">
                 <input type="hidden" name="_token" value="{{csrf_token()}}">
                 <div class="form-group has-feedback">
-                    <input type="email" class="form-control" name="email" placeholder="Email"
+                    <input type="email" class="form-control" name="email" placeholder="Nhập Email"
                            value="{{old('email')}}">
                     <span class="glyphicon glyphicon-envelope form-control-feedback"></span>
                     @if ($errors->has('email'))
@@ -30,7 +25,7 @@
                     @endif
                 </div>
                 <div class="form-group has-feedback">
-                    <input type="password" class="form-control" name="password" placeholder="Password">
+                    <input type="password" class="form-control" name="password" placeholder="Nhập mật khẩu">
                     <span class="glyphicon glyphicon-lock form-control-feedback"></span>
                     @if ($errors->has('password'))
                         <span class="invalid-feedback" role="alert" style="color: red; font-size: small">
@@ -40,11 +35,7 @@
                 </div>
                 <div class="row">
                     <div class="col-xs-8">
-                        <div class="checkbox icheck">
-                            <label>
-                                <input type="checkbox"> Remember Me
-                            </label>
-                        </div>
+
                     </div>
                     <!-- /.col -->
                     <div class="col-xs-4">
@@ -58,4 +49,10 @@
         </div>
         <!-- /.login-box-body -->
     </div>
+
+    <script>
+        $("div.alert-success").delay(4000).slideUp();
+    </script>
+
 @endsection
+

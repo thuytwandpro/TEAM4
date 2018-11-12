@@ -26,15 +26,15 @@
                 </a>
             </li>
             <li class="treeview">
-                <a href="{{route('users.index')}}">
+                <a href="{{route('users.danhsach')}}">
                 <i class="fa fa-book"></i> <span>Thành viên</span>
                 <span class="pull-right-container">
                     <i class="fa fa-angle-left pull-right"></i>
                 </span>
                 </a>
                 <ul class="treeview-menu">
-                    <li><a href="{{route('users.index')}}"><i class="fa fa-circle-o text-red"></i></i> Danh sách</a></li>
-                    <li><a href="#"><i class="fa fa-circle-o text-yellow"></i> Thêm thành viên</a></li>
+                    <li><a href="{{route('users.danhsach')}}"><i class="fa fa-circle-o text-red"></i></i> Danh sách</a></li>
+                    <li><a href="{{route('users.them')}}"><i class="fa fa-circle-o text-yellow"></i> Thêm thành viên</a></li>
                 </ul>
             </li>
             <li class="treeview">
@@ -102,11 +102,11 @@
                     <li><a href="{{route('statistics.index')}}"><i class="fa fa-circle-o text-yellow"></i> Thống kê đơn hàng</a></li>
                 </ul>
             </li>
-             <li>
-                <a href="{{asset('/shoes/admin/home/login')}}">
-                <i class="fa fa-share"></i> <span>Đăng xuất</span>
-                </a>
-            </li>
+             {{--<li>--}}
+                {{--<a href="{{asset('/shoes/admin/home/login')}}">--}}
+                {{--<i class="fa fa-share"></i> <span>Đăng xuất</span>--}}
+                {{--</a>--}}
+            {{--</li>--}}
         </ul>
     </section>
 </aside>

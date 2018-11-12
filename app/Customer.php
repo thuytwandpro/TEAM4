@@ -15,6 +15,9 @@ class Customer extends Model
         'phone',
         'address',
     ];
+    protected $hidden = [
+        'password', 'remember_token',
+    ];
     public function bills() {
         return $this->hasMany('shoes\Bill', 'id_customer', 'id');
     }

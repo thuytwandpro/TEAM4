@@ -5,44 +5,85 @@
                 <a href="#"><b>PTY</b> SHOES</a>
             </div>
             <div class="register-box-body">
-                <p class="login-box-msg" style="color: red;font-size: 35px;">Register</p>
-                <form action="../../index.html" method="post">
+                <p class="login-box-msg" style="color: red;font-size: 35px;">Đăng ký tài khoản</p>
+                <form action="{{action('HomeController@postRegister')}}" method="post">
+                    <input type="hidden" name="_token" value="{{csrf_token()}}">
                     <div class="form-group has-feedback">
-                        <input type="text" class="form-control" placeholder="User name">
+                        <label>Tên:</label>
+                        <input type="text" class="form-control" placeholder="Nhập tên" name="name" value="{{old('name')}}">
                         <span class="glyphicon glyphicon-user form-control-feedback"></span>
+                        @if ($errors->has('name'))
+                            <span class="invalid-feedback" role="alert" style="color: red; font-size: small">
+                        <strong>{{ $errors->first('name') }}</strong>
+                    </span>
+                        @endif
                     </div>
                     <div class="form-group has-feedback">
-                        <input type="email" class="form-control" placeholder="Email">
+                        <label>Tên đăng nhập:</label>
+                        <input type="text" class="form-control" placeholder="Nhập tên đăng nhập" name="username" value="{{old('username')}}">
+                        <span class="glyphicon glyphicon-user form-control-feedback"></span>
+                        @if ($errors->has('username'))
+                            <span class="invalid-feedback" role="alert" style="color: red; font-size: small">
+                        <strong>{{ $errors->first('username') }}</strong>
+                    </span>
+                        @endif
+                    </div>
+                    <div class="form-group has-feedback">
+                        <label>Email: </label>
+                        <input type="email" class="form-control" placeholder="Email" name="email" value="{{old('email')}}">
                         <span class="glyphicon glyphicon-envelope form-control-feedback"></span>
+                        @if ($errors->has('email'))
+                            <span class="invalid-feedback" role="alert" style="color: red; font-size: small">
+                        <strong>{{ $errors->first('email') }}</strong>
+                    </span>
+                        @endif
                     </div>
                     <div class="form-group has-feedback">
-                        <input type="password" class="form-control" placeholder="Password">
+                        <label>Mật khẩu: </label>
+                        <input type="password" class="form-control" placeholder="Nhập mật khẩu" name="password">
                         <span class="glyphicon glyphicon-lock form-control-feedback"></span>
+                        @if ($errors->has('password'))
+                            <span class="invalid-feedback" role="alert" style="color: red; font-size: small">
+                        <strong>{{ $errors->first('password') }}</strong>
+                    </span>
+                        @endif
                     </div>
                     <div class="form-group has-feedback">
-                        <input type="password" class="form-control" placeholder="Retype password">
+                        <input type="password" class="form-control" placeholder="Nhập lại mật khẩu" name="passwordAgain">
                         <span class="glyphicon glyphicon-log-in form-control-feedback"></span>
+                        @if ($errors->has('passwordAgain'))
+                            <span class="invalid-feedback" role="alert" style="color: red; font-size: small">
+                        <strong>{{ $errors->first('passwordAgain') }}</strong>
+                    </span>
+                        @endif
+                    </div>
+                    <div class="form-group has-feedback">
+                        <label>Số điện thoại: </label>
+                        <input type="text" class="form-control" placeholder="Nhập số điện thoại" name="phone" value="{{old('phone')}}">
+                        <span class="glyphicon glyphicon-earphone form-control-feedback"></span>
+                        @if ($errors->has('phone'))
+                            <span class="invalid-feedback" role="alert" style="color: red; font-size: small">
+                        <strong>{{ $errors->first('phone') }}</strong>
+                    </span>
+                        @endif
+                    </div>
+                    <div class="form-group has-feedback">
+                        <label>Địa chỉ: </label>
+                        <input type="text" class="form-control" placeholder="Nhập địa chỉ" name="address" value="{{old('address')}}">
+                        <span class="glyphicon glyphicon-home form-control-feedback"></span>
+                        @if ($errors->has('address'))
+                            <span class="invalid-feedback" role="alert" style="color: red; font-size: small">
+                        <strong>{{ $errors->first('address') }}</strong>
+                    </span>
+                        @endif
                     </div>
                     <div class="row">
-                        <div class="col-xs-8">
-                            <div class="checkbox icheck">
-                                <label>
-                                <input type="checkbox"> I agree to the <a href="#">terms</a>
-                                </label>
-                            </div>
-                        </div>
                         <div class="col-xs-4">
-                            <button type="submit" class="btn btn-primary btn-block btn-flat">Register</button>
+                            <button type="submit" class="btn btn-primary btn-block btn-flat">Đăng ký</button>
                         </div>
                     </div>
                 </form>
-                <div class="social-auth-links text-center">
-                    <p>- OR -</p>
-                    <a href="#" class="btn btn-block btn-social btn-facebook btn-flat"><i class="fa fa-facebook"></i> Sign up using
-                    Facebook</a>
-                    <a href="#" class="btn btn-block btn-social btn-google btn-flat"><i class="fa fa-google-plus"></i> Sign up using
-                    Google+</a>
-                </div>
+
             </div>
     </div>
 @endsection

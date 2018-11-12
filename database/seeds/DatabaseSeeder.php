@@ -20,7 +20,7 @@ class DatabaseSeeder extends Seeder
         $this->call(BillTableSeeder::class);
         $this->call(DetailbillTableSeeder::class);
         $this->call(RoleTableSeeder::class);
-        $this->call(EmployeeRoleTableSeeder::class);
+        $this->call(UserRoleTableSeeder::class);
         $this->call(CommentTableSeeder::class);
         $this->call(NewTableSeeder::class);
 

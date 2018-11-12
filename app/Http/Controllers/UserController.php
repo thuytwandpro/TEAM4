@@ -3,6 +3,7 @@
 namespace shoes\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use shoes\Role;
 use shoes\User;
 use Validator;
 class UserController extends Controller
@@ -12,9 +13,14 @@ class UserController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+//    public function index()
+//    {
+////        $users = User::select('id','name','username', 'email', 'phone','address', 'created_at', 'updated_at')->orderBy('id', 'DESC')->get()->toArray();
+//        $users = User::orderBy('created_at', 'DESC')->paginate();
+//        return view('admin.users.list_user', compact('users'));
+//    }
+    public function getDanhSach()
     {
-//        $users = User::select('id','name','username', 'email', 'phone','address', 'created_at', 'updated_at')->orderBy('id', 'DESC')->get()->toArray();
         $users = User::orderBy('created_at', 'DESC')->paginate();
         return view('admin.users.list_user', compact('users'));
     }
@@ -24,82 +30,130 @@ class UserController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function getThem()
     {
-        //
+        $roles = Role::all();
+        return view('admin.users.add_user')->with('roles', $roles);
     }
 
+//    public function addUser(Request $request)
+//    {
+
+//    }
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
+     * @param  \Illuminate\Http\Request $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function postThem(Request $request)
     {
-        //
+        $this->validate($request, [
+            'name' => 'required|min:3',
+            'username' => 'required|min:3|unique:users,username',
+            'email' => 'required|email|unique:users,email',
+            'password' => 'required|min:3|max:32',
+            'phone' => 'required|max:11',
+        ], [
+            'name.required' => 'Bạn chưa nhập tên người dùng',
+            'username.required' => 'Bạn chưa nhập tên đăng nhập',
+            'name.min' => 'Tên người dùng phải có ít nhất 3 ký tự',
+            'username.min' => 'Tên đăng nhập phải có ít nhất 3 ký tự',
+            'username.unique' => 'Username đã tồn tại',
+            'email.required' => 'Bạn chưa nhập email',
+            'email.unique' => 'Email đã tồn tại',
+            'password.required' => 'Bạn chưa nhập mật khẩu',
+            'password.min' => 'Mật khẩu phải có ít nhất 3 ký tự',
+            'password.max' => 'Mật khẩu chỉ được tối đa 32 ký tự',
+            'phone.required' => 'Bạn chưa nhập số điện thoại',
+            'phone.max' => 'số điện thoại chỉ được tối đa 11 số',
+        ]);
+        $user = new User;
+        $user->name = $request->name;
+        $user->username = $request->username;
+        $user->password = bcrypt($request->password);
+        $user->email = $request->email;
+        $user->phone = $request->phone;
+        $user->address = $request->address;
+        if ($request->hasFile('avatar')) {
+            $file = $request->file('avatar');
+
+            $name = $file->getClientOriginalName();
+            $avatar = str_random(4) . "_" . $name;
+            while (file_exists("admin/avatar" . $avatar)) {
+                $avatar = str_random(4) . "_" . $name;
+            }
+            $file->move("admin/avatar", $avatar);
+            $user->avatar = $avatar;
+        } else {
+            $user->avatar = "";
+        }
+        $user->save();
+        return redirect('shoes/admin/users/danhsach')->with('thongbao', 'Bạn thêm thành công');
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function show($id)
+    public function getSua($id)
     {
-        //
+        $users = User::find($id);
+        return view('admin.users.edit_user', compact('users'));
+
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function edit($id)
+    public function postSua(Request $request, $id)
     {
-        //
+        $this->validate($request, [
+            'name' => 'required|min:3',
+            'username' => 'required|min:3',
+            'email' => 'required|email',
+            'phone' => 'required',
+        ], [
+            'name.required' => 'Bạn chưa nhập tên người dùng',
+            'username.required' => 'Bạn chưa nhập tên đăng nhập',
+            'name.min' => 'Tên người dùng phải có ít nhất 3 ký tự',
+            'username.min' => 'Tên đăng nhập phải có ít nhất 3 ký tự',
+            'phone.required' => 'Bạn chưa nhập số điện thoại',
+
+        ]);
+        $user = User::find($id);
+        $user->name = $request->name;
+        $user->username = $request->username;
+        if ($request->changePassword == "on") {
+            $this->validate($request, [
+                'password' => 'required|min:3|max:32',
+
+            ], [
+                'password.required' => 'Bạn chưa nhập mật khẩu',
+                'password.min' => 'Mật khẩu phải có ít nhất 3 ký tự',
+                'password.max' => 'Mật khẩu chỉ được tối đa 32 ký tự',
+            ]);
+            $user->password = bcrypt($request->password);
+        }
+        $user->email = $request->email;
+        $user->phone = $request->phone;
+        $user->address = $request->address;
+        if ($request->hasFile('avatar')) {
+            $file = $request->file('avatar');
+
+            $name = $file->getClientOriginalName();
+            $avatar = str_random(4) . "_" . $name;
+            while (file_exists("admin/avatar" . $avatar)) {
+                $avatar = str_random(4) . "_" . $name;
+            }
+            $file->move("admin/avatar", $avatar);
+            unlink("admin/avatar/" . $user->avatar);
+            $user->avatar = $avatar;
+        }
+        $user->save();
+
+//        return redirect('shoes/admin/users/sua/'.$id)->with('thongbao','Bạn đã sửa thành công thành công');
+        return redirect('shoes/admin/users/danhsach')->with('thongbao', 'Bạn đã sửa thành công');
     }
 
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, $id)
+    public function getXoa(Request $request, $id)
     {
-        //
+        $user = User::find($id);
+        $user->delete();
+        return redirect('shoes/admin/users/danhsach')->with('thongbao', 'Bạn đã xóa thành công');
     }
 
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy($id)
-    {
-        //
-    }
-//    public function getDangnhapAdmin(){
-//        return view('admin.login');
-//    }
-//    public function postDangnhapAdmin(Request $request){
-//        $this->validate($request, [
-//            'email'=>'required',
-//            'password'=>'required|min:3|max:255'
-//        ],[
-//            'email.required'=>'bạn chưa nhập email',
-//            'password.required'=>'Bạn chưa nhập password',
-//            'password.min'=>'password không được nhỏ hơn 3 ký tự',
-//            'password.max'=>'password không được lớn hơn 255 ký tự',
-//        ]);
-//        if(Auth::attempt(['email'=>$request->email,'password'=>$request->password]))
-//        {
-//            return redirect(('admin/theloai/danhsach'));
-//        }
-//    }
 }

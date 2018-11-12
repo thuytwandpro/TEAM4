@@ -27,6 +27,6 @@ class Comment extends Model
         return $this->belongsTo('shoes/Customer', 'id_customer', 'id');
     }
     public function employee() {
-        return $this->belongsTo('shoes/User', 'id_employee', 'id');
+        return $this->belongsTo('shoes/User', 'id_user', 'id');
     }
 }

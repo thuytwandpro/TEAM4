@@ -22,12 +22,12 @@ class User extends Authenticatable
         'password', 'remember_token',
     ];
     public function comments() {
-        return $this->hasMany('shoes\Comment', 'id_employee', 'id');
+        return $this->hasMany('shoes\Comment', 'id_user', 'id');
     }
     public function employee_roles() {
-        return $this->hasMany('shoes\User', 'id_employee', 'id');
+        return $this->hasMany('shoes\User', 'id_user', 'id');
     }
     public function bills() {
-        return $this->hasMany('shoes\Bill', 'id_employee', 'id');
+        return $this->hasMany('shoes\Bill', 'id_user', 'id');
     }
 }

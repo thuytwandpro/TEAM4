@@ -15,26 +15,28 @@
 //     return redirect('shoes');
 // });
 Route::get('/', ['uses' => 'HomeController@index']);
-Route::get('/shoes', ['uses' => 'HomeController@index']);
+//Route::get('/shoes', ['uses' => 'HomeController@index']);
 
 Route::get('/shoes/contacts', ['uses' => 'HomeController@contact']);
 
 Route::get('/shoes/single', ['uses' => 'HomeController@single']);
 
-Route::get('/shoes/register', ['uses' => 'HomeController@register']);
+Route::get('/shoes/register', ['uses' => 'HomeController@getRegister']);
+Route::post('/shoes/register', ['uses' => 'HomeController@postRegister']);
 
-Route::get('/shoes/login', ['uses' => 'HomeController@login']);
+Route::get('/shoes/login', ['uses' => 'HomeController@getLogin']);
+Route::post('/shoes/login', ['uses' => 'HomeController@postLogin']);
 
 Route::get('/shoes/about', ['uses' => 'HomeController@about']);
 
 Route::get('/shoes/checkout', ['uses' => 'HomeController@checkout']);
 
+//Trang quan tri Admin
 
 Route::get('login/admin','AdminController@getlogin');
 Route::post('login/admin','AdminController@postlogin');
 Route::get('admin/logout',['uses' => 'AdminController@logoutAdmin']);
 
-//Trang quan tri Admin
 Route::group(['prefix' => '/shoes/admin','middleware'=>['adminlogin']], function () {
 	Route::group(['prefix' => 'home'], function() {
 		Route::get('index', function() {
@@ -81,10 +83,22 @@ Route::group(['prefix' => '/shoes/admin','middleware'=>['adminlogin']], function
 	});
 
 	Route::group(['prefix' => 'users'], function() {
-		Route::get('users', function() {
-			return redirect('users');
-		});
-		Route::resource('users', 'UserController');
+//		Route::get('users', function() {
+//			return redirect('users');
+//		});
+//		Route::resource('users', 'UserController');
+        Route::get('danhsach','UserController@getDanhSach')->name('users.danhsach');
+
+        Route::get('sua/{id}','UserController@getSua');
+        Route::post('sua/{id}','UserController@postSua');
+
+//        Route::post('themuser','UserController@addUser');
+
+        Route::get('them','UserController@getThem')->name('users.them');
+        Route::post('them','UserController@postThem');
+
+        Route::get('xoa/{id}','UserController@getXoa');
+
 	});
 
 	Route::group(['prefix' => 'statistics'], function() {

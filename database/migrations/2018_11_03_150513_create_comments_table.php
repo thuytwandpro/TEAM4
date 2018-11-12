@@ -19,8 +19,8 @@ class CreateCommentsTable extends Migration
             $table->foreign('id_product')->references('id')->on('products');
             $table->integer('id_customer')->unsigned()->nullable();
             $table->foreign('id_customer')->references('id')->on('customers');
-            $table->integer('id_employee')->unsigned()->nullable();
-            $table->foreign('id_employee')->references('id')->on('users');
+            $table->integer('id_user')->unsigned()->nullable();
+            $table->foreign('id_user')->references('id')->on('users');
             $table->smallInteger('id_parent')->unsigned()->nullable();
             $table->longText('content');
             $table->timestamps();
