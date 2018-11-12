@@ -31,6 +31,11 @@
 	    <!-- //search -->
 	    <div class="clearfix"></div>
 	    <!-- /banner_inner -->
+		{{--@if(session('thongbao'))--}}
+			{{--<div class="alert" style="z-index: 1000; position: absolute">--}}
+				{{--{{session('thongbao')}}--}}
+			{{--</div>--}}
+		{{--@endif--}}
 	    <div class="services-breadcrumb_w3ls_agileinfo">
 	        <div class="inner_breadcrumb_agileits_w3">
 	            <ul class="short">
@@ -39,7 +44,7 @@
 	                <li><a href="404.html">News</a><i>|</i></li>
 	                <li><a href="{{asset('/shoes/contacts')}}">Contacts</a><i>|</i></li>
 	                <li>shop</li>
-	                <li class="short-right"><a href="{{asset('/shoes/register')}}">Đăng kí</a><i>|</i></li>
+	                <li class="short-right"><a href="{{asset('/shoes/register')}}">Đăng ký</a><i>|</i></li>
 	                <li><a href="{{asset('/shoes/login')}}">Đăng nhập</a></li>
 	            </ul>
 	        </div>

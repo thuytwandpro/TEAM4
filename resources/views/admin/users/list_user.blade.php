@@ -22,7 +22,13 @@
                     <div class="box-header">
                         <h3 class="box-title">List of users</h3>
                     </div>
+                    {{--@if(session('thongbao'))--}}
+                        {{--<div class="alert alert-success">--}}
+                            {{--{{session('thongbao')}}--}}
+                        {{--</div>--}}
+                {{--@endif--}}
                     <!-- /.box-header -->
+
                     <div class="box-body">
                         <table id="example1" class="table table-bordered table-striped">
                             <thead>
@@ -31,10 +37,11 @@
                                     <th>Tên</th>
                                     <th>Tên đăng nhập</th>
                                     <th>Email</th>
-                                    <th>Số điện <thoại></thoại></th>
-                                    <th>Dịa chỉ</th>
+                                    <th>Số điện thoại</th>
+                                    <th>Địa chỉ</th>
                                     <th>Ảnh đại diện</th>
-                                    <th>Hành động</th>
+                                    <th>Chỉnh sửa</th>
+                                    <th>Xóa</th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -46,25 +53,17 @@
                                         <td>{!! $item["email"] !!}</td>
                                         <td>{!! $item["phone"] !!}</td>
                                         <td>{!! $item["address"] !!}</td>
-                                        <td>{!! $item["avatar"] !!}</td>
+                                        <td><img width="100px" src="admin/avatar/{{$item->avatar}}"></td>
                                         <td class="center">
-                                        {{--<a href="admin/users/sua">Edit</a>--}}
-                                        {{--<a href="admin/categories/xoa/{{$cate->id}}">Delete</a>--}}
-                                            <a href="#"><i class="fa fa-pencil" aria-hidden="true"></i>Edit</a> |
-                                            <a href="#"><i class="fa fa-trash-o" aria-hidden="true"> Delete</i></a>
+                                            <a href="shoes/admin/users/sua/{{$item->id}}"><i class="fa fa-pencil" aria-hidden="true"></i>Edit</a>
+
+                                        </td>
+                                        <td>
+                                            <a href="shoes/admin/users/xoa/{{$item->id}}"><i class="fa fa-trash-o" aria-hidden="true"> Delete</i></a>
                                         </td>
                                     </tr>
                                 @endforeach
                             </tbody>
-                            <tfoot>
-                                <tr>
-                                    <th>Rendering engine</th>
-                                    <th>Browser</th>
-                                    <th>Platform(s)</th>
-                                    <th>Engine version</th>
-                                    <th>CSS grade</th>
-                                </tr>
-                            </tfoot>
                         </table>
                     </div>
                     <!-- /.box-body -->
@@ -95,4 +94,5 @@
     	})
     	})
     </script>
+
 @endsection

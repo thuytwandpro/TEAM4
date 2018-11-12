@@ -12,10 +12,27 @@
         <link rel="stylesheet" href="admin_asset/bower_components/datatables.net-bs/css/dataTables.bootstrap.min.css">
         <link rel="stylesheet" href="admin_asset/dist/css/AdminLTE.min.css">
         <link rel="stylesheet" href="admin_asset/dist/css/skins/_all-skins.min.css">
-        <link rel="stylesheet"
-            href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700,300italic,400italic,600italic">
+        {{--<link rel="stylesheet"--}}
+            {{--href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700,300italic,400italic,600italic">--}}
+
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+        <style>
+            .thongbao{
+                position: absolute;
+                top: 15px;
+                right: 5px;
+                z-index: 3000;
+            }
+        </style>
     </head>
     <body class="hold-transition skin-blue sidebar-mini">
+        @if(session('thongbao'))
+            <div class="thongbao">
+                <div class="alert alert-success">
+                    <strong>{{session('thongbao')}}</strong>
+                </div>
+            </div>
+        @endif
         <div class="wrapper">
             @include('admin.layouts.header')
             @include('admin.layouts.menu')
@@ -33,6 +50,9 @@
         <script src="admin_asset/bower_components/chart.js/Chart.js"></script>
         <script src="admin_asset/dist/js/pages/dashboard2.js"></script>
         <script src="admin_asset/dist/js/demo.js"></script>
+        <script>
+            $("div.alert-success").delay(4000).slideUp();
+        </script>
         @yield('script')
     </body>
     </html>

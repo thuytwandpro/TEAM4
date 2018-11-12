@@ -29,8 +29,24 @@
         <link href="pages/css/style.css" rel="stylesheet" type="text/css" media="all" />
         <!-- font-awesome-icons -->
         <link href="pages/css/font-awesome.css" rel="stylesheet">
+        <style>
+            .thongbao{
+                position: absolute;
+                top: 5px;
+                right: 5px;
+                z-index: 1000;
+            }
+        </style>
     </head>
     <body>
+        @if(session('thongbao'))
+            <div class="thongbao">
+                <div class="alert alert-success">
+                    <strong>{{session('thongbao')}}</strong>
+                </div>
+            </div>
+        @endif
+
         <!-- banner -->
         @yield('header')
         @yield('content')
@@ -83,6 +99,9 @@
                     fit: true
                 });
             });
+        </script>
+        <script>
+            $("div.alert-success").delay(4000).slideUp();
         </script>
         <script src="pages/js/jquery.flexslider.js"></script>
         <script>
