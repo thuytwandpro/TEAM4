@@ -12,7 +12,7 @@
             <ul class="nav navbar-nav">
                 <li class="dropdown user user-menu">
                     <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-                    <img src="@if(Auth::user()){{Auth::user()->avatar}}@endif" class="user-image" alt="User Image">
+                    <img src="admin/avatar/@if(Auth::user()){{Auth::user()->avatar}}@endif" class="user-image" >
 
                     <span class="hidden-xs">
                         @if(Auth::user())
@@ -22,7 +22,7 @@
                     </a>
                     <ul class="dropdown-menu">
                         <li class="user-header">
-                            <img src="@if(Auth::user()){{Auth::user()->avatar}}@endif" class="img-circle" alt="User Image">
+                            <img src="admin/avatar/@if(Auth::user()){{Auth::user()->avatar}}@endif" class="img-circle">
                             <p>
                                 @if(Auth::user())
                                     {{Auth::user()->username}}
@@ -32,17 +32,11 @@
                         </li>
 
                         <li class="user-footer">
-                            {{--<div class="pull-left">--}}
-                                {{--<a href="#" class="btn btn-default btn-flat">Profile</a>--}}
-                            {{--</div>--}}
                             <div class="pull-right">
                                 <a href="{{asset('admin/logout')}}" class="btn btn-default btn-flat">Sign out</a>
                             </div>
                         </li>
                     </ul>
-                </li>
-                <li>
-                    <a href="#" data-toggle="control-sidebar"><i class="fa fa-gears"></i></a>
                 </li>
             </ul>
         </div>

@@ -34,13 +34,14 @@ class HomeController extends Controller
     }
     function postRegister(Request $request)
     {
+
         $this->validate($request,[
             'name'=>'required|min:3',
             'username'=>'required|min:3|unique:users,username',
-            'email'=>'required|email|unique:users,email',
+            'email'=>'required',
             'password'=>'required|min:3|max:32',
             'passwordAgain'=>'required|same:password',
-            'phone'=>'required|numeric',
+//            'phone'=>'numeric',
         ],[
             'name.required'=>'Bạn chưa nhập tên người dùng',
             'username.required'=>'Bạn chưa nhập tên đăng nhập',
@@ -48,15 +49,15 @@ class HomeController extends Controller
             'username.min'=>'Tên đăng nhập phải có ít nhất 3 ký tự',
             'username.unique'=>'Username đã tồn tại',
             'email.required'=>'Bạn chưa nhập email',
-            'email.unique'=>'Email đã tồn tại',
+
             'password.required'=>'Bạn chưa nhập mật khẩu',
             'password.min'=>'Mật khẩu phải có ít nhất 3 ký tự',
             'password.max'=>'Mật khẩu chỉ được tối đa 32 ký tự',
             'passwordAgain.required'=>'Bạn chưa nhập lại mật khẩu',
             'passwordAgain.same'=>'Mật khẩu nhập lại chưa khớp',
-            'phone.numeric' => 'Số điện thoại phải là số',
+//            'phone.numeric' => 'Số điện thoại phải là số',
 //            'phone.max'=>'Phone tối đa là 11 số',
-            'phone.required'=>'Bạn chưa nhập địa chỉ',
+//            'phone.required'=>'Bạn chưa nhập địa chỉ',
 
         ]);
         $user = new Customer();

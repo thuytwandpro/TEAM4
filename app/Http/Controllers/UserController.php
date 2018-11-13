@@ -21,7 +21,7 @@ class UserController extends Controller
 //    }
     public function getDanhSach()
     {
-        $users = User::orderBy('created_at', 'DESC')->paginate();
+        $users = User::orderBy('id', 'DESC')->paginate(5);
         return view('admin.users.list_user', compact('users'));
     }
 
