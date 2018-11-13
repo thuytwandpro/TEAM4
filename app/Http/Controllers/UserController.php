@@ -21,6 +21,9 @@ class UserController extends Controller
 //    }
     public function getDanhSach()
     {
+        $user = User::find(1);
+        $user->roles()->attach(1);
+        dd($user);
         $users = User::orderBy('id', 'DESC')->paginate(5);
         return view('admin.users.list_user', compact('users'));
     }
