@@ -4,7 +4,7 @@
 	    <div class="wrapper_top_w3layouts">
 	        <div class="header_agileits">
 	            <div class="logo inner_page_log">
-	                <h1><a class="navbar-brand" href="index.html"><span>PTY</span> <i>Shoes</i></a></h1>
+	                <h1><a class="navbar-brand" href="/TEAM4/public/"><span>PTY</span> <i>Shoes</i></a></h1>
 	            </div>
 	            <!-- cart details -->
 	            <div class="top_nav_right">

@@ -59,7 +59,7 @@
                     </div>
                     <div class="form-group has-feedback">
                         <label>Số điện thoại: </label>
-                        <input type="text" class="form-control" placeholder="Nhập số điện thoại" name="phone" value="{{old('phone')}}">
+                        <input type="number" class="form-control" placeholder="Nhập số điện thoại" name="phone" value="{{old('phone')}}">
                         <span class="glyphicon glyphicon-earphone form-control-feedback"></span>
                         @if ($errors->has('phone'))
                             <span class="invalid-feedback" role="alert" style="color: red; font-size: small">

@@ -22,13 +22,15 @@
                     <div class="box-header">
                         <h3 class="box-title">List of users</h3>
                     </div>
-                    {{--@if(session('thongbao'))--}}
-                        {{--<div class="alert alert-success">--}}
-                            {{--{{session('thongbao')}}--}}
-                        {{--</div>--}}
-                {{--@endif--}}
-                    <!-- /.box-header -->
-
+                    <div class="col-xs-12">
+                        <form action="timkiem" method="post" class="navbar-form navbar-left" role="search" >
+                            <input type="hidden" name="_token" value="{{csrf_token()}}";>
+                            <div class="form_group" style="float: left;">
+                                <input type="text" name="tukhoa" class="form-control" placeholder="Tìm kiếm">
+                            </div>
+                            <button type="submit" class="btn btn-default" style="float: right;">Tìm</button>
+                        </form>
+                    </div>
                     <div class="box-body">
                         <table id="example1" class="table table-bordered table-striped">
                             <thead>
@@ -65,34 +67,41 @@
                                 @endforeach
                             </tbody>
                         </table>
+                        <div style="float: right; width: 60%">
+                            {!! $users->links() !!}
+                        </div>
                     </div>
                     <!-- /.box-body -->
                 </div>
                 <!-- /.box -->
+
             </div>
             <!-- /.col -->
         </div>
+
         <!-- /.row -->
     </section>
     <!-- /.content -->
+
 </div>
 <!-- /.content-wrapper -->
+
 @endsection
 @section('script')
 	<script src="admin_asset/bower_components/datatables.net/js/jquery.dataTables.min.js"></script>
 	<script src="admin_asset/bower_components/datatables.net-bs/js/dataTables.bootstrap.min.js"></script>
-	<script>
-    	$(function () {
-    	$('#example1').DataTable()
-    	$('#example2').DataTable({
-    	'paging'      : true,
-    	'lengthChange': false,
-    	'searching'   : false,
-    	'ordering'    : true,
-    	'info'        : true,
-    	'autoWidth'   : false
-    	})
-    	})
-    </script>
+	{{--<script>--}}
+    	{{--$(function () {--}}
+    	{{--$('#example1').DataTable()--}}
+    	{{--$('#example2').DataTable({--}}
+    	{{--'paging'      : true,--}}
+    	{{--'lengthChange': false,--}}
+    	{{--'searching'   : false,--}}
+    	{{--'ordering'    : true,--}}
+    	{{--'info'        : true,--}}
+    	{{--'autoWidth'   : false--}}
+    	{{--})--}}
+    	{{--})--}}
+    {{--</script>--}}
 
 @endsection

@@ -33,10 +33,10 @@ Route::get('/shoes/checkout', ['uses' => 'HomeController@checkout']);
 
 //Trang quan tri Admin
 
-Route::get('login/admin','AdminController@getlogin');
+Route::get('login/admin','AdminController@getlogin')->name('login');
 Route::post('login/admin','AdminController@postlogin');
 Route::get('admin/logout',['uses' => 'AdminController@logoutAdmin']);
-
+Route::post('timkiem', 'AdminController@timkiem');
 Route::group(['prefix' => '/shoes/admin','middleware'=>['adminlogin']], function () {
 	Route::group(['prefix' => 'home'], function() {
 		Route::get('index', function() {
@@ -92,7 +92,6 @@ Route::group(['prefix' => '/shoes/admin','middleware'=>['adminlogin']], function
         Route::get('sua/{id}','UserController@getSua');
         Route::post('sua/{id}','UserController@postSua');
 
-//        Route::post('themuser','UserController@addUser');
 
         Route::get('them','UserController@getThem')->name('users.them');
         Route::post('them','UserController@postThem');
