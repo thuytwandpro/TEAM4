@@ -58,7 +58,6 @@
                                         <td>{!! $item["address"] !!}</td>
                                         <td><img width="100px" src="admin/avatar/{{$item->avatar}}"></td>
                                         <td>
-                                            {{--{{count($item->role)}}--}}
                                             @foreach($item->roles as $itemsub)
                                                 {{$itemsub->name}}
                                             @endforeach
