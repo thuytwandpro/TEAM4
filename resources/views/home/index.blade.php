@@ -44,8 +44,26 @@
 	                <li><a href="404.html">News</a><i>|</i></li>
 	                <li><a href="{{asset('/shoes/contacts')}}">Contacts</a><i>|</i></li>
 	                <li>shop</li>
-	                <li class="short-right"><a href="{{asset('/shoes/register')}}">Đăng ký</a><i>|</i></li>
-	                <li><a href="{{asset('/shoes/login')}}">Đăng nhập</a></li>
+
+					{{--<li class="short-right"><a href="{{asset('/shoes/register')}}">--}}
+							{{--@if(Auth::user())--}}
+								{{--{{Auth::user()->username}}--}}
+							{{--@else Đăng ký--}}
+							{{--@endif</a>--}}
+						{{--<i>|</i>--}}
+					{{--</li>--}}
+
+					{{--<li><a href="{{asset('/shoes/login')}}">@if(Auth::user())--}}
+								{{--{{Auth::user()->username}}--}}
+							{{--@else Đăng ký--}}
+							{{--@endif </a></li>--}}
+					@if(Auth::user())
+						<li class="short-right">{{Auth::user()->username}}<i>|</i></li>
+						<li><a href="{{asset('/shoes/checkout')}}">Đăng Xuất</a></li>
+						@else
+						<li class="short-right"><a href="{{asset('/shoes/register')}}">Đăng ký</a><i>|</i></li>
+						<li><a href="{{asset('/shoes/login')}}">Đăng nhập</a></li>
+						@endif
 	            </ul>
 	        </div>
 	    </div>

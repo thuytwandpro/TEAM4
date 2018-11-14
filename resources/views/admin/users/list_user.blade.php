@@ -42,6 +42,7 @@
                                     <th>Số điện thoại</th>
                                     <th>Địa chỉ</th>
                                     <th>Ảnh đại diện</th>
+                                    <th>Quyền người dùng</th>
                                     <th>Chỉnh sửa</th>
                                     <th>Xóa</th>
                                 </tr>
@@ -56,6 +57,12 @@
                                         <td>{!! $item["phone"] !!}</td>
                                         <td>{!! $item["address"] !!}</td>
                                         <td><img width="100px" src="admin/avatar/{{$item->avatar}}"></td>
+                                        <td>
+                                            {{--{{count($item->role)}}--}}
+                                            @foreach($item->roles as $itemsub)
+                                                {{$itemsub->name}}
+                                            @endforeach
+                                        </td>
                                         <td class="center">
                                             <a href="shoes/admin/users/sua/{{$item->id}}"><i class="fa fa-pencil" aria-hidden="true"></i>Edit</a>
 

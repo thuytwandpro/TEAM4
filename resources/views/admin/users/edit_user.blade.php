@@ -16,7 +16,7 @@
             @endif
 
 
-            <form role="form" class="col col-md-6" action="shoes/admin/users/sua/{{$users->id}}" method="post">
+            <form role="form" class="col col-md-6" action="shoes/admin/users/sua/{{$users->id}}" method="post" enctype="multipart/form-data">
                 <input type="hidden" name="_token" value="{{csrf_token()}}">
                 <div class="box-body">
                     <div class="form-group">
@@ -55,11 +55,11 @@
                     <div class="form-group">
                         <label for="exampleInputFile">Quyền người dùng</label>
                         <div class="checkbox">
-                            {{--@foreach($roles as $role)--}}
-                                {{--<label style="text-transform: capitalize">--}}
-                                    {{--<input type="radio" name="role" value="{{$role->id}}" >{{$role->name}}<br>--}}
-                                {{--</label>--}}
-                            {{--@endforeach--}}
+                            @foreach($roles as $role)
+                                <label style="text-transform: capitalize">
+                                    <input type="radio" name="role" value="{{$role->id}}" >{{$role->name}}<br>
+                                </label>
+                            @endforeach
                         </div>
                     </div>
                 </div>

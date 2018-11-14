@@ -17,7 +17,7 @@
                     <span class="hidden-xs">
                         @if(Auth::user())
                             {{Auth::user()->username}}
-                            @endif
+                        @endif
                     </span>
                     </a>
                     <ul class="dropdown-menu">

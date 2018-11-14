@@ -24,7 +24,7 @@ class User extends Authenticatable
     public function comments() {
         return $this->hasMany('shoes\Comment', 'id_user', 'id');
     }
-    public function employee_roles() {
+    public function user_roles() {
         return $this->hasMany('shoes\User', 'id_user', 'id');
     }
     public function bills() {
