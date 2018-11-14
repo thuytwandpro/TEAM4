@@ -101,7 +101,6 @@ class UserController extends Controller
         $user->save();
         $users = User::find($user->id);
         $users->roles()->attach($request->role);
-
         return redirect('shoes/admin/users/danhsach')->with('thongbao', 'Bạn thêm thành công');
     }
 
@@ -127,8 +126,7 @@ class UserController extends Controller
             'phone.required' => 'Bạn chưa nhập số điện thoại',
         ]);
         $user = User::find($id);
-        $usersrole = User::find($id);
-        $usersrole->roles()->sync($request->role);
+        $user->roles()->sync($request->role);
         $user->name = $request->name;
         $user->username = $request->username;
         if ($request->changePassword == "on") {
@@ -167,11 +165,10 @@ class UserController extends Controller
 
     public function getXoa($id)
     {
+
         $user = User::find($id);
-        $users = User::find($id);
-        $users->roles()->sync([]);
+        $user->roles()->sync([]);
         $user->delete();
         return redirect('shoes/admin/users/danhsach')->with('thongbao', 'Bạn đã xóa thành công');
     }
-
 }
