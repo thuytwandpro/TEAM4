@@ -1,6 +1,7 @@
 <?php
 
 namespace shoes\Http\Controllers;
+use File;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use shoes\Role;
@@ -21,11 +22,15 @@ class UserController extends Controller
 //    }
     public function getDanhSach()
     {
-        $user = User::find(1);
-        $user->roles()->attach(1);
-        dd($user);
+
+//        $user = User::find(1);
+//        $user->roles()->sync(2);
+//        dd($user);
+
         $users = User::orderBy('id', 'DESC')->paginate(5);
+//        dd($users);
         return view('admin.users.list_user', compact('users'));
+//        return view('admin.users.list_user',['users'=>$users]);
     }
 
     /**
@@ -51,6 +56,8 @@ class UserController extends Controller
      */
     public function postThem(Request $request)
     {
+
+
         $this->validate($request, [
             'name' => 'required|min:3',
             'username' => 'required|min:3|unique:users,username',
@@ -72,6 +79,7 @@ class UserController extends Controller
             'phone.max' => 'số điện thoại chỉ được tối đa 11 số',
         ]);
         $user = new User;
+
         $user->name = $request->name;
         $user->username = $request->username;
         $user->password = bcrypt($request->password);
@@ -80,7 +88,6 @@ class UserController extends Controller
         $user->address = $request->address;
         if ($request->hasFile('avatar')) {
             $file = $request->file('avatar');
-
             $name = $file->getClientOriginalName();
             $avatar = str_random(4) . "_" . $name;
             while (file_exists("admin/avatar" . $avatar)) {
@@ -92,14 +99,17 @@ class UserController extends Controller
             $user->avatar = "";
         }
         $user->save();
+        $users = User::find($user->id);
+        $users->roles()->attach($request->role);
+
         return redirect('shoes/admin/users/danhsach')->with('thongbao', 'Bạn thêm thành công');
     }
 
     public function getSua($id)
     {
+        $roles = Role::all();
         $users = User::find($id);
-        return view('admin.users.edit_user', compact('users'));
-
+        return view('admin.users.edit_user', compact('users','roles'));
     }
 
     public function postSua(Request $request, $id)
@@ -115,9 +125,10 @@ class UserController extends Controller
             'name.min' => 'Tên người dùng phải có ít nhất 3 ký tự',
             'username.min' => 'Tên đăng nhập phải có ít nhất 3 ký tự',
             'phone.required' => 'Bạn chưa nhập số điện thoại',
-
         ]);
         $user = User::find($id);
+        $usersrole = User::find($id);
+        $usersrole->roles()->sync($request->role);
         $user->name = $request->name;
         $user->username = $request->username;
         if ($request->changePassword == "on") {
@@ -143,7 +154,9 @@ class UserController extends Controller
                 $avatar = str_random(4) . "_" . $name;
             }
             $file->move("admin/avatar", $avatar);
-            unlink("admin/avatar/" . $user->avatar);
+            if(!empty($user->avatar) && File::exists("admin/avatar/".$user->avatar)){
+                unlink("admin/avatar/".$user->avatar);
+            }
             $user->avatar = $avatar;
         }
         $user->save();
@@ -152,9 +165,11 @@ class UserController extends Controller
         return redirect('shoes/admin/users/danhsach')->with('thongbao', 'Bạn đã sửa thành công');
     }
 
-    public function getXoa(Request $request, $id)
+    public function getXoa($id)
     {
         $user = User::find($id);
+        $users = User::find($id);
+        $users->roles()->sync([]);
         $user->delete();
         return redirect('shoes/admin/users/danhsach')->with('thongbao', 'Bạn đã xóa thành công');
     }

@@ -102,4 +102,8 @@ class HomeController extends Controller
         }
         return redirect()->back()->withInput(Input::all())->with('thongbao','Đăng nhập không thành công');
     }
+    public function checkout(){
+        Auth::logout();
+        return redirect('/');
+    }
 }

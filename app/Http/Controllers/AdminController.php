@@ -6,7 +6,6 @@ use Illuminate\Support\Facades\Input;
 use shoes\User;
 use Illuminate\Support\Facades\Auth;
 
-
 class AdminController extends Controller
 {
     /**
@@ -39,7 +38,6 @@ class AdminController extends Controller
         if(Auth::attempt($credentials)){
             return redirect('/shoes/admin/home/index');
         }
-//        return redirect('/shoes/admin/home/login')->with(['thongbao'=>'Đăng nhập không thành công','email'=>$request->email]);
         return redirect()->back()->withInput(Input::all())->with('thongbao','Đăng nhập không thành công');
     }
     public function logoutAdmin(){
