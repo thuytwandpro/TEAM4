@@ -29,7 +29,7 @@ Route::post('/shoes/login', ['uses' => 'HomeController@postLogin']);
 
 Route::get('/shoes/about', ['uses' => 'HomeController@about']);
 
-Route::get('/shoes/checkout', ['uses' => 'HomeController@checkout']);
+Route::get('/shoes/checkout', ['uses' => 'HomeController@dathang']);
 
 //Trang quan tri Admin
 
