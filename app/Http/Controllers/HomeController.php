@@ -102,6 +102,22 @@ class HomeController extends Controller
         }
         return redirect()->back()->withInput(Input::all())->with('thongbao','Đăng nhập không thành công');
     }
+
+    public function about()
+    {
+        return view('home.about');
+    }
+
+    public function contact()
+    {
+        return view('home.contact');
+    }
+
+    public function single()
+    {
+        return view('home.single');
+    }
+    
     public function checkout(){
         Auth::logout();
         return redirect('/');

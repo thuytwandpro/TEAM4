@@ -14,7 +14,7 @@
 // Route::get('/', function () {
 //     return redirect('shoes');
 // });
-Route::get('/', ['uses' => 'HomeController@index']);
+Route::get('/shoes', ['uses' => 'HomeController@index']);
 //Route::get('/shoes', ['uses' => 'HomeController@index']);
 
 Route::get('/shoes/contacts', ['uses' => 'HomeController@contact']);
@@ -62,17 +62,28 @@ Route::group(['prefix' => '/shoes/admin','middleware'=>['adminlogin']], function
     });
 
 	Route::group(['prefix' => 'sales'], function() {
-		Route::get('sales', function() {
-			return redirect('sales');
-		});
-		Route::resource('sales', 'SaleController');
+		Route::get('',['as' => 'getsale','uses' => 'SaleController@index']);
+		
+		Route::get('/create',['as' => 'getcreate','uses' => 'SaleController@create']);
+		Route::post('/create',['as' => 'postcreate','uses' => 'SaleController@store']);
+
+		Route::get('/edit/{id}',['as' => 'getedit','uses' => 'SaleController@edit']);
+		Route::put('/edit/{id}',['as' => 'putedit','uses' => 'SaleController@update']);
+
+		Route::delete('/destroy/{id}',['as' => 'getdelete','uses' => 'SaleController@destroy']);
+		Route::get('/timkiem',['as' => 'timkiem','uses' => 'SaleController@getSearch']);
 	});
 
 	Route::group(['prefix' => 'bills'], function() {
-		Route::get('bills', function() {
-			return redirect('bills');
-		});
-		Route::resource('bills', 'BillController');
+		Route::get('',['as' =>'getbill','uses' => 'BillController@getList']);
+        Route::get('/del/{id}',['as' => 'getdelbill','uses' => 'BillController@getDel'])->where('id','[0-9]+');
+           
+        Route::get('/detail/{id}',['as' => 'getdetail','uses' => 'BillController@getDetail'])->where('id','[0-9]+');
+        Route::post('/detail/{id}',['as' => 'postdetail','uses' => 'BillController@postDetail'])->where('id','[0-9]+');
+
+        Route::get('/deltetail/{id}',['as' => 'getdeldetail','uses' => 'BillController@getDetailBill'])->where('id','[0-9]+');
+
+        Route::get('/timkiem',['as' => 'timkiem','uses' => 'BillController@getSearch']);
 	});
 
 	Route::group(['prefix' => 'news'], function() {

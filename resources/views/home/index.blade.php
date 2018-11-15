@@ -1,82 +1,11 @@
 @extends('layouts.master')
-@section('header')
-	<div class="banner_top innerpage" id="home">
-	    <div class="wrapper_top_w3layouts">
-	        <div class="header_agileits">
-	            <div class="logo inner_page_log">
-	                <h1><a class="navbar-brand" href="/TEAM4/public/"><span>PTY</span> <i>Shoes</i></a></h1>
-	            </div>
-	            <!-- cart details -->
-	            <div class="top_nav_right">
-	                <div class="shoecart shoecart2 cart cart box_1" style="width: 40px; height: 35px;padding-top: 10px; background: black;padding-left: 10px;">
-	                    <a href="{{asset('/shoes/checkout')}}">
-							<i class="fa fa-cart-plus fa-lg" style="color: white;" aria-hidden="true"></i>
-						</a>
-	                </div>
-	            </div>
-	        </div>
-	    </div>
-	    <div class="search_w3ls_agileinfo">
-	        <div class="cd-main-header">
-	            <ul class="cd-header-buttons">
-	                <li><a class="cd-search-trigger" href="#cd-search"> <span></span></a></li>
-	            </ul>
-	        </div>
-	        <div id="cd-search" class="cd-search">
-	            <form action="#" method="post">
-	                <input name="Search" type="search" placeholder="Click enter after typing...">
-	            </form>
-	        </div>
-	    </div>
-	    <!-- //search -->
-	    <div class="clearfix"></div>
-	    <!-- /banner_inner -->
-		{{--@if(session('thongbao'))--}}
-			{{--<div class="alert" style="z-index: 1000; position: absolute">--}}
-				{{--{{session('thongbao')}}--}}
-			{{--</div>--}}
-		{{--@endif--}}
-	    <div class="services-breadcrumb_w3ls_agileinfo">
-	        <div class="inner_breadcrumb_agileits_w3">
-	            <ul class="short">
-	                <li><a href="{{asset('/shoes')}}">Home</a><i>|</i></li>
-	                <li><a href="{{asset('/shoes/about')}}">About</a><i>|</i></li>
-	                <li><a href="404.html">News</a><i>|</i></li>
-	                <li><a href="{{asset('/shoes/contacts')}}">Contacts</a><i>|</i></li>
-	                <li>shop</li>
-
-					{{--<li class="short-right"><a href="{{asset('/shoes/register')}}">--}}
-							{{--@if(Auth::user())--}}
-								{{--{{Auth::user()->username}}--}}
-							{{--@else Đăng ký--}}
-							{{--@endif</a>--}}
-						{{--<i>|</i>--}}
-					{{--</li>--}}
-
-					{{--<li><a href="{{asset('/shoes/login')}}">@if(Auth::user())--}}
-								{{--{{Auth::user()->username}}--}}
-							{{--@else Đăng ký--}}
-							{{--@endif </a></li>--}}
-					@if(Auth::user())
-						<li class="short-right">{{Auth::user()->username}}<i>|</i></li>
-						<li><a href="{{asset('/shoes/checkout')}}">Đăng Xuất</a></li>
-						@else
-						<li class="short-right"><a href="{{asset('/shoes/register')}}">Đăng ký</a><i>|</i></li>
-						<li><a href="{{asset('/shoes/login')}}">Đăng nhập</a></li>
-						@endif
-	            </ul>
-	        </div>
-	    </div>
-	    <!-- //banner_inner -->
-	</div>
-@endsection
 @section('content')
 <div class="ads-grid_shop">
 		<div class="shop_inner_inf">
 			<div class="side-bar col-md-3">
 				<div class="search-hotel">
 					<h3 class="agileits-sear-head">Search Here..</h3>
-					<form action="#" method="post">
+					<form action="" method="post">
 						<input type="search" placeholder="Product name..." name="search" required="">
 						<input type="submit" value=" ">
 					</form>
@@ -157,7 +86,7 @@
 						</div>
 						<div class="col-xs-8 img-deal1">
 							<h3>Shuberry Heels</h3>
-							<a href="single.html">$180.00</a>
+							<a href="single.html">180.000 VNĐ</a>
 						</div>
 						<div class="clearfix"></div>
 					</div>
@@ -167,7 +96,7 @@
 						</div>
 						<div class="col-xs-8 img-deal1">
 							<h3>Chikku Loafers</h3>
-							<a href="single.html">$99.00</a>
+							<a href="single.html">190.000 VNĐ</a>
 						</div>
 						<div class="clearfix"></div>
 					</div>
@@ -177,7 +106,7 @@
 						</div>
 						<div class="col-xs-8 img-deal1">
 							<h3>Bella Toes</h3>
-							<a href="single.html">$165.00</a>
+							<a href="single.html">180.000 VNĐ</a>
 						</div>
 						<div class="clearfix"></div>
 					</div>
@@ -187,7 +116,7 @@
 						</div>
 						<div class="col-xs-8 img-deal1">
 							<h3>Red Bellies</h3>
-							<a href="single.html">$225.00</a>
+							<a href="single.html">205.000 VNĐ</a>
 						</div>
 						<div class="clearfix"></div>
 					</div>
@@ -197,7 +126,7 @@
 						</div>
 						<div class="col-xs-8 img-deal1">
 							<h3>(SRV) Sneakers</h3>
-							<a href="single.html">$169.00</a>
+							<a href="single.html">185.000 VNĐ</a>
 						</div>
 						<div class="clearfix"></div>
 					</div>
@@ -220,7 +149,6 @@
 					<div class="clearfix"></div>
 					<!-- product-sec1 -->
 					<div class="product-sec1">
-						<!--/mens-->
 						<div class="col-md-4 product-men">
 							<div class="product-shoe-info shoe">
 								<div class="men-pro-item">
@@ -241,7 +169,8 @@
 											<div class="grid_meta">
 												<div class="product_price">
 													<div class="grid-price ">
-														<span class="money ">$675.00</span>
+														<span class="money ">210.000 VNĐ</span><br>
+														<del style="margin-left: -2px;">250.000 VNĐ</del>
 													</div>
 												</div>
 												<ul class="stars">
@@ -263,7 +192,7 @@
 								</div>
 							</div>
 						</div>
-						<div class="col-md-4 product-men">
+						 <div class="col-md-4 product-men">
 							<div class="product-shoe-info shoe">
 								<div class="men-pro-item">
 									<div class="men-thumb-item">
@@ -283,7 +212,8 @@
 											<div class="grid_meta">
 												<div class="product_price">
 													<div class="grid-price ">
-														<span class="money ">$405.00</span>
+														<span class="money ">250.000 VNĐ</span><br>
+														<del style="margin-left: -2px;">250.000 VNĐ</del>
 													</div>
 												</div>
 												<ul class="stars">
@@ -325,7 +255,8 @@
 											<div class="grid_meta">
 												<div class="product_price">
 													<div class="grid-price ">
-														<span class="money ">$375.00</span>
+														<span class="money ">170.000 VNĐ</span><br>
+														<del style="margin-left: -2px;">250.000 VNĐ</del>
 													</div>
 												</div>
 												<ul class="stars">
@@ -347,8 +278,6 @@
 								</div>
 							</div>
 						</div>
-						<!-- //mens -->
-						<!-- /womens -->
 						<div class="col-md-4 product-men women_two">
 							<div class="product-shoe-info shoe">
 								<div class="men-pro-item">
@@ -369,7 +298,8 @@
 											<div class="grid_meta">
 												<div class="product_price">
 													<div class="grid-price ">
-														<span class="money ">$575.00</span>
+														<span class="money ">230.000 VNĐ</span><br>
+														<del style="margin-left: -2px;">250.000 VNĐ</del>
 													</div>
 												</div>
 												<ul class="stars">
@@ -411,7 +341,8 @@
 											<div class="grid_meta">
 												<div class="product_price">
 													<div class="grid-price ">
-														<span class="money ">$325.00</span>
+														<span class="money ">200.000 VNĐ</span><br>
+														<del style="margin-left: -2px;">250.000 VNĐ</del>
 													</div>
 												</div>
 												<ul class="stars">
@@ -453,7 +384,8 @@
 											<div class="grid_meta">
 												<div class="product_price">
 													<div class="grid-price ">
-														<span class="money ">$425.00</span>
+														<span class="money ">190.000 VNĐ</span><br>
+														<del style="margin-left: -2px;">250.000 VNĐ</del>
 													</div>
 												</div>
 												<ul class="stars">
@@ -477,8 +409,6 @@
 								</div>
 							</div>
 						</div>
-						<!-- //womens -->
-						<!-- /mens -->
 						<div class="col-md-4 product-men">
 							<div class="product-shoe-info shoe">
 								<div class="men-pro-item">
@@ -499,7 +429,8 @@
 											<div class="grid_meta">
 												<div class="product_price">
 													<div class="grid-price ">
-														<span class="money ">$875.00</span>
+														<span class="money ">130.000 VNĐ</span><br>
+														<del style="margin-left: -2px;">250.000 VNĐ</del>
 													</div>
 												</div>
 												<ul class="stars">
@@ -541,7 +472,8 @@
 											<div class="grid_meta">
 												<div class="product_price">
 													<div class="grid-price ">
-														<span class="money ">$505.00</span>
+														<span class="money ">150.000 VNĐ</span><br>
+														<del style="margin-left: -2px;">250.000 VNĐ</del>
 													</div>
 												</div>
 												<ul class="stars">
@@ -567,7 +499,7 @@
 							<div class="product-shoe-info shoe">
 								<div class="men-pro-item">
 									<div class="men-thumb-item">
-										<img src="pages/images/s9.jpg" alt="">
+										<img src="pages/images/s7.jpg" alt="">
 										<div class="men-cart-pro">
 											<div class="inner-men-cart-pro">
 												<a href="{{asset('/shoes/single')}}" class="link-product-add-cart">Quick View</a>
@@ -577,13 +509,14 @@
 									</div>
 									<div class="item-info-product">
 										<h4>
-											<a href="{{asset('/shoes/single')}}">Bank Sneakers</a>
+											<a href="{{asset('/shoes/single')}}">Running Shoes</a>
 										</h4>
 										<div class="info-product-price">
 											<div class="grid_meta">
 												<div class="product_price">
 													<div class="grid-price ">
-														<span class="money ">$635.00</span>
+														<span class="money ">130.000 VNĐ</span><br>
+														<del style="margin-left: -2px;">250.000 VNĐ</del>
 													</div>
 												</div>
 												<ul class="stars">
@@ -605,7 +538,6 @@
 								</div>
 							</div>
 						</div>
-						<!-- //mens -->
 						<div class="clearfix"></div>
 
 					</div>

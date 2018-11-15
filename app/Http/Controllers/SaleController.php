@@ -3,6 +3,9 @@
 namespace shoes\Http\Controllers;
 
 use Illuminate\Http\Request;
+use shoes\Http\Requests\SaleRequest;
+use shoes\Sale;
+use Validator;
 
 class SaleController extends Controller
 {
@@ -13,7 +16,9 @@ class SaleController extends Controller
      */
     public function index()
     {
-        return view('admin.sales.list_sale');
+        $perPage = 5;
+        $sales = Sale::orderBy('created_at', 'DESC')->paginate($perPage);
+        return view('admin.sales.list_sale')->with('sales', $sales);
     }
 
     /**
@@ -23,7 +28,7 @@ class SaleController extends Controller
      */
     public function create()
     {
-        //
+        return view('admin.sales.create');
     }
 
     /**
@@ -32,31 +37,21 @@ class SaleController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(SaleRequest $request)
     {
-        //
+        $sale = new Sale();
+        $sale->percent= $request->sales;
+        $sale->start_date = $request->start_date;
+        $sale->end_date = $request->end_date;
+        $sale->save();
+          return redirect()->route('getsale') 
+          ->with(['flash_level'=>'result_msg','flash_massage'=>' Đã thêm thành công !']);
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function show($id)
-    {
-        //
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
     public function edit($id)
     {
-        //
+        $sale = Sale::find($id);
+        return view('admin.sales.edit', compact('sale'));
     }
 
     /**
@@ -66,9 +61,15 @@ class SaleController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(SaleRequest $request, $id)
     {
-        //
+        $sale = new Sale();
+        $sale = Sale::find($id);
+        $sale->percent= $request->sales;
+        $sale->start_date = $request->start_date;
+        $sale->end_date = $request->end_date;
+        $sale->save();
+          return redirect()->route('getsale');
     }
 
     /**
@@ -79,6 +80,16 @@ class SaleController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $sale = Sale::find($id);
+        $sale->delete();
+        return redirect()->route('getsale');
+            
+    }
+
+    public function getSearch(Request $request)
+    {
+        $sales = Sale::where('id', 'like', '%'.$request->key.'%')->orwhere('percent', 'like', '%'.$request->key.'%')
+                    ->orwhere('end_date', 'like', '%'.$request->key.'%')->orwhere('start_date', 'like', '%'.$request->key.'%')->paginate(5);
+        return view('admin.sales.search', compact('sales'));
     }
 }

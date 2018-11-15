@@ -18,17 +18,7 @@
                     <div class="box-header" style="margin-top: 25px;">
                         <h3 class="box-title" style="margin-left: 400PX; font-size: 200%; color: #FF0000;">DANH SÁCH ĐƠN HÀNG</h3>
                     </div>
-                    <form action="{{asset('/shoes/admin/bills/timkiem')}}" method="get" class="search">
-                        <input type="hidden" name="_token" value="{{ csrf_token() }}" >
-                        <div class="input-group" style="width: 260px; margin-left: 800px; background: silver">
-                        <input type="text" name="key" class="form-control" placeholder="Search...">
-                            <span class="input-group-btn">
-                                <button type="submit" name="search" id="search-btn" class="btn btn-flat">
-                                    <i class="fa fa-search"></i>
-                                </button>
-                            </span>
-                        </div>
-                    </form>             
+                    <div class="panel-heading" style=" font-family: Helvetica, Arial, Tahoma, sans-serif; color: blue;"> Tìm thấy: {{count($bill)}} đơn hàng</div>             
                     @if (count($errors) > 0)
                         <div class="alert alert-danger">
                             <ul>
@@ -60,15 +50,15 @@
                                 </tr>
                             </thead>
                             <tbody>
-                                @foreach($data as $row)
+                                @foreach($bill as $row)
                                 <tr style="height: 50px;">
-                                    <td>{!!$row->id!!}</td>
-                                    <td>{!!$row->customer_name!!}</td>
-                                    <td>{!!$row->address!!}</td>
-                                    <td>{!!$row->email!!}</td> 
-                                    <td>{!!$row->phone!!}</td>                                           
-                                    <td>{!!$row->created_at!!}</td>
-                                    <td>{!!$row->total!!} VNĐ</td>
+                                    <td>{{ $row->id }}</td>
+                                    <td>{{ $row->customer_name }}</td>
+                                    <td>{{ $row->address }}</td>
+                                    <td>{{ $row->email }}</td> 
+                                    <td>{{ $row->phone }}</td>                                           
+                                    <td>{{ $row->created_at }}</td>
+                                    <td>{{ $row->total }} VNĐ</td>
                                     <td>
                                         @if($row->status ==0)
                                             <span style="color:#d35400;">Chưa xác nhận</span>
@@ -78,16 +68,15 @@
                                     </td>
                                     <td>
                                         <a class="btn btn-warning" href="{!!url('shoes/admin/bills/detail/'.$row->id)!!}" title="Chi tiết">Detail  </a> &nbsp;
-                                    </td>
-                                    <td>
                                         <a class="btn btn-danger" href="{!!url('shoes/admin/bills/del/'.$row->id)!!}"  title="Xóa" onclick="return xacnhan('Xóa danh mục này ?')"> Delete</a>
                                     </td>
                                 </tr>
                                 @endforeach
                             </tbody>
                         </table>
+                        <div style="float: right;padding-top: 20px; margin-right: 50px;"><a href="{{asset('/shoes/admin/bills')}}" class="btn btn-primary">Black</a></div>
                     </div>
-                    <div style="padding-left: 925px;">{!! $data->render() !!}</div>
+                    <div style="padding-left: 925px;">{!! $bill->render() !!}</div>
                 </div>
             </div>
         </div>
