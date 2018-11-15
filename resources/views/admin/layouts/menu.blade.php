@@ -62,7 +62,7 @@
                 </ul>
             </li>
             <li>
-                <a href="{{route('bills.index')}}">
+                <a href="{{asset('/shoes/admin/bills')}}">
                 <i class="fa fa-folder"></i> <span>Đơn hàng</span>
                 </a>
             </li>
@@ -79,15 +79,15 @@
                 </ul>
             </li>
             <li class="treeview">
-                <a href="{{route('sales.index')}}">
+                <a href="#">
                 <i class="fa fa-edit"></i> <span>Khuyến mãi</span>
                 <span class="pull-right-container">
                     <i class="fa fa-angle-left pull-right"></i>
                 </span>
                 </a>
                 <ul class="treeview-menu">
-                    <li><a href="{{route('sales.index')}}"><i class="fa fa-circle-o text-red"></i> Danh sách khuyến mãi</a></li>
-                    <li><a href="#"><i class="fa fa-circle-o text-yellow"></i> Thêm sản phẩm khuyến mãi</a></li>
+                    <li><a href="{{asset('/shoes/admin/sales')}}"><i class="fa fa-circle-o text-red"></i> Danh sách khuyến mãi</a></li>
+                    <li><a href="{{asset('/shoes/admin/sales/create')}}"><i class="fa fa-circle-o text-yellow"></i> Thêm sản phẩm khuyến mãi</a></li>
                 </ul>
             </li>
             <li class="treeview">

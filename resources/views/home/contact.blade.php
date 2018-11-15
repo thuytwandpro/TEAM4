@@ -1,56 +1,4 @@
 @extends('layouts.master')
-@section('header')
-	<div class="banner_top innerpage" id="home">
-	    <div class="wrapper_top_w3layouts">
-	        <div class="header_agileits">
-	            <div class="logo inner_page_log">
-	                <h1><a class="navbar-brand" href="index.html"><span>PTY</span> <i>Shoes</i></a></h1>
-	            </div>
-	            <!-- cart details -->
-	            <div class="top_nav_right">
-	                <div class="shoecart shoecart2 cart cart box_1">
-	                    <form action="#" method="post" class="last">
-	                        <input type="hidden" name="cmd" value="_cart">
-	                        <input type="hidden" name="display" value="1">
-	                        <button class="top_shoe_cart" type="submit" name="submit" value=""><i class="fa fa-cart-arrow-down" aria-hidden="true"></i></button>
-	                    </form>
-	                </div>
-	            </div>
-	        </div>
-	    </div>
-	    <!-- //cart details -->
-	    <!-- search -->
-	    <div class="search_w3ls_agileinfo">
-	        <div class="cd-main-header">
-	            <ul class="cd-header-buttons">
-	                <li><a class="cd-search-trigger" href="#cd-search"> <span></span></a></li>
-	            </ul>
-	        </div>
-	        <div id="cd-search" class="cd-search">
-	            <form action="#" method="post">
-	                <input name="Search" type="search" placeholder="Click enter after typing...">
-	            </form>
-	        </div>
-	    </div>
-	    <!-- //search -->
-	    <div class="clearfix"></div>
-	    <!-- /banner_inner -->
-	    <div class="services-breadcrumb_w3ls_agileinfo">
-	        <div class="inner_breadcrumb_agileits_w3">
-	            <ul class="short">
-	                <li><a href="{{asset('/shoes')}}">Home</a><i>|</i></li>
-	                <li><a href="{{asset('/shoes/about')}}">About</a><i>|</i></li>
-	                <li><a href="404.html">News</a><i>|</i></li>
-	                <li><a href="{{asset('/shoes/contacts')}}">Contacts</a><i>|</i></li>
-	                <li>shop</li>
-	                <li class="short-right"><a href="{{asset('/shoes/register')}}">Đăng kí</a><i>|</i></li>
-	                <li><a href="{{asset('/shoes/login')}}">Đăng nhập</a></li>
-	            </ul>
-	        </div>
-	    </div>
-	    <!-- //banner_inner -->
-	</div>
-@endsection
 @section('content')
 	<div class="ads-grid_shop">
 	    <div class="shop_inner_inf">
@@ -128,7 +76,7 @@
 	</div>
 @endsection
 @section('script')
-	<script src="js/easy-responsive-tabs.js"></script>
+	<script src="pages/js/easy-responsive-tabs.js"></script>
 	<script>
 	    $(document).ready(function () {
 	    	$('#horizontalTab').easyResponsiveTabs({

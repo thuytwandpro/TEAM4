@@ -1,58 +1,4 @@
 @extends('layouts.master')
-@section('header')
-	<div class="banner_top innerpage" id="home">
-		<div class="wrapper_top_w3layouts">
-			<div class="header_agileits">
-				<div class="logo inner_page_log">
-					<h1><a class="navbar-brand" href="index.html"><span>PTY</span> <i>Shoes</i></a></h1>
-				</div>
-				
-				<!-- cart details -->
-				<div class="top_nav_right">
-					<div class="shoecart shoecart2 cart cart box_1">
-						<form action="#" method="post" class="last">
-							<input type="hidden" name="cmd" value="_cart">
-							<input type="hidden" name="display" value="1">
-							<button class="top_shoe_cart" type="submit" name="submit" value=""><i class="fa fa-cart-arrow-down" aria-hidden="true"></i></button>
-						</form>
-					</div>
-				</div>
-			</div>
-		</div>
-		<!-- //cart details -->
-		<!-- search -->
-		<div class="search_w3ls_agileinfo">
-			<div class="cd-main-header">
-				<ul class="cd-header-buttons">
-					<li><a class="cd-search-trigger" href="#cd-search"> <span></span></a></li>
-				</ul>
-			</div>
-			<div id="cd-search" class="cd-search">
-				<form action="#" method="post">
-					<input name="Search" type="search" placeholder="Click enter after typing...">
-				</form>
-			</div>
-		</div>
-		<!-- //search -->
-		<div class="clearfix"></div>
-		<!-- /banner_inner -->
-		<div class="services-breadcrumb_w3ls_agileinfo">
-			<div class="inner_breadcrumb_agileits_w3">
-
-				<ul class="short">
-					<li><a href="{{asset('/shoes')}}">HOME</a><i>|</i></li>
-					<li><a href="{{asset('/shoes/about')}}">ABOUT</a><i>|</i></li>
-					<li><a href="404.html">TEAM</a><i>|</i></li>
-					<li><a href="{{asset('/shoes/contacs')}}">CONTACTS</a><i>|</i></li>
-					<li><a href="{{asset('/shoes/single')}}">SINGLE</a></li>
-					<li class="short-right"><a href="{{asset('/shoes/register')}}">Đăng kí</a><i>|</i></li>
-					<li class=""><a href="{{asset('/shoes/login')}}">Đăng nhập</a></li>
-				</ul>
-			</div>
-		</div>
-		<!-- //banner_inner -->
-	</div>
-@endsection
 @section('content')
 	<div class="ads-grid_shop">
 		<div class="shop_inner_inf">
@@ -77,9 +23,9 @@
 			</div>
 
 			<div class="col-md-8 single-right-left simpleCart_shelfItem">
-				<h3>Shoe Rock Vision(SRV) Sneakers (Blue)</h3>
-				<p><span class="item_price">$650</span>
-					<del>$1,199</del>
+				<h3> Sneakers (Blue)</h3>
+				<p><span class="item_price">190.000 VNĐ</span>
+					<del>250.000 VNĐ</del>
 				</p>
 				<div class="rating1">
 					<ul class="stars">
@@ -100,25 +46,23 @@
 				</div>
 				<div class="color-quality">
 					<div class="color-quality-right">
-						<h5>Quality :</h5>
+						<h5 style="font-weight: bold;">SIZE:</h5>
 						<select id="country1" onchange="change_country(this.value)" class="frm-field required sect">
-								<option value="null">5 Qty</option>
-								<option value="null">6 Qty</option> 
-								<option value="null">7 Qty</option>					
-								<option value="null">10 Qty</option>								
+								<option value="null">35</option>
+								<option value="null">36</option> 
+								<option value="null">37</option>					
+								<option value="null">38</option>
+								<option value="null">39</option>
+								<option value="null">40</option>
+								<option value="null">41</option>								
 							</select>
 					</div>
 				</div>
 				<div class="occasional">
-					<h5>Types :</h5>
+					<h5 style="font-weight: bold;">Giới Tính:</h5>
 					<div class="colr ert">
-						<label class="radio"><input type="radio" name="radio" checked=""><i></i>Casual Shoes</label>
-					</div>
-					<div class="colr">
-						<label class="radio"><input type="radio" name="radio"><i></i>Sneakers </label>
-					</div>
-					<div class="colr">
-						<label class="radio"><input type="radio" name="radio"><i></i>Formal Shoes</label>
+						<label class="radio"><input type="radio" name="radio" checked=""><i></i>Nam</label>
+						<label class="radio"><input type="radio" name="radio"><i></i>Nữ </label>
 					</div>
 					<div class="clearfix"> </div>
 				</div>
@@ -164,16 +108,14 @@
 			<div class="responsive_tabs">
 				<div id="horizontalTab">
 					<ul class="resp-tabs-list">
-						<li>Description</li>
-						<li>Reviews</li>
 						<li>Information</li>
+						<li>Reviews</li>
 					</ul>
 					<div class="resp-tabs-container">
-						<!--/tab_one-->
-						<div class="tab1">
+						<div class="tab3">
 
 							<div class="single_page">
-								<h6>Lorem ipsum dolor sit amet</h6>
+								<h6>Shoe Rock Vision(SRV) Sneakers (Blue)</h6>
 								<p>Lorem ipsum dolor sit amet, consectetur adipisicing elPellentesque vehicula augue eget nisl ullamcorper, molestie
 									blandit ipsum auctor. Mauris volutpat augue dolor.Consectetur adipisicing elit, sed do eiusmod tempor incididunt
 									ut lab ore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco. labore et dolore
@@ -184,9 +126,7 @@
 									magna aliqua.</p>
 							</div>
 						</div>
-						<!--//tab_one-->
 						<div class="tab2">
-
 							<div class="single_page">
 								<div class="bootstrap-tab-text-grids">
 									<div class="bootstrap-tab-text-grid">
@@ -217,27 +157,13 @@
 
 							</div>
 						</div>
-						<div class="tab3">
-
-							<div class="single_page">
-								<h6>Shoe Rock Vision(SRV) Sneakers (Blue)</h6>
-								<p>Lorem ipsum dolor sit amet, consectetur adipisicing elPellentesque vehicula augue eget nisl ullamcorper, molestie
-									blandit ipsum auctor. Mauris volutpat augue dolor.Consectetur adipisicing elit, sed do eiusmod tempor incididunt
-									ut lab ore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco. labore et dolore
-									magna aliqua.</p>
-								<p class="para">Lorem ipsum dolor sit amet, consectetur adipisicing elPellentesque vehicula augue eget nisl ullamcorper, molestie
-									blandit ipsum auctor. Mauris volutpat augue dolor.Consectetur adipisicing elit, sed do eiusmod tempor incididunt
-									ut lab ore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco. labore et dolore
-									magna aliqua.</p>
-							</div>
-						</div>
 					</div>
 				</div>
 			</div>
 			<!--//tabs-->
 			<!-- /new_arrivals -->
 			<div class="new_arrivals">
-				<h3>Featured Products</h3>
+				<h3>Similar Products</h3>
 				<!-- /womens -->
 				<div class="col-md-3 product-men women_two">
 					<div class="product-shoe-info shoe">
@@ -249,7 +175,6 @@
 										<a href="single.html" class="link-product-add-cart">Quick View</a>
 									</div>
 								</div>
-								<span class="product-new-top">New</span>
 							</div>
 							<div class="item-info-product">
 								<h4>
@@ -259,7 +184,7 @@
 									<div class="grid_meta">
 										<div class="product_price">
 											<div class="grid-price ">
-												<span class="money ">$575.00</span>
+												<span class="money ">240.000 VNĐ</span>
 											</div>
 										</div>
 										<ul class="stars">
@@ -298,7 +223,6 @@
 										<a href="single.html" class="link-product-add-cart">Quick View</a>
 									</div>
 								</div>
-								<span class="product-new-top">New</span>
 							</div>
 							<div class="item-info-product">
 								<h4>
@@ -308,7 +232,7 @@
 									<div class="grid_meta">
 										<div class="product_price">
 											<div class="grid-price ">
-												<span class="money ">$325.00</span>
+												<span class="money ">200.000 VNĐ</span>
 											</div>
 										</div>
 										<ul class="stars">
@@ -347,7 +271,6 @@
 										<a href="single.html" class="link-product-add-cart">Quick View</a>
 									</div>
 								</div>
-								<span class="product-new-top">New</span>
 							</div>
 							<div class="item-info-product">
 								<h4>
@@ -357,7 +280,7 @@
 									<div class="grid_meta">
 										<div class="product_price">
 											<div class="grid-price ">
-												<span class="money ">$875.00</span>
+												<span class="money ">209.000 VNĐ</span>
 											</div>
 										</div>
 										<ul class="stars">
@@ -396,7 +319,6 @@
 										<a href="single.html" class="link-product-add-cart">Quick View</a>
 									</div>
 								</div>
-								<span class="product-new-top">New</span>
 							</div>
 							<div class="item-info-product">
 								<h4>
@@ -406,7 +328,7 @@
 									<div class="grid_meta">
 										<div class="product_price">
 											<div class="grid-price ">
-												<span class="money ">$505.00</span>
+												<span class="money ">240.000 VNĐ</span>
 											</div>
 										</div>
 										<ul class="stars">
@@ -541,4 +463,39 @@
 
 		<div class="clearfix"> </div>
 	</div>
+@endsection
+@section('script')
+<script src="pages/js/easy-responsive-tabs.js"></script>
+	<script>
+		$(document).ready(function () {
+			$('#horizontalTab').easyResponsiveTabs({
+				type: 'default', //Types: default, vertical, accordion           
+				width: 'auto', //auto or any width like 600px
+				fit: true, // 100% fit in a container
+				closed: 'accordion', // Start closed if in accordion view
+				activate: function (event) { // Callback function if tab is switched
+					var $tab = $(this);
+					var $info = $('#tabInfo');
+					var $name = $('span', $info);
+					$name.text($tab.text());
+					$info.show();
+				}
+			});
+			$('#verticalTab').easyResponsiveTabs({
+				type: 'vertical',
+				width: 'auto',
+				fit: true
+			});
+		});
+	</script>
+
+	<script src="pages/js/jquery.flexslider.js"></script>
+        <script>
+            $(window).load(function () {
+                $('.flexslider').flexslider({
+                    animation: "slide",
+                    controlNav: "thumbnails"
+            });
+            });
+        </script>
 @endsection
