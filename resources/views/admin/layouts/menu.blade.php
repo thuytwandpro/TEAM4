@@ -67,15 +67,15 @@
                 </a>
             </li>
             <li class="treeview">
-                <a href="{{route('news.index')}}">
-                <i class="fa fa-edit"></i></i> <span>Tin tức</span>
-                <span class="pull-right-container">
+                <a href="{{route('news.danhsach')}}">
+                    <i class="fa fa-book"></i> <span>Tin tức</span>
+                    <span class="pull-right-container">
                     <i class="fa fa-angle-left pull-right"></i>
                 </span>
                 </a>
                 <ul class="treeview-menu">
-                    <li><a href="{{route('news.index')}}"><i class="fa fa-circle-o text-red"></i> Danh sách tin tức</a></li>
-                    <li><a href="#"><i class="fa fa-circle-o text-yellow"></i> Thêm tin tức</a></li>
+                    <li><a href="{{route('news.danhsach')}}"><i class="fa fa-circle-o text-red"></i></i> Danh sách</a></li>
+                    <li><a href="{{route('news.them')}}"><i class="fa fa-circle-o text-yellow"></i> Thêm tin tức</a></li>
                 </ul>
             </li>
             <li class="treeview">

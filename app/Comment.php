@@ -9,22 +9,14 @@ class Comment extends Model
     protected $table = 'comments';
     protected $fillable = [
         'id_product',
-        'id_sale',
-        'name',
-        'quantity',
-        'price',
-        'img',
+        'id_user',
+        'id_parent',
         'content',
-        'origin',
-        'size',
-        'gender',
-        'slug',
+        'created_at',
+        'updated_at'
     ];
     public function product() {
         return $this->belongsTo('shoes/Product', 'id_product', 'id');
-    }
-    public function customer() {
-        return $this->belongsTo('shoes/Customer', 'id_customer', 'id');
     }
     public function employee() {
         return $this->belongsTo('shoes/User', 'id_user', 'id');

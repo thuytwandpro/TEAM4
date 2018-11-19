@@ -33,7 +33,7 @@
 
                         <li class="user-footer">
                             <div class="pull-right">
-                                <a href="{{asset('admin/logout')}}" class="btn btn-default btn-flat">Sign out</a>
+                                <a href="javascript:;" class="btn btn-default btn-flat"  onclick="if(confirm('Bạn có chắc chắn muốn đăng xuất')){location.href='{{asset('admin/logout')}}'}">Sign out</a>
                             </div>
                         </li>
                     </ul>

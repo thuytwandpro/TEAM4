@@ -3,7 +3,8 @@
 namespace shoes\Http\Controllers;
 
 use Illuminate\Http\Request;
-use shoes\Customer;
+use shoes\User;
+use shoes\Role;
 use Validator;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Input;
@@ -30,7 +31,8 @@ class HomeController extends Controller
     }
     function getRegister()
     {
-        return view('.membership.register');
+        $roles = Role::all();
+        return view('.membership.register')->with('roles', $roles);
     }
     function postRegister(Request $request)
     {
@@ -60,7 +62,7 @@ class HomeController extends Controller
 //            'phone.required'=>'Bạn chưa nhập địa chỉ',
 
         ]);
-        $user = new Customer();
+        $user = new User();
         $user->name = $request->name;
         $user->username = $request->username;
         $user->password = bcrypt($request->password);
@@ -68,8 +70,9 @@ class HomeController extends Controller
         $user->phone = $request->phone;
         $user->address = $request->address;
         $user->save();
-        return redirect('/')->with('thongbao','Bạn đã đăng ký thành công');
-
+        $users = User::find($user->id);
+        $users->roles()->attach(3);
+        return redirect('/shoes')->with('thongbao','Bạn đã đăng ký thành công');
     }
 
 
@@ -98,7 +101,7 @@ class HomeController extends Controller
         $email = $request->input('email');
         $password = $request->input('password');
         if( Auth::attempt(['email' => $email, 'password' =>$password])){
-            return redirect('/');
+            return redirect('/shoes');
         }
         return redirect()->back()->withInput(Input::all())->with('thongbao','Đăng nhập không thành công');
     }
@@ -119,8 +122,12 @@ class HomeController extends Controller
     }
     
     public function checkout(){
+
+        return redirect('/shoes');
+    }
+    public function logout(){
         Auth::logout();
-        return redirect('/');
+        return redirect('/shoes');
     }
 
     public function dathang() 

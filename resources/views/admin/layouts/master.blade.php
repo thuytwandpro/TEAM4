@@ -16,6 +16,7 @@
             {{--href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700,300italic,400italic,600italic">--}}
 
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+
         <style>
             .thongbao{
                 position: absolute;
@@ -53,6 +54,9 @@
         <script>
             $("div.alert-success").delay(4000).slideUp();
         </script>
+
+        <script type="text/javascript" language="javascript" src="admin_asset/ckeditor/ckeditor.js"></script>
+
         @yield('script')
     </body>
     </html>
