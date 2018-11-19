@@ -22,15 +22,8 @@ class UserController extends Controller
 //    }
     public function getDanhSach()
     {
-
-//        $user = User::find(1);
-//        $user->roles()->sync(2);
-//        dd($user);
-
-        $users = User::orderBy('id', 'DESC')->paginate(5);
-//        dd($users);
+        $users = User::orderBy('created_at', 'DESC')->paginate(5);
         return view('admin.users.list_user', compact('users'));
-//        return view('admin.users.list_user',['users'=>$users]);
     }
 
     /**
@@ -43,11 +36,6 @@ class UserController extends Controller
         $roles = Role::all();
         return view('admin.users.add_user')->with('roles', $roles);
     }
-
-//    public function addUser(Request $request)
-//    {
-
-//    }
     /**
      * Store a newly created resource in storage.
      *
@@ -56,8 +44,6 @@ class UserController extends Controller
      */
     public function postThem(Request $request)
     {
-
-
         $this->validate($request, [
             'name' => 'required|min:3',
             'username' => 'required|min:3|unique:users,username',
@@ -79,7 +65,6 @@ class UserController extends Controller
             'phone.max' => 'số điện thoại chỉ được tối đa 11 số',
         ]);
         $user = new User;
-
         $user->name = $request->name;
         $user->username = $request->username;
         $user->password = bcrypt($request->password);
@@ -132,7 +117,6 @@ class UserController extends Controller
         if ($request->changePassword == "on") {
             $this->validate($request, [
                 'password' => 'required|min:3|max:32',
-
             ], [
                 'password.required' => 'Bạn chưa nhập mật khẩu',
                 'password.min' => 'Mật khẩu phải có ít nhất 3 ký tự',
@@ -158,14 +142,11 @@ class UserController extends Controller
             $user->avatar = $avatar;
         }
         $user->save();
-
-//        return redirect('shoes/admin/users/sua/'.$id)->with('thongbao','Bạn đã sửa thành công thành công');
         return redirect('shoes/admin/users/danhsach')->with('thongbao', 'Bạn đã sửa thành công');
     }
 
     public function getXoa($id)
     {
-
         $user = User::find($id);
         $user->roles()->sync([]);
         $user->delete();

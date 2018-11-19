@@ -22,7 +22,7 @@ class AdminLoginMiddleware
         }
         else{
 //            return $next($request);
-            return redirect('login/admin');
+            return redirect('admin/login');
         }
 
     }

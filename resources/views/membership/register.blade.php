@@ -73,10 +73,17 @@
                         <span class="glyphicon glyphicon-home form-control-feedback"></span>
                         @if ($errors->has('address'))
                             <span class="invalid-feedback" role="alert" style="color: red; font-size: small">
-                        <strong>{{ $errors->first('address') }}</strong>
-                    </span>
+                                <strong>{{ $errors->first('address') }}</strong>
+                             </span>
                         @endif
                     </div>
+                    {{--<div class="form-group has-feedback">--}}
+                        {{--<div class="checkbox">--}}
+                                {{--<label style="text-transform: capitalize">--}}
+                                    {{--<input type="radio" name="role" value="{{$roles->id=3}}" checked disabled> Khách Hàng<br>--}}
+                                {{--</label>--}}
+                        {{--</div>--}}
+                    {{--</div>--}}
                     <div class="row">
                         <div class="col-xs-4">
                             <button type="submit" class="btn btn-primary btn-block btn-flat">Đăng ký</button>

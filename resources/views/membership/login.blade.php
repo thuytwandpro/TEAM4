@@ -12,7 +12,7 @@
             {{--</div>--}}
             {{--@endforeach--}}
             @if(session('thongbao'))
-                <div class="alert alert-success">
+                <div class="alert alert-danger">
                     {{session('thongbao')}}
                 </div>
             @endif
@@ -40,11 +40,6 @@
                 </div>
                 <div class="row">
                     <div class="col-xs-8">
-                        {{--<div class="checkbox icheck">--}}
-                            {{--<label>--}}
-                                {{--<input type="checkbox"> Remember Me--}}
-                            {{--</label>--}}
-                        {{--</div>--}}
                     </div>
                     <!-- /.col -->
                     <div class="col-xs-4">

@@ -22,13 +22,14 @@ class AdminController extends Controller
     public function postlogin(Request $request)
     {
         $this->validate($request,[
-           'email'=>'required',
+           'email'=>'required|email',
             'password'=>'required|min:3|max:32'
         ],[
             'email.required'=>"Bạn chưa nhập email",
             'password.required'=>'Bạn chưa nhập password',
             'password.min'=>'password không được nhỏ hơn 3 ký tự',
-            'password.max'=>'password không được lớn hơn 32 kỳ tự'
+            'password.max'=>'password không được lớn hơn 32 kỳ tự',
+            'email.email'=>'Nhập sai cú pháp email'
 
         ]);
         $credentials = [
@@ -40,9 +41,10 @@ class AdminController extends Controller
         }
         return redirect()->back()->withInput(Input::all())->with('thongbao','Đăng nhập không thành công');
     }
-    public function logoutAdmin(){
+    public function logoutAdmin()
+    {
         Auth::logout();
-        return redirect('login/admin');
+        return redirect('admin/login');
     }
     function timkiem()
     {

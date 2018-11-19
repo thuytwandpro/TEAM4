@@ -11,11 +11,7 @@
 |
 */
 
-// Route::get('/', function () {
-//     return redirect('shoes');
-// });
 Route::get('/shoes', ['uses' => 'HomeController@index']);
-//Route::get('/shoes', ['uses' => 'HomeController@index']);
 
 Route::get('/shoes/contacts', ['uses' => 'HomeController@contact']);
 
@@ -30,11 +26,12 @@ Route::post('/shoes/login', ['uses' => 'HomeController@postLogin']);
 Route::get('/shoes/about', ['uses' => 'HomeController@about']);
 
 Route::get('/shoes/checkout', ['uses' => 'HomeController@dathang']);
+Route::get('/shoes/logout', ['uses' => 'HomeController@logout']);
 
 //Trang quan tri Admin
 
-Route::get('login/admin','AdminController@getlogin')->name('login');
-Route::post('login/admin','AdminController@postlogin');
+Route::get('admin/login','AdminController@getlogin')->name('login');
+Route::post('admin/login','AdminController@postlogin');
 Route::get('admin/logout',['uses' => 'AdminController@logoutAdmin']);
 Route::post('timkiem', 'AdminController@timkiem');
 Route::group(['prefix' => '/shoes/admin','middleware'=>['adminlogin']], function () {
@@ -43,8 +40,6 @@ Route::group(['prefix' => '/shoes/admin','middleware'=>['adminlogin']], function
             return view('admin.home.index');
 		});
 		Route::resource('home', 'AdminController');
-
-
 	});
 
 	Route::group(['prefix' => 'categories'], function() {
@@ -86,29 +81,29 @@ Route::group(['prefix' => '/shoes/admin','middleware'=>['adminlogin']], function
         Route::get('/timkiem',['as' => 'timkiem','uses' => 'BillController@getSearch']);
 	});
 
-	Route::group(['prefix' => 'news'], function() {
-		Route::get('news', function() {
-			return redirect('news');
-		});
-		Route::resource('news', 'NewsController');
-	});
+    Route::group(['prefix' => 'news'], function() {
+        Route::get('danhsach','NewsController@getDanhSach')->name('news.danhsach');
+
+        Route::get('them','NewsController@getThem')->name('news.them');
+        Route::post('them','NewsController@postThem');
+
+        Route::get('sua/{id}','NewsController@getSua');
+        Route::post('sua/{id}','NewsController@postSua');
+
+        Route::get('xoa/{id}','NewsController@getXoa');
+    });
 
 	Route::group(['prefix' => 'users'], function() {
-//		Route::get('users', function() {
-//			return redirect('users');
-//		});
-//		Route::resource('users', 'UserController');
+
         Route::get('danhsach','UserController@getDanhSach')->name('users.danhsach');
 
         Route::get('sua/{id}','UserController@getSua');
         Route::post('sua/{id}','UserController@postSua');
 
-
         Route::get('them','UserController@getThem')->name('users.them');
         Route::post('them','UserController@postThem');
 
         Route::get('xoa/{id}','UserController@getXoa');
-
 	});
 
 	Route::group(['prefix' => 'statistics'], function() {
@@ -119,10 +114,4 @@ Route::group(['prefix' => '/shoes/admin','middleware'=>['adminlogin']], function
 	});
 
 });
-//Auth::routes();
-//
-//Route::get('/home', 'HomeController@index')->name('home');
 
-//Auth::routes();
-
-//Route::get('/home', 'HomeController@index')->name('home');
