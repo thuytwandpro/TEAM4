@@ -108,4 +108,11 @@ class NewsController extends Controller
         $news->delete();
         return redirect('shoes/admin/news/danhsach')->with('thongbao', 'Bạn đã xóa thành công');
     }
+
+    public function getSearch(Request $request)
+    {
+        $news = News::where('id', 'like', '%'.$request->key.'%')->orwhere('title', 'like', '%'.$request->key.'%')
+            ->orwhere('contents', 'like', '%'.$request->key.'%')->orwhere('description', 'like', '%'.$request->key.'%')->orwhere('slug', 'like', '%'.$request->key.'%')->paginate(5);
+        return view('admin.news.search_news', compact('news'));
+    }
 }

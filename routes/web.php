@@ -91,6 +91,8 @@ Route::group(['prefix' => '/shoes/admin','middleware'=>['adminlogin']], function
         Route::post('sua/{id}','NewsController@postSua');
 
         Route::get('xoa/{id}','NewsController@getXoa');
+
+        Route::get('/timkiem','NewsController@getSearch');
     });
 
 	Route::group(['prefix' => 'users'], function() {
@@ -104,6 +106,8 @@ Route::group(['prefix' => '/shoes/admin','middleware'=>['adminlogin']], function
         Route::post('them','UserController@postThem');
 
         Route::get('xoa/{id}','UserController@getXoa');
+
+        Route::get('/timkiem','UserController@getSearch');
 	});
 
 	Route::group(['prefix' => 'statistics'], function() {

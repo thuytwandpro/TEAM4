@@ -152,4 +152,10 @@ class UserController extends Controller
         $user->delete();
         return redirect('shoes/admin/users/danhsach')->with('thongbao', 'Bạn đã xóa thành công');
     }
+    public function getSearch(Request $request)
+    {
+        $users = User::where('id', 'like', '%'.$request->key.'%')->orwhere('name', 'like', '%'.$request->key.'%')
+            ->orwhere('username', 'like', '%'.$request->key.'%')->orwhere('email', 'like', '%'.$request->key.'%')->orwhere('phone', 'like', '%'.$request->key.'%')->orwhere('address', 'like', '%'.$request->key.'%')->paginate(5);
+        return view('admin.users.search_user', compact('users'));
+    }
 }
