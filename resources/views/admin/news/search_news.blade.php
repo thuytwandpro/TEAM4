@@ -22,22 +22,12 @@
                         <div class="box-header" style="margin-top: 25px;">
                             <h3 class="box-title" style="margin-left: 400PX; font-size: 200%; color: #FF0000;">DANH SÁCH TIN TỨC</h3>
                         </div>
-                        <form action="{{asset('/shoes/admin/news/timkiem')}}" method="get" class="search">
-                            <input type="hidden" name="_token" value="{{ csrf_token() }}" >
-                            <div class="input-group" style="width: 260px; margin-left: 800px; background: silver">
-                                <input type="text" name="key" class="form-control" placeholder="Tìm kiếm...">
-                                <span class="input-group-btn">
-                                <button type="submit" name="search" id="search-btn" class="btn btn-flat">
-                                    <i class="fa fa-search"></i>
-                                </button>
-                            </span>
-                            </div>
-                        </form>
+                        <div class="panel-heading" style=" font-family: Helvetica, Arial, Tahoma, sans-serif; color: blue;"> Tìm thấy: {{count($news)}} Tin tức</div>
                         <div class="box-body">
                             <table id="example1" class="table table-bordered table-striped">
                                 <thead>
                                 <tr style="font-size: medium; color: blue">
-                                    <th>#</th>
+                                    <th>No</th>
                                     <th>Tiêu đề</th>
                                     <th>Mô tả</th>
                                     <th>Hình ảnh</th>
@@ -70,9 +60,11 @@
                                 @endforeach
                                 </tbody>
                             </table>
+
                             <div style="float: right; width: 60%">
                                 {!! $news->links() !!}
                             </div>
+                            <div style="float: right;padding-top: 20px; margin-right: 50px;"><a href="{{asset('/shoes/admin/news/danhsach')}}" class="btn btn-primary">Black</a></div>
                         </div>
                         <!-- /.box-body -->
                     </div>
