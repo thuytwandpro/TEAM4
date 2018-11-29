@@ -54,7 +54,6 @@
         @include('layouts.header')
         @yield('content')
         @yield('slidebar')
-        @include('layouts.signup')
         @include('layouts.footer')
         <a href="#home" id="toTop" class="scroll" style="display: block;"> <span id="toTopHover" style="opacity: 1;"> </span></a>
         <script type="text/javascript" src="pages/js/jquery-2.1.4.min.js"></script>

@@ -16,10 +16,16 @@ Route::get('/shoes', ['uses' => 'HomeController@index', 'as' => 'shoes.index']);
 
 Route::get('/shoes/contacts', ['uses' => 'HomeController@contact']);
 
-Route::get('/shoes/single', ['uses' => 'HomeController@single']);
+Route::get('/shoes/single/{id}', ['uses' => 'HomeController@single']);
+
+Route::get('/shoes/category/{id}', ['uses' => 'HomeController@category']);
+
+Route::get('/shoes/discount/{id}', ['uses' => 'HomeController@discount']);
 
 Route::get('/shoes/register', ['uses' => 'HomeController@getRegister']);
 Route::post('/shoes/register', ['uses' => 'HomeController@postRegister']);
+
+Route::get('/shoes/timkiem', 'HomeController@getSearch');
 
 Route::get('/shoes/login', ['uses' => 'HomeController@getLogin']);
 Route::post('/shoes/login', ['uses' => 'HomeController@postLogin']);
