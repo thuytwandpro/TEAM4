@@ -32,17 +32,14 @@
 	        <div class="inner_breadcrumb_agileits_w3">
 	            <ul class="short">
 	                <li><a href="{{asset('/shoes')}}">Home</a><i>|</i></li>
-	                <li><a href="{{asset('/shoes/about')}}">About</a><i>|</i></li>
-	                <li><a href="404.html">News</a><i>|</i></li>
-	                <li><a href="{{asset('/shoes/contacts')}}">Contacts</a><i>|</i></li>
-	                <li>shop</li>
+	                <li><a href="{{asset('/shoes/about')}}">About</a></li>
 					@if(Auth::user())
-						<li class="short-right">{{Auth::user()->username}}<i>|</i></li>
+						<li class="short-right" style="margin-left: 900px" >{{Auth::user()->username}}<i>|</i></li>
 						<li><a href="javascript:;" onclick="if(confirm('Bạn có chắc chắn muốn Đăng xuất')){location.href='{{asset('/shoes/logout')}}'}">Đăng Xuất</a></li>
-						@else
-						<li class="short-right"><a href="{{asset('/shoes/register')}}">Đăng ký</a><i>|</i></li>
-						<li><a href="{{asset('/shoes/login')}}">Đăng nhập</a></li>
-						@endif
+					@else
+						<li class="short-right" style="margin-left: 900px"><a href="{{asset('/shoes/register')}}">Register</a><i>|</i></li>
+						<li><a href="{{asset('/shoes/login')}}">Login</a></li>
+					@endif
 	            </ul>
 	        </div>
 	    </div>

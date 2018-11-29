@@ -7,15 +7,10 @@
 					<div class="flexslider">
 
 						<ul class="slides">
-							<li data-thumb="pages/images/d2.jpg">
-								<div class="pages/thumb-image"> <img src="pages/images/d2.jpg" data-imagezoom="true" class="img-responsive"> </div>
+							<li data-thumb="pages/image/{{$pro->img}}">
+								<div class="pages/thumb-image"> <img src="pages/image/{{$pro->img}}" data-imagezoom="true" class="img-responsive"> </div>
 							</li>
-							<li data-thumb="pages/images/d1.jpg">
-								<div class="thumb-image"> <img src="pages/images/d1.jpg" data-imagezoom="true" class="img-responsive"> </div>
-							</li>
-							<li data-thumb="pages/images/d3.jpg">
-								<div class="thumb-image"> <img src="pages/images/d3.jpg" data-imagezoom="true" class="img-responsive"> </div>
-							</li>
+
 						</ul>
 						<div class="clearfix"></div>
 					</div>
@@ -23,47 +18,22 @@
 			</div>
 
 			<div class="col-md-8 single-right-left simpleCart_shelfItem">
-				<h3> Sneakers (Blue)</h3>
-				<p><span class="item_price">190.000 VNĐ</span>
-					<del>250.000 VNĐ</del>
+				<h3>{{$pro->name}}</h3>
+				<p><span class="item_price">{{$pro->price -($pro->price *($pro->sale->percent /100))}} VNĐ</span>
+					<del>{{$pro->price}} VNĐ</del>
 				</p>
-				<div class="rating1">
-					<ul class="stars">
-						<li><a href="#"><i class="fa fa-star" aria-hidden="true"></i></a></li>
-						<li><a href="#"><i class="fa fa-star" aria-hidden="true"></i></a></li>
-						<li><a href="#"><i class="fa fa-star" aria-hidden="true"></i></a></li>
-						<li><a href="#"><i class="fa fa-star-half-o" aria-hidden="true"></i></a></li>
-						<li><a href="#"><i class="fa fa-star-o" aria-hidden="true"></i></a></li>
-					</ul>
-				</div>
-				<div class="description">
-					<h5>Check delivery, payment options and charges at your location</h5>
-					<form action="#" method="post">
-						<input type="text" value="Enter pincode" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'Enter pincode';}"
-						    required="">
-						<input type="submit" value="Check">
-					</form>
-				</div>
 				<div class="color-quality">
 					<div class="color-quality-right">
-						<h5 style="font-weight: bold;">SIZE:</h5>
-						<select id="country1" onchange="change_country(this.value)" class="frm-field required sect">
-								<option value="null">35</option>
-								<option value="null">36</option> 
-								<option value="null">37</option>					
-								<option value="null">38</option>
-								<option value="null">39</option>
-								<option value="null">40</option>
-								<option value="null">41</option>								
-							</select>
+						<h5 style="font-weight: bold;">SIZE: {{$pro->size}}</h5>
 					</div>
 				</div>
 				<div class="occasional">
-					<h5 style="font-weight: bold;">Giới Tính:</h5>
-					<div class="colr ert">
-						<label class="radio"><input type="radio" name="radio" checked=""><i></i>Nam</label>
-						<label class="radio"><input type="radio" name="radio"><i></i>Nữ </label>
-					</div>
+					<h5 style="font-weight: bold;">Giới Tính:
+						@if($pro->gender==1)
+						Nữ
+						@endif
+					</h5>
+
 					<div class="clearfix"> </div>
 				</div>
 				<div class="occasion-cart">
@@ -74,56 +44,22 @@
 					</div>
 
 				</div>
-				<ul class="social-nav model-3d-0 footer-social social single_page">
-					<li class="share">Share On : </li>
-					<li>
-						<a href="#" class="facebook">
-							<div class="front"><i class="fa fa-facebook" aria-hidden="true"></i></div>
-							<div class="back"><i class="fa fa-facebook" aria-hidden="true"></i></div>
-						</a>
-					</li>
-					<li>
-						<a href="#" class="twitter">
-							<div class="front"><i class="fa fa-twitter" aria-hidden="true"></i></div>
-							<div class="back"><i class="fa fa-twitter" aria-hidden="true"></i></div>
-						</a>
-					</li>
-					<li>
-						<a href="#" class="instagram">
-							<div class="front"><i class="fa fa-instagram" aria-hidden="true"></i></div>
-							<div class="back"><i class="fa fa-instagram" aria-hidden="true"></i></div>
-						</a>
-					</li>
-					<li>
-						<a href="#" class="pinterest">
-							<div class="front"><i class="fa fa-linkedin" aria-hidden="true"></i></div>
-							<div class="back"><i class="fa fa-linkedin" aria-hidden="true"></i></div>
-						</a>
-					</li>
-				</ul>
-
 			</div>
 			<div class="clearfix"> </div>
 			<!--/tabs-->
 			<div class="responsive_tabs">
 				<div id="horizontalTab">
 					<ul class="resp-tabs-list">
-						<li>Information</li>
-						<li>Reviews</li>
+						<li>Thông tin sản phẩm</li>
+						<li>Đánh giá sản phẩm</li>
 					</ul>
 					<div class="resp-tabs-container">
 						<div class="tab3">
 
 							<div class="single_page">
-								<h6>Shoe Rock Vision(SRV) Sneakers (Blue)</h6>
-								<p>Lorem ipsum dolor sit amet, consectetur adipisicing elPellentesque vehicula augue eget nisl ullamcorper, molestie
-									blandit ipsum auctor. Mauris volutpat augue dolor.Consectetur adipisicing elit, sed do eiusmod tempor incididunt
-									ut lab ore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco. labore et dolore
-									magna aliqua.</p>
-								<p class="para">Lorem ipsum dolor sit amet, consectetur adipisicing elPellentesque vehicula augue eget nisl ullamcorper, molestie
-									blandit ipsum auctor. Mauris volutpat augue dolor.Consectetur adipisicing elit, sed do eiusmod tempor incididunt
-									ut lab ore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco. labore et dolore
-									magna aliqua.</p>
+								<p>
+									{{$pro->content}}
+								</p>
 							</div>
 						</div>
 						<div class="tab2">
@@ -163,28 +99,30 @@
 			<!--//tabs-->
 			<!-- /new_arrivals -->
 			<div class="new_arrivals">
-				<h3>Similar Products</h3>
+				<h3>Sản Phẩm Cùng loại</h3>
 				<!-- /womens -->
+			@foreach($detail as $dl)
 				<div class="col-md-3 product-men women_two">
 					<div class="product-shoe-info shoe">
 						<div class="men-pro-item">
 							<div class="men-thumb-item">
-								<img src="pages/images/s4.jpg" alt="">
+								<img src="pages/image/{{$dl->img}}" alt="">
 								<div class="men-cart-pro">
 									<div class="inner-men-cart-pro">
-										<a href="single.html" class="link-product-add-cart">Quick View</a>
+										<a href="shoes/single/{{$dl->id}}" class="link-product-add-cart">Quick View</a>
 									</div>
 								</div>
 							</div>
 							<div class="item-info-product">
 								<h4>
-									<a href="single.html">Shuberry Heels </a>
+									<a href="shoes/single/{{$dl->id}}">{{$dl->name}}</a>
 								</h4>
 								<div class="info-product-price">
 									<div class="grid_meta">
 										<div class="product_price">
 											<div class="grid-price ">
-												<span class="money ">240.000 VNĐ</span>
+												<span class="money ">{{$dl->price -($dl->price *($dl->sale->percent /100))}}VNĐ</span><br>
+												<del style="margin-left: -2px;">{{$dl->price}} VNĐ</del>
 											</div>
 										</div>
 										<ul class="stars">
@@ -213,157 +151,12 @@
 						</div>
 					</div>
 				</div>
-				<div class="col-md-3 product-men women_two">
-					<div class="product-shoe-info shoe">
-						<div class="men-pro-item">
-							<div class="men-thumb-item">
-								<img src="pages/images/s5.jpg" alt="">
-								<div class="men-cart-pro">
-									<div class="inner-men-cart-pro">
-										<a href="single.html" class="link-product-add-cart">Quick View</a>
-									</div>
-								</div>
-							</div>
-							<div class="item-info-product">
-								<h4>
-									<a href="single.html">Red Bellies </a>
-								</h4>
-								<div class="info-product-price">
-									<div class="grid_meta">
-										<div class="product_price">
-											<div class="grid-price ">
-												<span class="money ">200.000 VNĐ</span>
-											</div>
-										</div>
-										<ul class="stars">
-											<li><a href="#"><i class="fa fa-star" aria-hidden="true"></i></a></li>
-											<li><a href="#"><i class="fa fa-star" aria-hidden="true"></i></a></li>
-											<li><a href="#"><i class="fa fa-star" aria-hidden="true"></i></a></li>
-											<li><a href="#"><i class="fa fa-star-half-o" aria-hidden="true"></i></a></li>
-											<li><a href="#"><i class="fa fa-star-o" aria-hidden="true"></i></a></li>
-										</ul>
-									</div>
-									<div class="shoe single-item hvr-outline-out">
-										<form action="#" method="post">
-											<input type="hidden" name="cmd" value="_cart">
-											<input type="hidden" name="add" value="1">
-											<input type="hidden" name="shoe_item" value="Red Bellies">
-											<input type="hidden" name="amount" value="325.00">
-											<button type="submit" class="shoe-cart pshoe-cart"><i class="fa fa-cart-plus" aria-hidden="true"></i></button>
-
-											<a href="#" data-toggle="modal" data-target="#myModal1"></a>
-										</form>
-
-									</div>
-								</div>
-								<div class="clearfix"></div>
-							</div>
-						</div>
-					</div>
-				</div>
-				<div class="col-md-3 product-men women_two">
-					<div class="product-shoe-info shoe">
-						<div class="men-pro-item">
-							<div class="men-thumb-item">
-								<img src="pages/images/s7.jpg" alt="">
-								<div class="men-cart-pro">
-									<div class="inner-men-cart-pro">
-										<a href="single.html" class="link-product-add-cart">Quick View</a>
-									</div>
-								</div>
-							</div>
-							<div class="item-info-product">
-								<h4>
-									<a href="single.html">Running Shoes</a>
-								</h4>
-								<div class="info-product-price">
-									<div class="grid_meta">
-										<div class="product_price">
-											<div class="grid-price ">
-												<span class="money ">209.000 VNĐ</span>
-											</div>
-										</div>
-										<ul class="stars">
-											<li><a href="#"><i class="fa fa-star" aria-hidden="true"></i></a></li>
-											<li><a href="#"><i class="fa fa-star" aria-hidden="true"></i></a></li>
-											<li><a href="#"><i class="fa fa-star" aria-hidden="true"></i></a></li>
-											<li><a href="#"><i class="fa fa-star" aria-hidden="true"></i></a></li>
-											<li><a href="#"><i class="fa fa-star-half-o" aria-hidden="true"></i></a></li>
-										</ul>
-									</div>
-									<div class="shoe single-item hvr-outline-out">
-										<form action="#" method="post">
-											<input type="hidden" name="cmd" value="_cart">
-											<input type="hidden" name="add" value="1">
-											<input type="hidden" name="shoe_item" value="Running Shoes">
-											<input type="hidden" name="amount" value="875.00">
-											<button type="submit" class="shoe-cart pshoe-cart"><i class="fa fa-cart-plus" aria-hidden="true"></i></button>
-
-											<a href="#" data-toggle="modal" data-target="#myModal1"></a>
-										</form>
-
-									</div>
-								</div>
-								<div class="clearfix"></div>
-							</div>
-						</div>
-					</div>
-				</div>
-				<div class="col-md-3 product-men women_two">
-					<div class="product-shoe-info shoe">
-						<div class="men-pro-item">
-							<div class="men-thumb-item">
-								<img src="pages/images/s8.jpg" alt="">
-								<div class="men-cart-pro">
-									<div class="inner-men-cart-pro">
-										<a href="single.html" class="link-product-add-cart">Quick View</a>
-									</div>
-								</div>
-							</div>
-							<div class="item-info-product">
-								<h4>
-									<a href="single.html">Sukun Casuals</a>
-								</h4>
-								<div class="info-product-price">
-									<div class="grid_meta">
-										<div class="product_price">
-											<div class="grid-price ">
-												<span class="money ">240.000 VNĐ</span>
-											</div>
-										</div>
-										<ul class="stars">
-											<li><a href="#"><i class="fa fa-star" aria-hidden="true"></i></a></li>
-											<li><a href="#"><i class="fa fa-star" aria-hidden="true"></i></a></li>
-											<li><a href="#"><i class="fa fa-star" aria-hidden="true"></i></a></li>
-											<li><a href="#"><i class="fa fa-star" aria-hidden="true"></i></a></li>
-											<li><a href="#"><i class="fa fa-star-half-o" aria-hidden="true"></i></a></li>
-										</ul>
-									</div>
-									<div class="shoe single-item hvr-outline-out">
-										<form action="#" method="post">
-											<input type="hidden" name="cmd" value="_cart">
-											<input type="hidden" name="add" value="1">
-											<input type="hidden" name="shoe_item" value="Sukun Casuals">
-											<input type="hidden" name="amount" value="505.00">
-											<button type="submit" class="shoe-cart pshoe-cart"><i class="fa fa-cart-plus" aria-hidden="true"></i></button>
-
-											<a href="#" data-toggle="modal" data-target="#myModal1"></a>
-										</form>
-
-									</div>
-								</div>
-								<div class="clearfix"></div>
-							</div>
-						</div>
-					</div>
-				</div>
+				@endforeach
 
 				<!-- //womens -->
 				<div class="clearfix"></div>
 			</div>
 			<!--//new_arrivals-->
-
-
 		</div>
 	</div>
 <!--//tabs-->

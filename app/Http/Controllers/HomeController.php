@@ -5,6 +5,9 @@ namespace shoes\Http\Controllers;
 use Illuminate\Http\Request;
 use shoes\User;
 use shoes\Role;
+use shoes\Product;
+use shoes\Category;
+use shoes\Sale;
 use Validator;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Input;
@@ -18,17 +21,21 @@ class HomeController extends Controller
      */
     public function index()
     {
-        return view('home.index');
+        $sale = Sale::orderBy('percent', 'ASC')->paginate();
+        $cate = Category::all();
+        $prod = Product::orderBy('created_at', 'DESC')->paginate(5);
+        $pro = Product::orderBy('created_at', 'DESC')->paginate(6);
+        return view('home.index', compact('pro', 'cate', 'sale', 'prod'));
     }
+
     function getRegister()
     {
         $roles = Role::all();
         return view('.membership.register')->with('roles', $roles);
     }
+
     function postRegister(Request $request)
     {
-
-
         $this->validate($request, [
             'name' => 'required|min:3',
             'username' => 'required|min:3',
@@ -66,7 +73,6 @@ class HomeController extends Controller
         $users->roles()->attach(3);
         return redirect('/shoes')->with('thongbao','Bạn đã đăng ký thành công');
     }
-
 
     //login khách hàng
     public function getlogin()
@@ -108,15 +114,41 @@ class HomeController extends Controller
         return view('home.contact');
     }
 
-    public function single()
+    public function single($id)
     {
-        return view('home.single');
+        $pro =Product::find($id);
+        $detail = Product::where('id_category',$pro->id_category)->where('id','!=',$id)->get();
+        return view('home.single', compact( 'pro', 'detail'));
     }
-    
+    public function category ($id)
+    {
+        $cate =Category::find($id);
+        $detail = Product::where('id',$id)->get();
+        return view('home.category', compact('cate', 'detail'));
+    }
+
+    public function discount ($id)
+    {
+        $sale =Sale::find($id);
+        $detail = Product::where('id_sale',$id)->get();
+        return view('home.discount', compact('sale', 'detail'));
+    }
+
+    public function getSearch(Request $request)
+    {
+        $sale = Sale::orderBy('percent', 'ASC')->paginate();
+        $cate = Category::all();
+        $prod = Product::orderBy('created_at', 'DESC')->paginate(5);
+        $pro = Product::orderBy('created_at', 'DESC')->paginate(6);
+        $products = Product::where('id', 'like', '%' . $request->key . '%')->orwhere('name', 'like', '%' . $request->key . '%')
+            ->orwhere('price', 'like', '%' . $request->key . '%')->orwhere('size', 'like', '%' . $request->key . '%')->orwhere('gender', 'like', '%' . $request->key . '%')->paginate(5);
+        return view('home.search', compact('products', 'cate','prod','sale','pro'));
+    }
     public function checkout(){
 
         return redirect('/shoes');
     }
+
     public function logout(){
         Auth::logout();
         return redirect('/shoes');
