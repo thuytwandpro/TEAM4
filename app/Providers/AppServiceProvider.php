@@ -5,6 +5,8 @@ namespace shoes\Providers;
 
 use Illuminate\Support\ServiceProvider;
 
+require_once app_path().'\const.php';
+
 class AppServiceProvider extends ServiceProvider
 {
     /**
