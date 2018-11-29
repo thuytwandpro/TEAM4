@@ -1,12 +1,14 @@
 <?php
 
 namespace shoes\Http\Controllers;
+
 use File;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use shoes\Role;
 use shoes\User;
 use Validator;
+
 class UserController extends Controller
 {
     /**
@@ -22,6 +24,12 @@ class UserController extends Controller
 //    }
     public function getDanhSach()
     {
+//        if(Auth::user()->user_roles->id_role == 3){
+//            return redirect('/shoes');
+//        }
+//        elseif (!Auth::check() || !Auth::user()->user_roles->id_role == 1) {
+//            return redirect('/shoes/admin/home/index');
+//        }
         $users = User::orderBy('created_at', 'DESC')->paginate(5);
         return view('admin.users.list_user', compact('users'));
     }
@@ -36,6 +44,7 @@ class UserController extends Controller
         $roles = Role::all();
         return view('admin.users.add_user')->with('roles', $roles);
     }
+
     /**
      * Store a newly created resource in storage.
      *
@@ -93,7 +102,7 @@ class UserController extends Controller
     {
         $roles = Role::all();
         $users = User::find($id);
-        return view('admin.users.edit_user', compact('users','roles'));
+        return view('admin.users.edit_user', compact('users', 'roles'));
     }
 
     public function postSua(Request $request, $id)
@@ -136,8 +145,8 @@ class UserController extends Controller
                 $avatar = str_random(4) . "_" . $name;
             }
             $file->move("admin/avatar", $avatar);
-            if(!empty($user->avatar) && File::exists("admin/avatar/".$user->avatar)){
-                unlink("admin/avatar/".$user->avatar);
+            if (!empty($user->avatar) && File::exists("admin/avatar/" . $user->avatar)) {
+                unlink("admin/avatar/" . $user->avatar);
             }
             $user->avatar = $avatar;
         }
@@ -152,10 +161,11 @@ class UserController extends Controller
         $user->delete();
         return redirect('shoes/admin/users/danhsach')->with('thongbao', 'Bạn đã xóa thành công');
     }
+
     public function getSearch(Request $request)
     {
-        $users = User::where('id', 'like', '%'.$request->key.'%')->orwhere('name', 'like', '%'.$request->key.'%')
-            ->orwhere('username', 'like', '%'.$request->key.'%')->orwhere('email', 'like', '%'.$request->key.'%')->orwhere('phone', 'like', '%'.$request->key.'%')->orwhere('address', 'like', '%'.$request->key.'%')->paginate(5);
+        $users = User::where('id', 'like', '%' . $request->key . '%')->orwhere('name', 'like', '%' . $request->key . '%')
+            ->orwhere('username', 'like', '%' . $request->key . '%')->orwhere('email', 'like', '%' . $request->key . '%')->orwhere('phone', 'like', '%' . $request->key . '%')->orwhere('address', 'like', '%' . $request->key . '%')->paginate(5);
         return view('admin.users.search_user', compact('users'));
     }
 }

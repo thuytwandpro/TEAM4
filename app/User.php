@@ -18,6 +18,7 @@ class User extends Authenticatable
         'password',
         'avatar',
     ];
+    protected $primaryKey = 'id';
     protected $hidden = [
         'password', 'remember_token',
     ];
@@ -25,7 +26,7 @@ class User extends Authenticatable
         return $this->hasMany('shoes\Comment', 'id_user', 'id');
     }
     public function user_roles() {
-        return $this->hasMany('shoes\User', 'id_user', 'id');
+        return $this->hasOne('shoes\User', 'id', 'id');
     }
     public function bills() {
         return $this->hasMany('shoes\Bill', 'id_user', 'id');

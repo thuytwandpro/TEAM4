@@ -10,8 +10,9 @@
 | contains the "web" middleware group. Now create something great!
 |
 */
-
-Route::get('/shoes', ['uses' => 'HomeController@index']);
+// trang bán hàng
+Route::get('/', ['uses' => 'HomeController@index']);
+Route::get('/shoes', ['uses' => 'HomeController@index', 'as' => 'shoes.index']);
 
 Route::get('/shoes/contacts', ['uses' => 'HomeController@contact']);
 
@@ -50,10 +51,11 @@ Route::group(['prefix' => '/shoes/admin','middleware'=>['adminlogin']], function
 	});
 
     Route::group(['prefix' => 'products'], function() {
-        Route::get('products', function() {
-            return redirect('index');
-        });
-        Route::resource('products', 'ProductController');
+        Route::get('danhsach', 'ProductController@getDanhSach')->name('products.danhsach');
+
+        Route::get('them','ProductController@getThem')->name('products.them');
+        Route::post('them','ProductController@postThem');
+
     });
 
 	Route::group(['prefix' => 'sales'], function() {
@@ -115,6 +117,7 @@ Route::group(['prefix' => '/shoes/admin','middleware'=>['adminlogin']], function
 			return redirect('statistics');
 		});
 		Route::resource('statistics', 'StatisticsController');
+        Route::get('/thongke','StatisticsController@getThongke');
 	});
 
 });

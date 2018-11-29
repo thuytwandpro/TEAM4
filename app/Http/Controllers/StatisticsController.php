@@ -3,6 +3,7 @@
 namespace shoes\Http\Controllers;
 
 use Illuminate\Http\Request;
+use shoes\Bill;
 
 class StatisticsController extends Controller
 {
@@ -80,5 +81,11 @@ class StatisticsController extends Controller
     public function destroy($id)
     {
         //
+    }
+    public function getThongke(Request $request)
+    {
+        $bill = Bill::where('id', 'like', '%'.$request->key.'%')->orwhere('name', 'like', '%'.$request->key.'%')
+            ->orwhere('username', 'like', '%'.$request->key.'%')->orwhere('email', 'like', '%'.$request->key.'%')->orwhere('phone', 'like', '%'.$request->key.'%')->orwhere('address', 'like', '%'.$request->key.'%')->paginate(5);
+        return view('admin.statistics.thongke', compact('users'));
     }
 }

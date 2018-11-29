@@ -71,7 +71,7 @@
                         <div class="checkbox">
                             @foreach($roles as $role)
                                 <label style="text-transform: capitalize">
-                                    <input type="checkbox" name="role" value="{{$role->id}}"
+                                    <input type="radio" name="role" value="{{$role->id}}"
                                            @foreach($users->roles as $itemsub)
                                                 @if($itemsub->id == $role->id)
                                                    checked

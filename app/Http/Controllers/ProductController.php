@@ -3,6 +3,9 @@
 namespace shoes\Http\Controllers;
 
 use Illuminate\Http\Request;
+use shoes\Product;
+use shoes\Category;
+use shoes\Sale;
 use Validator;
 use Auth;
 
@@ -14,20 +17,31 @@ class ProductController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function __construct()
-    {
-        $this->middleware('admin')->only('destroy');
-    }
-    public function index()
-    {
-        return view('admin.products.list_product');
-    }
+//    public function __construct()
+//    {
+//        $this->middleware('admin')->only('destroy');
+//    }
+//    public function index()
+//    {
+//        return view('admin.products.list_product');
+//    }
 
     /**
      * Show the form for creating a new resource.
      *
      * @return \Illuminate\Http\Response
      */
+    public function getDanhSach()
+    {
+        $products = Product::orderBy('created_at', 'DESC')->paginate(5);
+        return view('admin.products.list_product', compact('products'));
+    }
+    public function getThem ()
+    {
+        $sale = Sale::all();
+        $category = Category::all();
+        return view('admin.products.add_product',compact('category','sale'));
+    }
     public function create()
     {
         //

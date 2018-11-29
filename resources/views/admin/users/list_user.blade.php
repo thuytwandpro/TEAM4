@@ -20,7 +20,7 @@
                 <!-- /.box -->
                 <div class="box">
                     <div class="box-header" style="margin-top: 25px;">
-                        <h3 class="box-title" style="margin-left: 400PX; font-size: 200%; color: #FF0000;">DANH SÁCH NHÂN VIÊN</h3>
+                        <h3 class="box-title" style="margin-left: 400PX; font-size: 200%; color: #FF0000;">DANH SÁCH THÀNH VIÊN</h3>
                     </div>
                     <form action="{{asset('/shoes/admin/users/timkiem') }}" method="get" class="search">
                         <input type="hidden" name="_token" value="{{ csrf_token() }}" >
@@ -39,7 +39,6 @@
                                 <tr style="font-size: medium; color: blue">
                                     <th>#</th>
                                     <th>Tên</th>
-                                    <th>Tên đăng nhập</th>
                                     <th>Email</th>
                                     <th>Số điện thoại</th>
                                     <th>Địa chỉ</th>
@@ -54,13 +53,12 @@
                                     <tr>
                                         <td>{{ $item}}</td>
                                         <td>{{$user["name"] }} </td>
-                                        <td>{{ $user["username"] }}</td>
                                         <td>{{ $user["email"] }}</td>
                                         <td>{{ $user["phone"] }}</td>
                                         <td>{{ $user["address"] }}</td>
                                         <td>
                                             @if(!empty($user->avatar))
-                                                <img width="100px" src="admin/avatar/{{$user->avatar}}">
+                                                <img height="100em" width="auto" src="admin/avatar/{{$user->avatar}}">
                                             @endif
                                         </td>
                                         <td>
