@@ -36,7 +36,13 @@ class AdminController extends Controller
             'email' => $request['email'],
             'password' => $request['password'],
         ];
-        if(Auth::attempt($credentials)){
+        if (Auth::attempt($credentials)) {
+            $roles = Auth::user()->roles;
+            foreach ($roles as $role) {
+                if ($role->id == ROLE_SALE) {
+                    return redirect()->route('getsale');
+                }
+            }
             return redirect('/shoes/admin/home/index');
         }
         return redirect()->back()->withInput(Input::all())->with('thongbao','Đăng nhập không thành công');
