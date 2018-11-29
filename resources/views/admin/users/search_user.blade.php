@@ -22,6 +22,18 @@
                         <div class="box-header" style="margin-top: 25px;">
                             <h3 class="box-title" style="margin-left: 400PX; font-size: 200%; color: #FF0000;">DANH SÁCH NHÂN VIÊN</h3>
                         </div>
+                        <form action="{{asset('/shoes/admin/users/timkiem') }}" method="get" class="search">
+                            <input type="hidden" name="_token" value="{{ csrf_token() }}" >
+                            <div class="input-group" style="width: 260px; margin-left: 800px; background: silver">
+                                <input type="text" name="key" class="form-control" placeholder="Tìm kiếm...">
+                                <span class="input-group-btn">
+                                <button type="submit" name="search" id="search-btn" class="btn btn-flat">
+                                    <i class="fa fa-search"></i>
+                                </button>
+                            </span>
+                            </div>
+                        </form>
+                        <div class="panel-heading" style=" font-family: Helvetica, Arial, Tahoma, sans-serif; color: blue;"> Tìm thấy: {{count($users)}} nhân viên</div>
                         <div class="box-body">
                             <table id="example1" class="table table-bordered table-striped">
                                 <thead>

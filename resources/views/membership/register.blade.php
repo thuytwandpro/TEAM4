@@ -9,7 +9,7 @@
                 <form action="{{action('HomeController@postRegister')}}" method="post">
                     <input type="hidden" name="_token" value="{{csrf_token()}}">
                     <div class="form-group has-feedback">
-                        <label>Tên:</label>
+                        <label>Tên:<span class="text-danger">*</span></label>
                         <input type="text" class="form-control" placeholder="Nhập tên" name="name" value="{{old('name')}}">
                         <span class="glyphicon glyphicon-user form-control-feedback"></span>
                         @if ($errors->has('name'))
@@ -19,7 +19,7 @@
                         @endif
                     </div>
                     <div class="form-group has-feedback">
-                        <label>Tên đăng nhập:</label>
+                        <label>Tên đăng nhập:<span class="text-danger">*</span></label>
                         <input type="text" class="form-control" placeholder="Nhập tên đăng nhập" name="username" value="{{old('username')}}">
                         <span class="glyphicon glyphicon-user form-control-feedback"></span>
                         @if ($errors->has('username'))
@@ -29,7 +29,7 @@
                         @endif
                     </div>
                     <div class="form-group has-feedback">
-                        <label>Email: </label>
+                        <label>Email: <span class="text-danger">*</span></label>
                         <input type="email" class="form-control" placeholder="Email" name="email" value="{{old('email')}}">
                         <span class="glyphicon glyphicon-envelope form-control-feedback"></span>
                         @if ($errors->has('email'))
@@ -39,7 +39,7 @@
                         @endif
                     </div>
                     <div class="form-group has-feedback">
-                        <label>Mật khẩu: </label>
+                        <label>Mật khẩu:<span class="text-danger">*</span> </label>
                         <input type="password" class="form-control" placeholder="Nhập mật khẩu" name="password">
                         <span class="glyphicon glyphicon-lock form-control-feedback"></span>
                         @if ($errors->has('password'))
@@ -50,7 +50,7 @@
                     </div>
                     <div class="form-group has-feedback">
                         <input type="password" class="form-control" placeholder="Nhập lại mật khẩu" name="passwordAgain">
-                        <span class="glyphicon glyphicon-log-in form-control-feedback"></span>
+                        <span class="glyphicon glyphicon-lock form-control-feedback"></span>
                         @if ($errors->has('passwordAgain'))
                             <span class="invalid-feedback" role="alert" style="color: red; font-size: small">
                         <strong>{{ $errors->first('passwordAgain') }}</strong>
@@ -58,7 +58,7 @@
                         @endif
                     </div>
                     <div class="form-group has-feedback">
-                        <label>Số điện thoại: </label>
+                        <label>Số điện thoại: <span class="text-danger">*</span></label>
                         <input type="number" class="form-control" placeholder="Nhập số điện thoại" name="phone" value="{{old('phone')}}">
                         <span class="glyphicon glyphicon-earphone form-control-feedback"></span>
                         @if ($errors->has('phone'))
@@ -68,7 +68,7 @@
                         @endif
                     </div>
                     <div class="form-group has-feedback">
-                        <label>Địa chỉ: </label>
+                        <label>Địa chỉ: <span class="text-danger">*</span></label>
                         <input type="text" class="form-control" placeholder="Nhập địa chỉ" name="address" value="{{old('address')}}">
                         <span class="glyphicon glyphicon-home form-control-feedback"></span>
                         @if ($errors->has('address'))
@@ -77,13 +77,6 @@
                              </span>
                         @endif
                     </div>
-                    {{--<div class="form-group has-feedback">--}}
-                        {{--<div class="checkbox">--}}
-                                {{--<label style="text-transform: capitalize">--}}
-                                    {{--<input type="radio" name="role" value="{{$roles->id=3}}" checked disabled> Khách Hàng<br>--}}
-                                {{--</label>--}}
-                        {{--</div>--}}
-                    {{--</div>--}}
                     <div class="row">
                         <div class="col-xs-4">
                             <button type="submit" class="btn btn-primary btn-block btn-flat">Đăng ký</button>

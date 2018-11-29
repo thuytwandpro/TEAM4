@@ -1,5 +1,5 @@
 <header class="main-header">
-    <a href="index2.html" class="logo">
+    <a href="shoes/admin/home/index" class="logo">
         <span class="logo-mini"><b>A</b>LT</span>
         <span class="logo-lg"><b>Shoes</b>PTY</span>
     </a>
@@ -23,7 +23,7 @@
                     <ul class="dropdown-menu">
                         <li class="user-header">
                             <img src="admin/avatar/@if(Auth::user()){{Auth::user()->avatar}}@endif" class="img-circle">
-                            <p>
+                            <p>Xin chào 
                                 @if(Auth::user())
                                     {{Auth::user()->username}}
                                 @endif

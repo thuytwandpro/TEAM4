@@ -64,11 +64,11 @@
                     </div>
                     <div class="box-body">
                         <div class="form-group">
-                            <label for="exampleInputFile">Quyền người dùng</label>
+                            <label for="exampleInputFile">Quyền người dùng<span class="text-danger">*</span></label>
                             <div class="checkbox">
                                 @foreach($roles as $role)
                                 <label style="text-transform: capitalize">
-                                    <input type="checkbox" name="role" value="{{$role->id}}" >{{$role->name}}<br>
+                                    <input type="radio" name="role" value="{{$role->id}}" checked>{{$role->name}}<br>
                                 </label>
                                     @endforeach
                             </div>
