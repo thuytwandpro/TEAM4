@@ -80,7 +80,7 @@
                 </span>
                 </a>
                 <ul class="treeview-menu">
-                    <li><a href="{{route('statistics.index')}}"><i class="fa fa-circle-o text-red"></i> Thống kê sản phẩm</a></li>
+                    {{--<li><a href="{{route('statistics.index')}}"><i class="fa fa-circle-o text-red"></i> Thống kê sản phẩm</a></li>--}}
                     <li><a href="{{route('statistics.index')}}"><i class="fa fa-circle-o text-yellow"></i> Thống kê đơn hàng</a></li>
                 </ul>
             </li>

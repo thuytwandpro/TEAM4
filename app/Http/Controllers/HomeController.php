@@ -15,7 +15,7 @@ use Cart;
 
 class HomeController extends Controller
 {
-    /**
+    /** Hiển thị giao diện bán hàng
      * Show the application dashboard.
      *
      * @return \Illuminate\Http\Response
@@ -29,12 +29,20 @@ class HomeController extends Controller
         return view('home.index', compact('pro', 'cate', 'sale', 'prod'));
     }
 
+    /** Đăng ký khách hàng
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
+     */
     function getRegister()
     {
         $roles = Role::all();
         return view('.membership.register')->with('roles', $roles);
     }
 
+    /** Đăng ký khách hàng
+     * @param Request $request
+     * @return \Illuminate\Http\RedirectResponse
+     * @throws \Illuminate\Validation\ValidationException
+     */
     function postRegister(Request $request)
     {
         $this->validate($request, [
@@ -115,6 +123,10 @@ class HomeController extends Controller
         return view('home.contact');
     }
 
+    /** Hiển thị trang chi tiết
+     * @param $id
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
+     */
     public function single($id)
     {
         $pro =Product::find($id);
@@ -128,6 +140,10 @@ class HomeController extends Controller
         return view('home.category', compact('cate', 'detail'));
     }
 
+    /** trang giảm giá
+     * @param $id
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
+     */
     public function discount ($id)
     {
         $sale =Sale::find($id);
@@ -161,6 +177,10 @@ class HomeController extends Controller
         return view('home.checkout');
     }
 
+    /**
+     * @param $id
+     * @return \Illuminate\Http\RedirectResponse|\Illuminate\Routing\Redirector
+     */
     public function addToCart($id)
     {
         $pro = Product::find($id);

@@ -57,18 +57,18 @@
                                     </td>
                                     <td>
                                         @if(!empty($pro->img))
-                                            <img width="100px" src="admin/images/sanpham/{{$pro->img}}">
+                                            <img width="100px" src="pages/image/{{$pro->img}}">
                                         @endif
                                     </td>
                                     <td>{{$pro->size}}</td>
                                     <td>{{$pro->gender}}</td>
                                     <td class="center">
-                                        <a href="" class="btn btn-warning">
+                                        <a href="products/sua/{{$pro->id}}" class="btn btn-warning">
                                             <i class="fa fa-pencil" aria-hidden="true"></i>
                                         </a>
                                     </td>
                                     <td>
-                                        <a href="javascript:;" class="btn btn-danger">
+                                        <a href="javascript:;" class="btn btn-danger" onclick="if(confirm('Bạn có chắc chắn muốn xóa')){location.href='products/xoa/{{$pro->id}}'}">
                                             <i class="fa fa-trash-o" aria-hidden="true"></i>
                                         </a>
                                     </td>
@@ -96,17 +96,4 @@
 @section('script')
 	<script src="admin_asset/bower_components/datatables.net/js/jquery.dataTables.min.js"></script>
 	<script src="admin_asset/bower_components/datatables.net-bs/js/dataTables.bootstrap.min.js"></script>
-	{{--<script>--}}
-    	{{--$(function () {--}}
-    	{{--$('#example1').DataTable()--}}
-    	{{--$('#example2').DataTable({--}}
-    	{{--'paging'      : true,--}}
-    	{{--'lengthChange': false,--}}
-    	{{--'searching'   : false,--}}
-    	{{--'ordering'    : true,--}}
-    	{{--'info'        : true,--}}
-    	{{--'autoWidth'   : false--}}
-    	{{--})--}}
-    	{{--})--}}
-    {{--</script>--}}
 @endsection
