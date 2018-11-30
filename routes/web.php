@@ -55,25 +55,6 @@ Route::group(['prefix' => '/shoes/admin', 'middleware' => ['admin']], function (
         Route::resource('home', 'AdminController');
     });
 
-    Route::group(['prefix' => 'categories'], function () {
-        Route::get('danhsach', 'CategoryController@getDanhSach')->name('category.danhsach');
-
-        Route::get('them', 'CategoryController@getThem')->name('category.them');
-        Route::post('them', 'CategoryController@postThem');
-
-        Route::get('sua/{id}', 'CategoryController@getSua');
-        Route::post('sua/{id}', 'CategoryController@postSua');
-
-        Route::get('xoa/{id}', 'CategoryController@getXoa');
-    });
-
-    Route::group(['prefix' => 'products'], function () {
-        Route::get('danhsach', 'ProductController@getDanhSach')->name('products.danhsach');
-
-        Route::get('them', 'ProductController@getThem')->name('products.them');
-        Route::post('them', 'ProductController@postThem');
-    });
-
     Route::group(['prefix' => 'bills'], function () {
         Route::get('', ['as' => 'getbill', 'uses' => 'BillController@getList']);
         Route::get('/del/{id}', ['as' => 'getdelbill', 'uses' => 'BillController@getDel'])->where('id', '[0-9]+');
@@ -134,4 +115,27 @@ Route::group(['prefix' => '/shoes/admin/sales', 'middleware' => ['sale']], funct
 
     Route::delete('/destroy/{id}', ['as' => 'getdelete', 'uses' => 'SaleController@destroy']);
     Route::get('/timkiem', ['as' => 'timkiem', 'uses' => 'SaleController@getSearch']);
+});
+Route::group(['prefix' => 'products', 'middleware' => ['sale']], function () {
+    Route::get('danhsach', 'ProductController@getDanhSach')->name('products.danhsach');
+
+    Route::get('them', 'ProductController@getThem')->name('products.them');
+    Route::post('them', 'ProductController@postThem');
+
+    Route::get('sua/{id}', 'ProductController@getSua');
+    Route::post('sua/{id}', 'ProductController@postSua');
+
+    Route::get('xoa/{id}', 'ProductController@getXoa');
+});
+Route::group(['prefix' => 'categories','middleware' => ['sale']], function () {
+
+    Route::get('danhsach', 'CategoryController@getDanhSach')->name('category.danhsach');
+
+    Route::get('them', 'CategoryController@getThem')->name('category.them');
+    Route::post('them', 'CategoryController@postThem');
+
+    Route::get('sua/{id}', 'CategoryController@getSua');
+    Route::post('sua/{id}', 'CategoryController@postSua');
+
+    Route::get('xoa/{id}', 'CategoryController@getXoa');
 });

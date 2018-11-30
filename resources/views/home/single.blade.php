@@ -60,7 +60,7 @@
 
 							<div class="single_page">
 								<p>
-									{{$pro->content}}
+									{!! strip_tags($pro["content"])!!}
 								</p>
 							</div>
 						</div>
@@ -108,7 +108,7 @@
 					<div class="product-shoe-info shoe">
 						<div class="men-pro-item">
 							<div class="men-thumb-item">
-								<img src="pages/image/{{$dl->img}}" alt="">
+								<img src="pages/image/{{$dl->img}}" alt="" width="100%" height="250px">
 								<div class="men-cart-pro">
 									<div class="inner-men-cart-pro">
 										<a href="shoes/single/{{$dl->id}}" class="link-product-add-cart">Quick View</a>
@@ -116,8 +116,8 @@
 								</div>
 							</div>
 							<div class="item-info-product">
-								<h4>
-									<a href="shoes/single/{{$dl->id}}">{{$dl->name}}</a>
+								<h4 style="height: 33px; margin-top: 10px;">
+									<a href="shoes/single/{{$dl->id}}" style="font-size: 80%;">{{$dl->name}}</a>
 								</h4>
 								<div class="info-product-price">
 									<div class="grid_meta">
