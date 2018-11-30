@@ -12,75 +12,59 @@ class CategoryController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+//    public function index()
+//    {
+//        $category = Category::all();
+//         return view('admin.categories.list_category',['category'=>$category]);
+//    }
+    public function getDanhSach()
     {
-        $category = Category::all();
-         return view('admin.categories.list_category',['category'=>$category]);
+        $category = Category::orderBy('created_at', 'DESC')->paginate(5);
+        return view('admin.categories.list_category', compact('category'));
+    }
+    public  function  getThem()
+    {
+        return view('admin.categories.add_category');
     }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
+    public  function  postThem(Request $request)
     {
-        //
+        $this->validate($request, [
+            'name' => 'required|unique:categories,name',
+        ], [
+            'name.required' => 'Bạn buộc phải nhập tên danh mục',
+            'name.unique' => 'Tên danh mục đã tồn tại',
+        ]);
+        $category = new Category();
+        $category->name = $request->name;
+        $category->slug = str_slug($request->name);
+        $category->save();
+        return redirect('shoes/admin/categories/danhsach')->with('thongbao', 'Bạn thêm danh mục sản phẩm thành công');
     }
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
-    public function store(Request $request)
+    public function getSua($id)
     {
-        //
+        $category = Category::find($id);
+        return view('admin.categories.edit_category', compact('category'));
+    }
+    public function postSua(Request $request, $id)
+    {
+        $this->validate($request, [
+            'name' => 'required',
+        ], [
+            'name.required' => 'Bạn buộc phải nhập tên danh mục',
+        ]);
+        $category = Category::find($id);
+        $category->name = $request->name;
+        $category->slug = str_slug($request->name);
+        $category->save();
+        return redirect('shoes/admin/categories/danhsach')->with('thongbao', 'Bạn sửa danh mục sản phẩm thành công');
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function show($id)
+    public function getXoa($id)
     {
-        //
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function edit($id)
-    {
-        //
-    }
-
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, $id)
-    {
-        //
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy($id)
-    {
-        //
+        $category = Category::find($id);
+        $category->delete();
+        return redirect('shoes/admin/categories/danhsach')->with('thongbao', 'Bạn đã xóa thành công');
     }
 }

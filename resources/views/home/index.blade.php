@@ -112,7 +112,7 @@
 													</ul>
 												</div>
 												<div class="shoe single-item hvr-outline-out" style="width: 40px; height: 35px;padding-top: 11px; background: black;">
-													<a href="{{asset('/shoes/checkout')}}">
+													<a href="{{route('addToCart', $item->id)}}">
 														<i class="fa fa-cart-plus fa-lg" style="color: white;" aria-hidden="true"></i>
 													</a>
 												</div>

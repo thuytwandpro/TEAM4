@@ -14,6 +14,8 @@
 Route::get('/', ['uses' => 'HomeController@index']);
 Route::get('/shoes', ['uses' => 'HomeController@index', 'as' => 'shoes.index']);
 
+
+
 Route::get('/shoes/contacts', ['uses' => 'HomeController@contact']);
 
 Route::get('/shoes/single/{id}', ['uses' => 'HomeController@single']);
@@ -32,7 +34,11 @@ Route::post('/shoes/login', ['uses' => 'HomeController@postLogin']);
 
 Route::get('/shoes/about', ['uses' => 'HomeController@about']);
 
-Route::get('/shoes/checkout', ['uses' => 'HomeController@dathang']);
+Route::get('/shoes/updateCart',['uses'=>'HomeController@updateCart', 'as' => 'updateCart']);
+Route::get('/shoes/checkout', ['uses' => 'HomeController@checkout','as' => 'checkout']);
+Route::get('/shoes/addCart/{id}',['uses' => 'HomeController@addToCart', 'as' => 'addToCart']);
+Route::get('/shoe/removeCart/{rowId}',['uses' => 'HomeController@removeCart', 'as' => 'removeCart']);
+
 Route::get('/shoes/logout', ['uses' => 'HomeController@logout']);
 
 // Trang quan tri Admin
@@ -50,10 +56,15 @@ Route::group(['prefix' => '/shoes/admin', 'middleware' => ['admin']], function (
     });
 
     Route::group(['prefix' => 'categories'], function () {
-        Route::get('categories', function () {
-            return redirect('categories');
-        });
-        Route::resource('categories', 'CategoryController');
+        Route::get('danhsach', 'CategoryController@getDanhSach')->name('category.danhsach');
+
+        Route::get('them', 'CategoryController@getThem')->name('category.them');
+        Route::post('them', 'CategoryController@postThem');
+
+        Route::get('sua/{id}', 'CategoryController@getSua');
+        Route::post('sua/{id}', 'CategoryController@postSua');
+
+        Route::get('xoa/{id}', 'CategoryController@getXoa');
     });
 
     Route::group(['prefix' => 'products'], function () {
@@ -61,7 +72,6 @@ Route::group(['prefix' => '/shoes/admin', 'middleware' => ['admin']], function (
 
         Route::get('them', 'ProductController@getThem')->name('products.them');
         Route::post('them', 'ProductController@postThem');
-
     });
 
     Route::group(['prefix' => 'bills'], function () {

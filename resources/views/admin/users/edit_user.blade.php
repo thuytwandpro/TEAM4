@@ -86,7 +86,7 @@
                 <!-- /.box-body -->
 
                 <div class="box-footer">
-                    <button type="submit" class="btn btn-primary" style="margin-left: 100px">Submit</button>
+                    <button type="submit" class="btn btn-primary" style="margin-left: 100px">Update</button>
                 </div>
             </form>
         </div>

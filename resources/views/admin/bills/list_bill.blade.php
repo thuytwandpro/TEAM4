@@ -48,27 +48,28 @@
                         <table  class="table table-bordered table-striped">
                             <thead>
                                 <tr>
-                                    <th>ID</th>
-                                    <th>Customer_name</th>
-                                    <th>Address</th>
+                                    <th>#</th>
+                                    <th>Tên khách hàng</th>
+                                    <th>Địa chỉ</th>
                                     <th>Email</th>
                                     <th>Phone</th>
                                     <th>Ngày đặt</th>
                                     <th>Total</th>
                                     <th>Trạng thái</th>
-                                    <th>Action</th>
+                                    <th>Chi tiết</th>
+                                    <th>Xóa</th>
                                 </tr>
                             </thead>
                             <tbody>
-                                @foreach($data as $row)
+                                @foreach($data as $i =>$row)
                                 <tr style="height: 50px;">
-                                    <td>{!!$row->id!!}</td>
-                                    <td>{!!$row->customer_name!!}</td>
-                                    <td>{!!$row->address!!}</td>
-                                    <td>{!!$row->email!!}</td> 
-                                    <td>{!!$row->phone!!}</td>                                           
-                                    <td>{!!$row->created_at!!}</td>
-                                    <td>{!!$row->total!!} VNĐ</td>
+                                    <td>{{$i}}</td>
+                                    <td>{{$row->customer_name}}</td>
+                                    <td>{{$row->address}}</td>
+                                    <td>{{$row->email}}</td>
+                                    <td>{{$row->phone}}</td>
+                                    <td>{{$row->created_at}}</td>
+                                    <td>{{$row->total}} VNĐ</td>
                                     <td>
                                         @if($row->status ==0)
                                             <span style="color:#d35400;">Chưa xác nhận</span>
@@ -77,10 +78,10 @@
                                         @endif
                                     </td>
                                     <td>
-                                        <a class="btn btn-warning" href="{!!url('shoes/admin/bills/detail/'.$row->id)!!}" title="Chi tiết">Detail  </a> &nbsp;
+                                        <a class="btn btn-warning" href="{!!url('shoes/admin/bills/detail/'.$row->id)!!}" title="Chi tiết"><i class="fa fa-info-circle" aria-hidden="true"></i>  </a> &nbsp;
                                     </td>
                                     <td>
-                                        <a class="btn btn-danger" href="{!!url('shoes/admin/bills/del/'.$row->id)!!}"  title="Xóa" onclick="return xacnhan('Xóa danh mục này ?')"> Delete</a>
+                                        <a class="btn btn-danger" href="{!!url('shoes/admin/bills/del/'.$row->id)!!}"  title="Xóa" onclick="return xacnhan('Xóa danh mục này ?')"> <i class="fa fa-trash-o" aria-hidden="true"></i></a>
                                     </td>
                                 </tr>
                                 @endforeach

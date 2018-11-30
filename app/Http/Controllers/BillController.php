@@ -77,7 +77,7 @@ class BillController extends Controller
     {
         $detailbill = DetailBill::where('id',$id)->first();
 
-        if ($bill->status ==1) {
+        if ($detailbill->status ==1) {
             return redirect()->back()
             ->with(['flash_level'=>'result_msg','flash_massage'=>'Không thể hủy đơn hàng số: '.$id.' vì đã được xác nhận!']);
         } else {
@@ -95,9 +95,6 @@ class BillController extends Controller
         return view('admin.bills.search', compact('bill'));
     }
 }
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
+
  
 

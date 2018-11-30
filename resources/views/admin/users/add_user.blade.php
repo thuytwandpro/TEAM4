@@ -58,7 +58,7 @@
                             <label for="exampleInputFile">Ảnh đại diện</label>
                             <div>
                                 <img src="" width="200" height="200" alt="Ảnh đại diện" id="avatar" style="display: none">
-                                <input type="file" id="exampleInputFile" name="avatar">
+                                <input type="file" id="exampleInputFile" name="avatar" value="{{old('avatar')}}">
                             </div>
                         </div>
                     </div>
@@ -78,7 +78,7 @@
                 <!-- /.box-body -->
 
                 <div class="box-footer">
-                    <button type="submit" class="btn btn-primary">Submit</button>
+                    <button type="submit" class="btn btn-primary">Add</button>
                 </div>
             </form>
         </div>
