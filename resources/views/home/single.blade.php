@@ -29,8 +29,10 @@
 				</div>
 				<div class="occasional">
 					<h5 style="font-weight: bold;">Giới Tính:
-						@if($pro->gender==1)
+						@if($pro->gender==0)
 						Nữ
+							@else
+							Nam
 						@endif
 					</h5>
 

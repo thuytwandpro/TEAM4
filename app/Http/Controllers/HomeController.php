@@ -11,6 +11,7 @@ use shoes\Sale;
 use Validator;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Input;
+use Cart;
 
 class HomeController extends Controller
 {
@@ -123,7 +124,7 @@ class HomeController extends Controller
     public function category ($id)
     {
         $cate =Category::find($id);
-        $detail = Product::where('id',$id)->get();
+        $detail = Product::where('id_category',$id)->get();
         return view('home.category', compact('cate', 'detail'));
     }
 
@@ -144,9 +145,10 @@ class HomeController extends Controller
             ->orwhere('price', 'like', '%' . $request->key . '%')->orwhere('size', 'like', '%' . $request->key . '%')->orwhere('gender', 'like', '%' . $request->key . '%')->paginate(5);
         return view('home.search', compact('products', 'cate','prod','sale','pro'));
     }
-    public function checkout(){
-
-        return redirect('/shoes');
+    public function checkout()
+    {
+        $cart = Cart::content();
+        return view('home.checkout', compact('cart'));
     }
 
     public function logout(){
@@ -157,5 +159,33 @@ class HomeController extends Controller
     public function dathang() 
     {
         return view('home.checkout');
+    }
+
+    public function addToCart($id)
+    {
+        $pro = Product::find($id);
+        Cart::add(
+            [
+                'id'=> $id,
+                'name'=> $pro->name,
+                'qty'=>1,
+                'price'=>$pro->price -($pro->price *($pro->sale->percent /100)),
+                'options'=>['img'=>$pro->img]
+            ]
+        );
+
+        return redirect(route('shoes.index'));
+    }
+
+    public function updateCart(Request $request)
+    {
+        Cart::update($request['rowId'],$request['qty']);
+        return back();
+    }
+
+    public function removeCart($rowId)
+    {
+        Cart::remove($rowId);
+        return back();
     }
 }

@@ -36,70 +36,57 @@ class ProductController extends Controller
         $products = Product::orderBy('created_at', 'DESC')->paginate(5);
         return view('admin.products.list_product', compact('products'));
     }
+
+    /**
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
+     */
     public function getThem ()
     {
         $sale = Sale::all();
         $category = Category::all();
         return view('admin.products.add_product',compact('category','sale'));
     }
-    public function create()
-    {
-        //
-    }
 
     /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
+     * @param Request $request
+     * @return \Illuminate\Http\RedirectResponse
+     * @throws \Illuminate\Validation\ValidationException
      */
-    public function store(Request $request)
+    public function postThem(Request $request)
     {
-        //
+        $this->validate($request, [
+            'name' => 'required|min:3',
+
+        ], [
+            'name.required' => 'Bạn chưa nhập tên sản phẩm',
+            'name.min' => 'Tên sản phẩm phải có ít nhất 3 ký tự',
+        ]);
+        $pro = new Product();
+        $pro->name = $request->name;
+        $pro->id_category = $request->id_category;
+        $pro->id_sale = $request->id_sale;
+        $pro->quantity = $request->quantity;
+        $pro->price = $request->price;
+        $pro->content = $request->contents;
+        $pro->origin = $request->size;
+        $pro->size = $request->address;
+        $pro->gender = $request->gender;
+        $pro->slug = str_slug($request->name);
+
+        if ($request->hasFile('img')) {
+            $file = $request->file('img');
+            $name = $file->getClientOriginalName();
+            $img = str_random(4) . "_" . $name;
+            while (file_exists("pages/image" . $img)) {
+                $img = str_random(4) . "_" . $name;
+            }
+            $file->move("pages/image" , $img);
+            $pro->img = $img;
+        } else {
+            $pro->img = "";
+        }
+        $pro->save();
+        return redirect('shoes/admin/products/danhsach')->with('thongbao', 'Bạn thêm thành công');
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function show($id)
-    {
-        //
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function edit($id)
-    {
-        //
-    }
-
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, $id)
-    {
-        //
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy($id)
-    {
-        //
-    }
 }

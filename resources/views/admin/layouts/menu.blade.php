@@ -20,15 +20,15 @@
                 </ul>
             </li>
             <li class="treeview">
-                <a href="{{route('categories.index')}}">
+                <a href="{{route('category.danhsach')}}">
                 <i class="fa fa-edit"></i> <span>Danh mục</span>
                 <span class="pull-right-container">
                     <i class="fa fa-angle-left pull-right"></i>
                 </span>
                 </a>
                 <ul class="treeview-menu">
-                    <li><a href="{{route('categories.index')}}"><i class="fa fa-circle-o text-red"></i> Danh sách</a></li>
-                    <li><a href="#"><i class="fa fa-circle-o text-yellow"></i> Thêm danh mục</a></li>
+                    <li><a href="{{route('category.danhsach')}}"><i class="fa fa-circle-o text-red"></i> Danh sách</a></li>
+                    <li><a href="{{route('category.them')}}"><i class="fa fa-circle-o text-yellow"></i> Thêm danh mục</a></li>
                 </ul>
             </li>
             <li class="treeview">

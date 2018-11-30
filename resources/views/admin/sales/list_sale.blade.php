@@ -53,26 +53,27 @@
                         <table class="table table-bordered table-striped">
                             <thead>
                                 <tr>
-                                    <th>ID</th>
-                                    <th>Sales</th>
-                                    <th>Start_date</th>
-                                    <th>End_date</th>
-                                    <th colspan="2">Action</th>
+                                    <th>#</th>
+                                    <th>Phầm trăm giảm giá</th>
+                                    <th>Ngày bắt đầu</th>
+                                    <th>Ngày kết thúc</th>
+                                    <th>Sửa</th>
+                                    <th>Xóa</th>
                                 </tr>
                             </thead>
                             <tbody>
-                               @foreach ($sales as $sale)
+                               @foreach ($sales as $i => $sale)
                                 <tr>
-                                    <td>{{$sale->id}}</td>
+                                    <td>{{$i}}</td>
                                     <td>{{$sale->percent}}%</td>
                                     <td>{{$sale->start_date}}</td>
                                     <td>{{$sale->end_date}}</td>
-                                    <td><a href="{{asset('/shoes/admin/sales/edit/'.$sale->id)}}" class="btn btn-warning">Edit</a></td>
+                                    <td><a href="{{asset('/shoes/admin/sales/edit/'.$sale->id)}}" class="btn btn-warning"><i class="fa fa-pencil" aria-hidden="true"></i></a></td>
                                     <td>
                                         <form action="{{asset('/shoes/admin/sales/destroy/'.$sale->id)}}" method="POST" onsubmit="return confirm('Are you sure?');">
                                             <input type="hidden" name="_method" value="DELETE">
                                             <input type="hidden" name="_token" value="{{ csrf_token() }}">
-                                            <button type="submit" class="btn btn-danger">Delete</button>
+                                            <button type="submit" class="btn btn-danger"><i class="fa fa-trash-o" aria-hidden="true"></i></button>
                                         </form>
                                     </td>
                                 </tr>

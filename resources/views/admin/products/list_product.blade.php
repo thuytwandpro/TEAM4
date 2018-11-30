@@ -63,7 +63,7 @@
                                     <td>{{$pro->size}}</td>
                                     <td>{{$pro->gender}}</td>
                                     <td class="center">
-                                        <a href="}" class="btn btn-warning">
+                                        <a href="" class="btn btn-warning">
                                             <i class="fa fa-pencil" aria-hidden="true"></i>
                                         </a>
                                     </td>

@@ -7,7 +7,7 @@
 	            <!-- cart details -->
 	            <div class="top_nav_right">
 	                <div class="shoecart shoecart2 cart cart box_1" style="width: 40px; height: 35px;padding-top: 10px; background: black;padding-left: 10px;">
-	                    <a href="{{asset('/shoes/checkout')}}">
+	                    <a href="{{route('checkout')}}">
 							<i class="fa fa-cart-plus fa-lg" style="color: white;" aria-hidden="true"></i>
 						</a>
 	                </div>
