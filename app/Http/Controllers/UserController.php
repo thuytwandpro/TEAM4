@@ -16,20 +16,9 @@ class UserController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-//    public function index()
-//    {
-////        $users = User::select('id','name','username', 'email', 'phone','address', 'created_at', 'updated_at')->orderBy('id', 'DESC')->get()->toArray();
-//        $users = User::orderBy('created_at', 'DESC')->paginate();
-//        return view('admin.users.list_user', compact('users'));
-//    }
+
     public function getDanhSach()
     {
-//        if(Auth::user()->user_roles->id_role == 3){
-//            return redirect('/shoes');
-//        }
-//        elseif (!Auth::check() || !Auth::user()->user_roles->id_role == 1) {
-//            return redirect('/shoes/admin/home/index');
-//        }
         $users = User::orderBy('created_at', 'DESC')->paginate(5);
         return view('admin.users.list_user', compact('users'));
     }

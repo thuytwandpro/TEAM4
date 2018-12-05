@@ -45,6 +45,8 @@
                                 </form>
                             </div>
                         </div>
+
+
                         <form action="{{asset('/shoes/admin/statistics/thongke') }}" method="get" class="search">
                             <div class="box box-default">
                                 <div class="box-header with-border">
@@ -53,6 +55,7 @@
                                         <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus" style="font-size: 20px"></i></button>
                                     </div>
                                 </div>
+
                                 <div class="box-body">
                                     <div class="row">
                                         <div class="col-md-6">
@@ -63,7 +66,7 @@
                                                         <div class="input-group-addon">
                                                             <i class="fa fa-calendar"></i>
                                                         </div>
-                                                        <input type="date" value="1/11/2018" name="from" class="form-control pull-right" placeholder="From" id="from"  required=""z>
+                                                        <input type="date" value="1/11/2018" name="ngaydau" class="form-control pull-right" placeholder="From" id="from"  required=""z>
                                                     </div>
                                                 </div>
                                             </div>
@@ -76,11 +79,12 @@
                                                         <div class="input-group-addon">
                                                             <i class="fa fa-calendar"></i>
                                                         </div>
-                                                        <input type="date" value="2018/12/22" name="to" class="form-control pull-right" id="to" placeholder="To" required="">
+                                                        <input type="date" value="2018/12/22" name="ngaycuoi" class="form-control pull-right" id="to" placeholder="To" required="">
                                                     </div>
                                                 </div>
                                             </div>
                                         </div>
+
                                     </div>
                                 </div>
                                 <div class="box-footer">
@@ -95,23 +99,27 @@
                             <table id="example1" class="table table-bordered table-striped">
                                 <thead>
                                 <tr>
-                                    <th>Rendering engine</th>
-                                    <th>Browser</th>
-                                    <th>Platform(s)</th>
-                                    <th>Engine version</th>
-                                    <th>CSS grade</th>
+                                    <th>Tên Khách Hàng</th>
+                                    <th>Email</th>
+                                    <th>Địa chỉ</th>
+                                    <th>Số điện thoại</th>
+                                    <th>Tổng tiền</th>
+                                    <th>Ngày Tạo</th>
+
                                 </tr>
                                 </thead>
                                 <tbody>
-                                <tr>
-                                    <td>Trident</td>
-                                    <td>Internet
-                                        Explorer 4.0
-                                    </td>
-                                    <td>Win 95+</td>
-                                    <td> 4</td>
-                                    <td>X</td>
-                                </tr>
+                                @foreach ($bill as $item)
+                                    <tr>
+                                        <td>{{$item->customer_name}}</td>
+                                        <td>{{$item->email}}</td>
+                                        <td>{{$item->address}}</td>
+                                        <td>{{$item->phone}}</td>
+                                        <td>{{number_format($item["total"],0,",",".")}} VNĐ</td>
+                                        <td>{{$item->created_at}}</td>
+
+                                    </tr>
+                                @endforeach
 
                             </table>
                         </div>

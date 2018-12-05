@@ -40,7 +40,7 @@
 				</div>
 				<div class="occasion-cart">
 					<div class="shoe single-item single_page_b">
-                        <a href="{{asset('/shoes/checkout')}}">
+                        <a href="{{route('addToCart', $pro->id)}}">
                             <input type="submit" name="submit" value="Add to cart" class="button add">
                         </a>
 					</div>

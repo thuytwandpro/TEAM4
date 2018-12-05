@@ -45,7 +45,7 @@
 					@foreach($prod as $item)
 					<div class="special-sec1">
 						<div class="col-xs-4 img-deals">
-							<a href="shoes/single/{{$item->id}}"><img src="pages/image/{{$item->img}}" alt=""></a>
+							<a href="shoes/single/{{$item->id}}"><img src="pages/image/{{$item->img}}" alt="" width="61px" height="61px"></a>
 						</div>
 						<div class="col-xs-8 img-deal1">
 							<a href="shoes/single/{{$item->id}}"><h3>{{$item->name}}</h3></a>
@@ -68,11 +68,11 @@
 			<div class="left-ads-display col-md-9">
 				<div class="wrapper_top_shop">
 					<div class="col-md-6 shop_left">
-						<img src="pages/images/banner3.jpg" alt="">
+						<img src="pages/image/banner3.jpg" alt="">
 						<h6>40% off</h6>
 					</div>
 					<div class="col-md-6 shop_right">
-						<img src="pages/images/banner2.jpg" alt="">
+						<img src="pages/image/banner2.jpg" alt="">
 						<h6>50% off</h6>
 					</div>
 					<div class="clearfix"></div>
@@ -83,7 +83,7 @@
 								<div class="product-shoe-info shoe">
 									<div class="men-pro-item">
 										<div class="men-thumb-item">
-											<img src="pages/image/{{$item->img}}" alt="" width="100%" height="300px">
+											<img src="pages/image/{{$item->img}}" alt="" width="100%" height="250px">
 											<div class="men-cart-pro">
 												<div class="inner-men-cart-pro">
 													<a href="shoes/single/{{$item->id}}" class="link-product-add-cart">Quick View</a>
@@ -126,11 +126,11 @@
 					@endforeach
 					<!-- //product-sec1 -->
 					<div class="col-md-6 shop_left shp">
-						<img src="pages/images/banner4.jpg" alt="">
+						<img src="pages/image/banner4.jpg" alt="">
 						<h6>21% off</h6>
 					</div>
 					<div class="col-md-6 shop_right shp">
-						<img src="pages/images/banner1.jpg" alt="">
+						<img src="pages/image/banner1.jpg" alt="">
 						<h6>31% off</h6>
 					</div>
 					<div class="clearfix"></div>
@@ -158,64 +158,64 @@
 					<div class="item">
 						<div class="row">
 							<div class="col-md-3 col-sm-3 col-xs-3 slidering">
-								<div class="thumbnail"><img src="pages/images/g1.jpg" alt="Image" style="max-width:100%;"></div>
+								<div class="thumbnail"><img src="pages/image/g1.jpg" alt="Image" style="max-width:100%;"></div>
 							</div>
 							<div class="col-md-3 col-sm-3 col-xs-3 slidering">
-								<div class="thumbnail"><img src="pages/images/g2.jpg" alt="Image" style="max-width:100%;"></div>
+								<div class="thumbnail"><img src="pages/image/g2.jpg" alt="Image" style="max-width:100%;"></div>
 							</div>
 							<div class="col-md-3 col-sm-3 col-xs-3 slidering">
-								<div class="thumbnail"><img src="pages/images/g3.jpg" alt="Image" style="max-width:100%;"></div>
+								<div class="thumbnail"><img src="pages/image/g3.jpg" alt="Image" style="max-width:100%;"></div>
 							</div>
 							<div class="col-md-3 col-sm-3 col-xs-3 slidering">
-								<div class="thumbnail"><img src="pages/images/g4.jpg" alt="Image" style="max-width:100%;"></div>
+								<div class="thumbnail"><img src="pages/image/g4.jpg" alt="Image" style="max-width:100%;"></div>
 							</div>
 						</div>
 					</div>
 					<div class="item active">
 						<div class="row">
 							<div class="col-md-3 col-sm-3 col-xs-3 slidering">
-								<div class="thumbnail"><img src="pages/images/g5.jpg" alt="Image" style="max-width:100%;"></div>
+								<div class="thumbnail"><img src="pages/image/g5.jpg" alt="Image" style="max-width:100%;"></div>
 							</div>
 							<div class="col-md-3 col-sm-3 col-xs-3 slidering">
-								<div class="thumbnail"><img src="pages/images/g6.jpg" alt="Image" style="max-width:100%;"></div>
+								<div class="thumbnail"><img src="pages/image/g6.jpg" alt="Image" style="max-width:100%;"></div>
 							</div>
 							<div class="col-md-3 col-sm-3 col-xs-3 slidering">
-								<div class="thumbnail"><img src="pages/images/g2.jpg" alt="Image" style="max-width:100%;"></div>
+								<div class="thumbnail"><img src="pages/image/g2.jpg" alt="Image" style="max-width:100%;"></div>
 							</div>
 							<div class="col-md-3 col-sm-3 col-xs-3 slidering">
-								<div class="thumbnail"><img src="pages/images/g1.jpg" alt="Image" style="max-width:100%;"></div>
-							</div>
-						</div>
-					</div>
-					<div class="item">
-						<div class="row">
-							<div class="col-md-3 col-sm-3 col-xs-3 slidering">
-								<div class="thumbnail"><img src="pages/images/g1.jpg" alt="Image" style="max-width:100%;"></div>
-							</div>
-							<div class="col-md-3 col-sm-3 col-xs-3 slidering">
-								<div class="thumbnail"><img src="pages/images/g2.jpg" alt="Image" style="max-width:100%;"></div>
-							</div>
-							<div class="col-md-3 col-sm-3 col-xs-3 slidering">
-								<div class="thumbnail"><img src="pages/images/g3.jpg" alt="Image" style="max-width:100%;"></div>
-							</div>
-							<div class="col-md-3 col-sm-3 col-xs-3 slidering">
-								<div class="thumbnail"><img src="pages/images/g4.jpg" alt="Image" style="max-width:100%;"></div>
+								<div class="thumbnail"><img src="pages/image/g1.jpg" alt="Image" style="max-width:100%;"></div>
 							</div>
 						</div>
 					</div>
 					<div class="item">
 						<div class="row">
 							<div class="col-md-3 col-sm-3 col-xs-3 slidering">
-								<div class="thumbnail"><img src="pages/images/g1.jpg" alt="Image" style="max-width:100%;"></div>
+								<div class="thumbnail"><img src="pages/image/g1.jpg" alt="Image" style="max-width:100%;"></div>
 							</div>
 							<div class="col-md-3 col-sm-3 col-xs-3 slidering">
-								<div class="thumbnail"><img src="pages/images/g2.jpg" alt="Image" style="max-width:100%;"></div>
+								<div class="thumbnail"><img src="pages/image/g2.jpg" alt="Image" style="max-width:100%;"></div>
 							</div>
 							<div class="col-md-3 col-sm-3 col-xs-3 slidering">
-								<div class="thumbnail"><img src="pages/images/g3.jpg" alt="Image" style="max-width:100%;"></div>
+								<div class="thumbnail"><img src="pages/image/g3.jpg" alt="Image" style="max-width:100%;"></div>
 							</div>
 							<div class="col-md-3 col-sm-3 col-xs-3 slidering">
-								<div class="thumbnail"><img src="pages/images/g4.jpg" alt="Image" style="max-width:100%;"></div>
+								<div class="thumbnail"><img src="pages/image/g4.jpg" alt="Image" style="max-width:100%;"></div>
+							</div>
+						</div>
+					</div>
+					<div class="item">
+						<div class="row">
+							<div class="col-md-3 col-sm-3 col-xs-3 slidering">
+								<div class="thumbnail"><img src="pages/image/g1.jpg" alt="Image" style="max-width:100%;"></div>
+							</div>
+							<div class="col-md-3 col-sm-3 col-xs-3 slidering">
+								<div class="thumbnail"><img src="pages/image/g2.jpg" alt="Image" style="max-width:100%;"></div>
+							</div>
+							<div class="col-md-3 col-sm-3 col-xs-3 slidering">
+								<div class="thumbnail"><img src="pages/image/g3.jpg" alt="Image" style="max-width:100%;"></div>
+							</div>
+							<div class="col-md-3 col-sm-3 col-xs-3 slidering">
+								<div class="thumbnail"><img src="pages/image/g4.jpg" alt="Image" style="max-width:100%;"></div>
 							</div>
 						</div>
 					</div>

@@ -151,4 +151,11 @@ class ProductController extends Controller
         $pro->delete();
         return redirect('products/danhsach')->with('thongbao', 'Bạn đã xóa thành công');
     }
+
+    public function getSearch(Request $request)
+    {
+        $pro = Product::where('name', 'like', '%' . $request->key . '%')
+            ->orwhere('id_category', 'like', '%' . $request->key . '%')->orwhere('price', 'like', '%' . $request->key . '%')->orwhere('id_sale', 'like', '%' . $request->key . '%')->orwhere('size', 'like', '%' . $request->key . '%')->orwhere('gender', 'like', '%' . $request->key . '%')->paginate();
+        return view('admin.products.search_product', compact('pro'));
+    }
 }

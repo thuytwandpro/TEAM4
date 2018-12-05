@@ -18,6 +18,7 @@
                      </span>
                 </div>
             </form>
+            <div class="panel-heading" style=" font-family: Helvetica, Arial, Tahoma, sans-serif; color: blue;"> Tìm thấy: {{count($category)}} Sản Phẩm</div>
         </section>
         <!-- Main content -->
         <section class="content">
@@ -54,10 +55,9 @@
                                     </tr>
                                 @endforeach
                                 </tbody>
-
                             </table>
+                            <div style="float: right;padding-top: 20px; margin-right: 50px;"><a href="{{asset('categories/danhsach')}}" class="btn btn-primary">Black</a></div>
                             <div style="float: right; width: 60%">
-                                {!! $category->links() !!}
                             </div>
                         </div>
                         <!-- /.box-body -->

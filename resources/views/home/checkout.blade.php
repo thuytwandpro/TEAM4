@@ -39,15 +39,13 @@
                                     <td class="invert">{{$item->subtotal}}</td>
                                     <td class="invert">
                                         <input type="hidden" value="{{$item->rowId}}" name="rowId">
-                                        <div class="rem">
-                                            <div class=""><input type="submit" value="Update">
-                                            </div>
-                                        </div>
+                                          <input type="submit" value="Update">
+                                          <br><br>
                             </form>
                             <form action="{{route('removeCart',$item->rowId)}}" method="get">
-                                <div class="rem">
-                                    <div class=""><input type="submit" value="Remove"></div>
-                                </div>
+
+                               <input type="submit" value="Remove">
+
                             </form>
 
                             </td>

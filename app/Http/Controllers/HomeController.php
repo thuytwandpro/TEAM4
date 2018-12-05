@@ -158,7 +158,7 @@ class HomeController extends Controller
         $prod = Product::orderBy('created_at', 'DESC')->paginate(5);
         $pro = Product::orderBy('created_at', 'DESC')->paginate(6);
         $products = Product::where('id', 'like', '%' . $request->key . '%')->orwhere('name', 'like', '%' . $request->key . '%')
-            ->orwhere('price', 'like', '%' . $request->key . '%')->orwhere('size', 'like', '%' . $request->key . '%')->orwhere('gender', 'like', '%' . $request->key . '%')->paginate(5);
+            ->orwhere('price', 'like', '%' . $request->key . '%')->paginate(5);
         return view('home.search', compact('products', 'cate','prod','sale','pro'));
     }
     public function checkout()

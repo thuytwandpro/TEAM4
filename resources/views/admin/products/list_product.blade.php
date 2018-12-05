@@ -7,7 +7,17 @@
         <div class="box-header" style="margin-top: 25px;">
             <h3 class="box-title" style="margin-left: 400PX; font-size: 200%; color: #FF0000;">DANH SÁCH SẢN PHẨM</h3>
         </div>
-
+        <form action="{{asset('products/timkiem')}}" method="get" class="search">
+            <input type="hidden" name="_token" value="{{ csrf_token() }}" >
+            <div class="input-group" style="width: 260px; margin-left: 800px; background: silver">
+                <input type="text" name="key" class="form-control" placeholder="Tìm kiếm...">
+                <span class="input-group-btn">
+                    <button type="submit" name="search" id="search-btn" class="btn btn-flat">
+                        <i class="fa fa-search"></i>
+                    </button>
+                </span>
+            </div>
+        </form>
     </section>
     <!-- Main content -->
     <section class="content">
@@ -34,9 +44,9 @@
                                 </tr>
                             </thead>
                             <tbody>
-                            @foreach($products as $pro)
+                            @foreach($products as $i => $pro)
                                 <tr>
-                                    <td>{{$pro->id}}</td>
+                                    <td>{{$i}}</td>
                                     <td>{{$pro->name}}</td>
                                     <td>
                                         <?php
@@ -61,7 +71,13 @@
                                         @endif
                                     </td>
                                     <td>{{$pro->size}}</td>
-                                    <td>{{$pro->gender}}</td>
+                                    <td>
+                                        @if($pro->gender == 0)
+                                            Nữ
+                                            @else
+                                        Nam
+                                            @endif
+                                    </td>
                                     <td class="center">
                                         <a href="products/sua/{{$pro->id}}" class="btn btn-warning">
                                             <i class="fa fa-pencil" aria-hidden="true"></i>

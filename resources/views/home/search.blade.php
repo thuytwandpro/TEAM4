@@ -61,7 +61,6 @@
                     @endforeach
                 </div>
                 <!-- //deals -->
-
             </div>
             <!-- //product left -->
             <!-- product right -->

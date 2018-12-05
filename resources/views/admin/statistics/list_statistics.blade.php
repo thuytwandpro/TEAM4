@@ -53,41 +53,43 @@
                                     <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus" style="font-size: 20px"></i></button>
                                 </div>
                             </div>
-                            <div class="box-body">
-                                <div class="row">
-                                    <div class="col-md-6">
-                                        <div class="form-group">
-                                            <label class="col-md-3 control-label">From</label>
-                                            <div class="col-md-7">
-                                                <div class="input-group date">
-                                                    <div class="input-group-addon">
-                                                        <i class="fa fa-calendar"></i>
+
+                                <div class="box-body">
+                                    <div class="row">
+                                            <div class="col-md-6">
+                                                <div class="form-group">
+                                                    <label class="col-md-3 control-label">From</label>
+                                                    <div class="col-md-7">
+                                                        <div class="input-group date">
+                                                            <div class="input-group-addon">
+                                                                <i class="fa fa-calendar"></i>
+                                                            </div>
+                                                            <input type="date" value="1/11/2018" name="ngaydau" class="form-control pull-right" placeholder="From" id="from"  required=""z>
+                                                        </div>
                                                     </div>
-                                                    <input type="date" value="1/11/2018" name="from" class="form-control pull-right" placeholder="From" id="from"  required=""z>
                                                 </div>
                                             </div>
-                                        </div>
-                                    </div>
-                                    <div class="col-md-6">
-                                        <div class="form-group">
-                                            <label class="col-md-3 control-label">To</label>
-                                            <div class="col-md-7">
-                                                <div class="input-group date">
-                                                    <div class="input-group-addon">
-                                                        <i class="fa fa-calendar"></i>
+                                            <div class="col-md-6">
+                                                <div class="form-group">
+                                                    <label class="col-md-3 control-label">To</label>
+                                                    <div class="col-md-7">
+                                                        <div class="input-group date">
+                                                            <div class="input-group-addon">
+                                                                <i class="fa fa-calendar"></i>
+                                                            </div>
+                                                            <input type="date" value="2018/12/22" name="ngaycuoi" class="form-control pull-right" id="to" placeholder="To" required="">
+                                                        </div>
                                                     </div>
-                                                    <input type="date" value="2018/12/22" name="to" class="form-control pull-right" id="to" placeholder="To" required="">
                                                 </div>
                                             </div>
-                                        </div>
+
                                     </div>
                                 </div>
-                            </div>
-                            <div class="box-footer">
-                                <button type="submit" class="btn btn-primary">
-                                    <i class="fa fa-hospital-o" aria-hidden="true"></i> Thống kê
-                                </button>
-                            </div>
+                                <div class="box-footer">
+                                    <button type="submit" class="btn btn-primary">
+                                        <i class="fa fa-hospital-o" aria-hidden="true"></i> Thống kê
+                                    </button>
+                                </div>
                         </div>
                     </form>
                     <!-- /.box-header -->
@@ -95,13 +97,13 @@
                         <table id="example1" class="table table-bordered table-striped">
                             <thead>
                                 <tr>
-                                    <th>Tên Khách hàng</th>
+                                    <th>Tên Khách Hàng</th>
                                     <th>Email</th>
                                     <th>Địa chỉ</th>
                                     <th>Số điện thoại</th>
                                     <th>Tổng tiền</th>
-                                    <th>Sửa</th>
-                                    <th>Xóa</th>
+                                    <th>Ngày Tạo</th>
+
                                 </tr>
                             </thead>
                             <tbody>

@@ -67,4 +67,10 @@ class CategoryController extends Controller
         $category->delete();
         return redirect('shoes/admin/categories/danhsach')->with('thongbao', 'Bạn đã xóa thành công');
     }
+
+    public function getSearch(Request $request)
+    {
+        $category = Category::where('name', 'like', '%' . $request->key . '%')->paginate();
+        return view('admin.categories.search_category', compact('category'));
+    }
 }

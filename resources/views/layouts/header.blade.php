@@ -14,18 +14,18 @@
 	            </div>
 	        </div>
 	    </div>
-	    <div class="search_w3ls_agileinfo">
-	        <div class="cd-main-header">
-	            <ul class="cd-header-buttons">
-	                <li><a class="cd-search-trigger" href="#cd-search"> <span></span></a></li>
-	            </ul>
-	        </div>
-	        <div id="cd-search" class="cd-search">
-	            <form action="#" method="post">
-	                <input name="Search" type="search" placeholder="Click enter after typing...">
-	            </form>
-	        </div>
-	    </div>
+	    {{--<div class="search_w3ls_agileinfo">--}}
+	        {{--<div class="cd-main-header">--}}
+	            {{--<ul class="cd-header-buttons">--}}
+	                {{--<li><a class="cd-search-trigger" href="#cd-search"> <span></span></a></li>--}}
+	            {{--</ul>--}}
+	        {{--</div>--}}
+	        {{--<div id="cd-search" class="cd-search">--}}
+	            {{--<form action="#" method="post">--}}
+	                {{--<input name="Search" type="search" placeholder="Click enter after typing...">--}}
+	            {{--</form>--}}
+	        {{--</div>--}}
+	    {{--</div>--}}
 	    <!-- //search -->
 	    <div class="clearfix"></div>
 	    <div class="services-breadcrumb_w3ls_agileinfo">
@@ -35,7 +35,7 @@
 	                <li><a href="{{asset('/shoes/about')}}">About</a></li>
 					@if(Auth::user())
 						<li class="short-right" style="margin-left: 900px" >{{Auth::user()->username}}<i>|</i></li>
-						<li><a href="javascript:;" onclick="if(confirm('Bạn có chắc chắn muốn Đăng xuất')){location.href='{{asset('/shoes/logout')}}'}">Đăng Xuất</a></li>
+						<li><a href="javascript:;" onclick="if(confirm('Bạn có chắc chắn muốn Đăng xuất')){location.href='{{asset('/shoes/logout')}}'}">Logout</a></li>
 					@else
 						<li class="short-right" style="margin-left: 900px"><a href="{{asset('/shoes/register')}}">Register</a><i>|</i></li>
 						<li><a href="{{asset('/shoes/login')}}">Login</a></li>
