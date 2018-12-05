@@ -126,6 +126,8 @@ Route::group(['prefix' => 'products', 'middleware' => ['sale']], function () {
     Route::post('sua/{id}', 'ProductController@postSua');
 
     Route::get('xoa/{id}', 'ProductController@getXoa');
+
+    Route::get('/timkiem', ['as' => 'timkiem', 'uses' => 'ProductController@getSearch']);
 });
 Route::group(['prefix' => 'categories','middleware' => ['sale']], function () {
 
@@ -138,4 +140,6 @@ Route::group(['prefix' => 'categories','middleware' => ['sale']], function () {
     Route::post('sua/{id}', 'CategoryController@postSua');
 
     Route::get('xoa/{id}', 'CategoryController@getXoa');
+
+    Route::get('/timkiem', ['as' => 'timkiem', 'uses' => 'CategoryController@getSearch']);
 });
