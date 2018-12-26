@@ -17,7 +17,7 @@ class CreateBillsTable extends Migration
             $table->increments('id');
             $table->integer('id_user')->unsigned();
             $table->foreign('id_user')->references('id')->on('users');
-            $table->string('customer_name', 255);
+            $table->string('username', 255);
             $table->string('address', 255);
             $table->string('email',255);
             $table->string('phone', 11);
